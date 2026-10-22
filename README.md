@@ -131,7 +131,7 @@ de la zona inválida:
 
 No se forzó la medición con la mitad sin nubes, porque la cifra no sería comparable
 con la de Chichas. Es el mismo problema que dejó fuera a Callería. En la Amazonía,
-octubre es el pico de la temporada de quemas y también el inicio de las lluvias: la
+octubre todavía es temporada de quemas y ya empiezan las lluvias: la
 nubosidad impide medir justo cuando más arde, y eso sesga el análisis óptico hacia
 los incendios andinos.
 

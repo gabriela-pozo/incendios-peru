@@ -33,10 +33,10 @@ def main():
     print(tabla.to_string(index=False))
 
     fig, ax = plt.subplots(figsize=(8, 5), dpi=150)
-    ax.plot(tabla.umbral_dnbr, tabla.hectareas, color="#c2410c", lw=2, marker="o", ms=6, zorder=3)
+    ax.plot(tabla.umbral_dnbr, tabla.hectareas, color="#0d6e5d", lw=2, marker="o", ms=6, zorder=3)
     u = tabla[tabla.usado].iloc[0]
-    ax.axvline(USADO, color="#6b7280", lw=1, ls="--", zorder=1)
-    ax.scatter([USADO], [u.hectareas], s=110, facecolor="#c2410c", edgecolor="white", lw=2, zorder=4)
+    ax.axvline(USADO, color="#5c6b66", lw=1, ls="--", zorder=1)
+    ax.scatter([USADO], [u.hectareas], s=110, facecolor="#0d6e5d", edgecolor="white", lw=2, zorder=4)
     ax.annotate(f"Umbral usado (0,10): {miles(u.hectareas)} ha",
                 (USADO, u.hectareas), xytext=(12, 8), textcoords="offset points", fontsize=9, color="#111")
     for x, y in [(tabla.umbral_dnbr.iloc[0], tabla.hectareas.iloc[0]),
@@ -49,7 +49,7 @@ def main():
     ax.set_ylabel("Hectáreas quemadas")
     ax.set_ylim(0, tabla.hectareas.max() * 1.12)
     ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: miles(v)))
-    ax.grid(axis="y", color="#e5e7eb", lw=0.8)
+    ax.grid(axis="y", color="#d9e0dc", lw=0.8)
     for s in ("top", "right"):
         ax.spines[s].set_visible(False)
     ax.set_title(f"Hectáreas quemadas según el umbral de dNBR — {nombre}\n"

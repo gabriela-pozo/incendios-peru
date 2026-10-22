@@ -4,78 +4,84 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>¿Qué se quemó? · Chichas, Arequipa</title>
-<meta name="description" content="De 8 637 focos de calor en el Perú a 1 690 hectáreas medidas en Chichas, Arequipa: qué tipo de suelo ardió.">
+<meta name="description" content="De 8 637 focos de calor en el Perú a 1 690 hectáreas medidas en Chichas, Arequipa: qué tipo de suelo ardió y si la zona arde cada año.">
 <style>
   :root {
-    --bg: #f7f3ec;
-    --text: #1a1613;
-    --muted: #5e554d;
-    --accent: #c0462a;
-    --blue: #2d5f7c;
-    --card: #fffdf9;
-    --line: #e2d9cc;
-    --highlight: #f6e3db;
-    --header-bg: #1a1613;
-    --header-text: #f7f3ec;
-    --sev-baja: #fde725;
-    --sev-modbaja: #fd8d3c;
-    --sev-modalta: #e31a1c;
-    --sev-alta: #67000d;
+    --bg: #f2f5f2;
+    --fg: #14201d;
+    --muted: #5c6b66;
+    --card: #ffffff;
+    --line: #d9e0dc;
+    --accent: #0d6e5d;
+    --accent2: #a85c32;
+    --on-accent: #ffffff;
+    --highlight: #dcebe6;
+    --header-bg: #14201d;
+    --header-fg: #f2f5f2;
+    --header-muted: #b6c4be;
+    --sev-baja: #f2d024;
+    --sev-modbaja: #f08c3a;
+    --sev-modalta: #d93a1f;
+    --sev-alta: #6e1708;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1a1613;
-      --text: #efe8dd;
-      --muted: #b3a89b;
-      --accent: #e0694c;
-      --blue: #7fb0cf;
-      --card: #24201c;
-      --line: #3a332d;
-      --highlight: #3b2620;
-      --header-bg: #0f0d0b;
-      --header-text: #f7f3ec;
+      --bg: #0e1715;
+      --fg: #e4ebe8;
+      --muted: #9aaba5;
+      --card: #16221f;
+      --line: #2a3a35;
+      --accent: #45b39d;
+      --accent2: #d98c5f;
+      --on-accent: #0e1715;
+      --highlight: #1b332d;
+      --header-bg: #14201d;
+      --header-fg: #f2f5f2;
+      --header-muted: #b6c4be;
     }
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; color-scheme: light dark; }
   body {
     margin: 0;
     background: var(--bg);
-    color: var(--text);
+    color: var(--fg);
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 17px;
     line-height: 1.6;
   }
   .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
-  header.top { background: var(--header-bg); color: var(--header-text); padding: 56px 0 44px; }
+  header.top { background: var(--header-bg); color: var(--header-fg); padding: 56px 0 44px; border-bottom: 1px solid var(--line); }
   header.top h1 { font-size: clamp(2.2rem, 7vw, 3.6rem); line-height: 1.05; margin: 0 0 16px; letter-spacing: -0.02em; }
-  header.top .bajada { font-size: clamp(1.05rem, 2.6vw, 1.3rem); max-width: 40em; margin: 0 0 22px; opacity: 0.92; }
-  header.top .firma { font-size: 0.9rem; color: #d9cfc1; border-top: 2px solid var(--accent); padding-top: 10px; display: inline-block; margin: 0; }
+  header.top .bajada { font-size: clamp(1.05rem, 2.6vw, 1.3rem); max-width: 40em; margin: 0 0 22px; }
+  header.top .firma { font-size: 0.9rem; color: var(--header-muted); border-top: 2px solid #45b39d; padding-top: 10px; display: inline-block; margin: 0; }
   main { padding-bottom: 32px; }
   section { padding: 36px 0 8px; }
   h2 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 14px; }
   h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: 6px; }
   h3 { font-size: 1.08rem; margin: 0 0 6px; }
   p { margin: 0 0 14px; }
+  a { color: var(--accent); }
   .muted { color: var(--muted); }
   .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0 8px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
   .card .big { font-size: 2.4rem; font-weight: 750; line-height: 1.05; color: var(--accent); font-variant-numeric: tabular-nums; margin-bottom: 8px; }
   .card p { margin: 0; font-size: 0.95rem; }
-  .card.method h3 { color: var(--blue); }
+  .card.method h3 { color: var(--accent2); }
   figure { margin: 18px 0 0; }
   figure img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
-  svg.chart { width: 100%; height: auto; display: block; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+  .chart-scroll { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+  svg.chart { width: 100%; min-width: 540px; max-width: 760px; height: auto; display: block; margin: 0 auto; }
   svg.chart .grid { stroke: var(--line); stroke-width: 1; }
   svg.chart .ref { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; }
-  svg.chart text { fill: var(--muted); font-size: 12px; font-family: inherit; }
-  svg.chart text.lbl { fill: var(--text); font-size: 13px; font-weight: 600; }
-  svg.chart text.axis { font-size: 13px; }
+  svg.chart text { fill: var(--muted); font-size: 13px; font-family: inherit; }
+  svg.chart text.lbl { fill: var(--fg); font-size: 14px; font-weight: 600; }
+  svg.chart text.axis { font-size: 14px; }
   svg.chart .bar { fill: var(--accent); }
-  svg.chart .bar.b2026 { fill: var(--blue); }
+  svg.chart .bar.b2026 { fill: var(--accent2); }
   svg.chart .hit { fill: transparent; }
-  svg.chart text.val { font-size: 11px; }
-  svg.chart text.val.strong { fill: var(--text); font-weight: 700; font-size: 13px; }
+  svg.chart text.val { font-size: 12px; }
+  svg.chart text.val.strong { fill: var(--fg); font-weight: 700; font-size: 14px; }
   svg.chart .line { fill: none; stroke-width: 2; }
   svg.chart .s1 { stroke: var(--accent); }
   svg.chart .dot.s1 { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
@@ -85,20 +91,21 @@
   th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
   th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; }
   td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  tr.total td { font-weight: 700; border-top: 2px solid var(--text); }
+  tr.total td { font-weight: 700; border-top: 2px solid var(--fg); }
   tr.dim td { color: var(--muted); }
   tr.medido td { background: var(--highlight); font-weight: 600; }
-  .tag { display: inline-block; background: var(--accent); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 1px 7px; border-radius: 999px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.04em; vertical-align: 1px; }
+  .tag { display: inline-block; background: var(--accent); color: var(--on-accent); font-size: 0.72rem; font-weight: 700; padding: 1px 7px; border-radius: 999px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.04em; vertical-align: 1px; }
   .tag.gris { background: var(--muted); }
   td.bar { width: 32%; min-width: 90px; }
   .bar span { display: block; height: 14px; border-radius: 3px; min-width: 2px; }
   .sw { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; border: 1px solid rgba(0,0,0,0.15); }
   .note { font-size: 0.9rem; color: var(--muted); border-left: 3px solid var(--line); padding-left: 12px; }
   .callout { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 8px; padding: 16px 18px; margin: 16px 0; }
+  .callout.alt { border-left-color: var(--accent2); }
   .callout p:last-child { margin-bottom: 0; }
-  ul.clean { padding-left: 1.2em; margin: 0 0 14px; }
-  ul.clean li { margin-bottom: 6px; }
-  code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.9em; }
+  ul.clean, ol.clean { padding-left: 1.2em; margin: 0 0 14px; }
+  ul.clean li, ol.clean li { margin-bottom: 6px; }
+  code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.9em; overflow-wrap: anywhere; }
   footer { border-top: 1px solid var(--line); padding: 22px 0 40px; font-size: 0.88rem; color: var(--muted); }
   footer p { margin: 0 0 8px; }
   @media (max-width: 560px) {
@@ -106,6 +113,11 @@
     header.top { padding: 40px 0 32px; }
     th, td { padding: 7px 6px; }
     .card .big { font-size: 2rem; }
+    svg.chart { min-width: 0; }
+    svg.chart text, svg.chart text.axis, svg.chart text.lbl { font-size: 20px; }
+    svg.chart text.val { font-size: 18px; }
+    svg.chart text.val.strong { font-size: 22px; }
+    svg.chart .t-opc { display: none; }
   }
 </style>
 </head>
@@ -114,7 +126,7 @@
 <header class="top">
   <div class="wrap">
     <h1>¿Qué se quemó?</h1>
-    <p class="bajada">De 8&nbsp;637 focos de calor en todo el Perú a 1&nbsp;690 hectáreas medidas en Chichas, Arequipa. No ardió bosque ni cultivo: ardió pastizal.</p>
+    <p class="bajada">De 8&nbsp;637 focos de calor en todo el Perú a 1&nbsp;690 hectáreas medidas en Chichas, Arequipa. No ardió bosque ni cultivo: ardió pastizal, en una zona donde el satélite no había visto fuego en 14 años.</p>
     <p class="firma">Gabriela Pozo · Reto C · Universidad del Pacífico</p>
   </div>
 </header>
@@ -182,10 +194,10 @@
         </thead>
         <tbody>
           <tr><td>Pastizal</td><td class="n">1&nbsp;223,0</td><td class="n">72,4&nbsp;%</td><td class="bar"><span style="width:72.4%;background:var(--accent)"></span></td></tr>
-          <tr><td>Matorral</td><td class="n">455,6</td><td class="n">27,0&nbsp;%</td><td class="bar"><span style="width:27%;background:var(--blue)"></span></td></tr>
-          <tr><td>Suelo desnudo</td><td class="n">10,3</td><td class="n">0,6&nbsp;%</td><td class="bar"><span style="width:0.6%;background:var(--blue)"></span></td></tr>
-          <tr><td>Agua</td><td class="n">0,4</td><td class="n">0,0&nbsp;%</td><td class="bar"><span style="width:0;background:var(--blue)"></span></td></tr>
-          <tr><td>Bosque</td><td class="n">0,1</td><td class="n">0,0&nbsp;%</td><td class="bar"><span style="width:0;background:var(--blue)"></span></td></tr>
+          <tr><td>Matorral</td><td class="n">455,6</td><td class="n">27,0&nbsp;%</td><td class="bar"><span style="width:27%;background:var(--accent2)"></span></td></tr>
+          <tr><td>Suelo desnudo</td><td class="n">10,3</td><td class="n">0,6&nbsp;%</td><td class="bar"><span style="width:0.6%;background:var(--accent2)"></span></td></tr>
+          <tr><td>Agua</td><td class="n">0,4</td><td class="n">0,0&nbsp;%</td><td class="bar"><span style="width:0;background:var(--accent2)"></span></td></tr>
+          <tr><td>Bosque</td><td class="n">0,1</td><td class="n">0,0&nbsp;%</td><td class="bar"><span style="width:0;background:var(--accent2)"></span></td></tr>
           <tr><td>Cultivo</td><td class="n">0,0</td><td class="n">0,0&nbsp;%</td><td class="bar"></td></tr>
           <tr class="total"><td>Total</td><td class="n">1&nbsp;689,4</td><td class="n">100&nbsp;%</td><td></td></tr>
         </tbody>
@@ -208,19 +220,20 @@
     <h2><span class="num">6</span>Cuánto depende del umbral</h2>
     <p>Con el corte estándar de 0,10 el área quemada es de 1&nbsp;690&nbsp;ha. Pero la cifra es muy elástica: entre 0,05 y 0,35 va de 2&nbsp;008&nbsp;ha a 34&nbsp;ha, un factor de 59.</p>
     <figure>
+<div class="chart-scroll">
 <svg class="chart" viewBox="0 0 640 330" role="img" aria-label="Hectáreas quemadas según el umbral de dNBR">
 <line class="grid" x1="62" x2="620" y1="280.0" y2="280.0"/><text class="tick" x="54" y="284.0" text-anchor="end">0</text>
 <line class="grid" x1="62" x2="620" y1="251.6" y2="251.6"/><text class="tick" x="54" y="255.6" text-anchor="end">250</text>
 <line class="grid" x1="62" x2="620" y1="223.1" y2="223.1"/><text class="tick" x="54" y="227.1" text-anchor="end">500</text>
 <line class="grid" x1="62" x2="620" y1="194.7" y2="194.7"/><text class="tick" x="54" y="198.7" text-anchor="end">750</text>
-<line class="grid" x1="62" x2="620" y1="166.2" y2="166.2"/><text class="tick" x="54" y="170.2" text-anchor="end">1&#8239;000</text>
-<line class="grid" x1="62" x2="620" y1="137.8" y2="137.8"/><text class="tick" x="54" y="141.8" text-anchor="end">1&#8239;250</text>
-<line class="grid" x1="62" x2="620" y1="109.3" y2="109.3"/><text class="tick" x="54" y="113.3" text-anchor="end">1&#8239;500</text>
-<line class="grid" x1="62" x2="620" y1="80.9" y2="80.9"/><text class="tick" x="54" y="84.9" text-anchor="end">1&#8239;750</text>
-<line class="grid" x1="62" x2="620" y1="52.4" y2="52.4"/><text class="tick" x="54" y="56.4" text-anchor="end">2&#8239;000</text>
-<line class="grid" x1="62" x2="620" y1="24.0" y2="24.0"/><text class="tick" x="54" y="28.0" text-anchor="end">2&#8239;250</text>
+<line class="grid" x1="62" x2="620" y1="166.2" y2="166.2"/><text class="tick" x="54" y="170.2" text-anchor="end">1&#160;000</text>
+<line class="grid" x1="62" x2="620" y1="137.8" y2="137.8"/><text class="tick" x="54" y="141.8" text-anchor="end">1&#160;250</text>
+<line class="grid" x1="62" x2="620" y1="109.3" y2="109.3"/><text class="tick" x="54" y="113.3" text-anchor="end">1&#160;500</text>
+<line class="grid" x1="62" x2="620" y1="80.9" y2="80.9"/><text class="tick" x="54" y="84.9" text-anchor="end">1&#160;750</text>
+<line class="grid" x1="62" x2="620" y1="52.4" y2="52.4"/><text class="tick" x="54" y="56.4" text-anchor="end">2&#160;000</text>
+<line class="grid" x1="62" x2="620" y1="24.0" y2="24.0"/><text class="tick" x="54" y="28.0" text-anchor="end">2&#160;250</text>
 <text class="tick" x="62.0" y="298" text-anchor="middle">0,05</text>
-<text class="tick" x="117.8" y="298" text-anchor="middle">0,08</text>
+<text class="tick t-opc" x="117.8" y="298" text-anchor="middle">0,08</text>
 <text class="tick" x="155.0" y="298" text-anchor="middle">0,10</text>
 <text class="tick" x="248.0" y="298" text-anchor="middle">0,15</text>
 <text class="tick" x="341.0" y="298" text-anchor="middle">0,20</text>
@@ -229,15 +242,16 @@
 <line class="ref" x1="155.0" x2="155.0" y1="24" y2="280"/>
 <text class="axis" x="341.0" y="322" text-anchor="middle">Umbral de dNBR</text>
 <polyline class="line s1" points="62.0,51.6 117.8,70.3 155.0,87.8 248.0,147.0 341.0,201.9 471.2,252.5 620.0,276.1"/>
-<circle class="dot s1" cx="62.0" cy="51.6" r="4.5"><title>Chichas · umbral 0,05: 2&#8239;007,5 ha</title></circle>
-<circle class="dot s1" cx="117.8" cy="70.3" r="4.5"><title>Chichas · umbral 0,08: 1&#8239;842,9 ha</title></circle>
-<circle class="dot s1" cx="155.0" cy="87.8" r="6"><title>Chichas · umbral 0,10: 1&#8239;689,5 ha</title></circle>
-<circle class="dot s1" cx="248.0" cy="147.0" r="4.5"><title>Chichas · umbral 0,15: 1&#8239;168,9 ha</title></circle>
+<circle class="dot s1" cx="62.0" cy="51.6" r="4.5"><title>Chichas · umbral 0,05: 2&#160;007,5 ha</title></circle>
+<circle class="dot s1" cx="117.8" cy="70.3" r="4.5"><title>Chichas · umbral 0,08: 1&#160;842,9 ha</title></circle>
+<circle class="dot s1" cx="155.0" cy="87.8" r="6"><title>Chichas · umbral 0,10: 1&#160;689,5 ha</title></circle>
+<circle class="dot s1" cx="248.0" cy="147.0" r="4.5"><title>Chichas · umbral 0,15: 1&#160;168,9 ha</title></circle>
 <circle class="dot s1" cx="341.0" cy="201.9" r="4.5"><title>Chichas · umbral 0,20: 686,6 ha</title></circle>
 <circle class="dot s1" cx="471.2" cy="252.5" r="4.5"><title>Chichas · umbral 0,27: 241,9 ha</title></circle>
 <circle class="dot s1" cx="620.0" cy="276.1" r="4.5"><title>Chichas · umbral 0,35: 33,9 ha</title></circle>
-<text class="lbl" x="167.0" y="77.8">Umbral usado (0,10): 1&#8239;690 ha</text>
+<text class="lbl" x="167.0" y="77.8">Umbral usado (0,10): 1&#160;690 ha</text>
 </svg>
+</div>
 
       <figcaption>Hectáreas quemadas en Chichas según el umbral de dNBR, en la misma zona de 5&nbsp;399&nbsp;ha y con el mismo par de imágenes. La línea discontinua marca el umbral usado (0,10).</figcaption>
     </figure>
@@ -266,6 +280,7 @@
     <h2><span class="num">7</span>¿Arde cada año o fue excepcional?</h2>
     <p>Si la misma zona ardiera cada temporada seca, el incendio de 2026 sería compatible con una quema de manejo de pastos. Para verlo se contaron los focos del satélite Suomi-NPP de cada año, de 2012 a 2025, dentro del área que ardió en 2026 (1&nbsp;689,5&nbsp;ha) y dentro de esa área más 1&nbsp;km (5&nbsp;855,2&nbsp;ha).</p>
     <figure>
+<div class="chart-scroll">
 <svg class="chart" viewBox="0 0 640 300" role="img" aria-label="Focos S-NPP por año en el área quemada de Chichas (polígono más 1 km), 2012 a 2026">
 <line class="grid" x1="44" x2="628" y1="248.0" y2="248.0"/><text class="tick" x="38" y="252.0" text-anchor="end">0</text>
 <line class="grid" x1="44" x2="628" y1="216.0" y2="216.0"/><text class="tick" x="38" y="220.0" text-anchor="end">10</text>
@@ -278,7 +293,7 @@
 <rect class="hit" x="49.8" y="24" width="27.3" height="224.0"><title>2012: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
 <text class="val" x="63.5" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="63.5" y="264" text-anchor="end" transform="rotate(-45 63.5 264)">2012</text>
-<path class="bar" d="M88.8,248.0 V247.8 q0,-3 3,-3 H113.0 q3,0 3,3 V248.0 Z"><title>2013: 1 focos a ≤1 km del área quemada, 0 dentro del polígono</title></path>
+<path class="bar" d="M88.8,248.0 V247.8 q0,-3 3,-3 H113.0 q3,0 3,3 V248.0 Z"><title>2013: 1 foco a ≤1 km del área quemada, 0 dentro del polígono</title></path>
 <text class="val" x="102.4" y="239.8" text-anchor="middle">1</text>
 <text class="tick" x="102.4" y="264" text-anchor="end" transform="rotate(-45 102.4 264)">2013</text>
 <rect class="hit" x="127.7" y="24" width="27.3" height="224.0"><title>2014: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
@@ -321,6 +336,7 @@
 <text class="val strong" x="608.5" y="47.8" text-anchor="middle">61</text>
 <text class="tick" x="608.5" y="264" text-anchor="end" transform="rotate(-45 608.5 264)">2026*</text>
 </svg>
+</div>
 
       <figcaption>Focos S-NPP de confianza nominal o alta por año, en el área quemada en 2026 más 1&nbsp;km. *2026: solo del 14 al 21 de octubre (CSV de 7 días). 2012–2025: año completo, archivo anual de NASA FIRMS.</figcaption>
     </figure>
@@ -374,7 +390,7 @@
       </table>
     </div>
     <p class="note">“Zona inválida” suma nubes, sombras, cirros y píxeles fuera de la cobertura del tile.</p>
-    <p>Medir la mitad sin nubes daría una cifra que no se puede comparar con la de Chichas, así que no se forzó. Es el mismo problema que dejó fuera a Callería: los dos candidatos amazónicos quedaron sin imagen posterior. En la Amazonía, octubre es el pico de la temporada de quemas y también el inicio de las lluvias, así que la nubosidad impide medir justo cuando más arde. Eso sesga cualquier análisis óptico como este hacia los incendios andinos.</p>
+    <p>Medir la mitad sin nubes daría una cifra que no se puede comparar con la de Chichas, así que no se forzó. Es el mismo problema que dejó fuera a Callería: los dos candidatos amazónicos quedaron sin imagen posterior. En la Amazonía, octubre todavía es temporada de quemas y ya empiezan las lluvias, así que la nubosidad impide medir justo cuando más arde. Eso sesga cualquier análisis óptico como este hacia los incendios andinos.</p>
     <div class="callout">
       <p><strong>La hipótesis queda sin contrastar.</strong> Se esperaba que en bosque la severidad saliera alta y la curva de sensibilidad plana, y que en pastizal saliera baja y la curva empinada. Chichas es compatible con la mitad de pastizal (85,7&nbsp;% de severidad baja, factor de 59 entre umbrales), pero sin un caso de bosque no hay comparación: un solo caso no respalda ni refuta la hipótesis.</p>
     </div>
@@ -430,6 +446,7 @@
       <div class="card method"><h3>Sentinel-2 L2A</h3><p>Imágenes de reflectancia de superficie de Microsoft Planetary Computer, bandas B8A y B12 a 20&nbsp;m. Se elige la imagen con menos nubes sobre la zona, antes y después del fuego.</p></div>
       <div class="card method"><h3>dNBR</h3><p><code>NBR = (NIR − SWIR2) / (NIR + SWIR2)</code>. El dNBR es el NBR de antes menos el de después: cuanto más alto, más vegetación se perdió.</p></div>
       <div class="card method"><h3>Máscara SCL</h3><p>La capa de clasificación de escena excluye nubes, sombras, cirros, agua y píxeles sin dato en cualquiera de las dos fechas.</p></div>
+      <div class="card method"><h3>Recurrencia</h3><p>Archivo anual de NASA FIRMS para Perú, solo Suomi-NPP, 2012–2025. Se cuentan los focos de cada año dentro del polígono quemado en 2026 y a 1&nbsp;km de él.</p></div>
       <div class="card method"><h3>WorldCover 2021</h3><p>Mapa global de cobertura del suelo de la ESA, a 10&nbsp;m, remuestreado a la rejilla de 20&nbsp;m y cruzado con los píxeles quemados.</p></div>
     </div>
   </section>
@@ -453,8 +470,8 @@
 <footer>
   <div class="wrap">
     <p>Herramienta independiente con datos públicos; no reemplaza los reportes del COEN, INDECI, SERFOR ni SERNANP.</p>
-    <p>Fuentes: NASA FIRMS, Copernicus Sentinel-2 y ESA WorldCover vía Microsoft Planetary Computer. Corte: 21 de octubre de 2026.</p>
-    <p>Código y tablas: <code>src/</code> y <code>outputs/</code> en este repositorio.</p>
+    <p>Fuentes: NASA FIRMS (focos NRT y archivo anual S-NPP 2012–2025), Copernicus Sentinel-2 y ESA WorldCover vía Microsoft Planetary Computer. Corte: 21 de octubre de 2026.</p>
+    <p>Código y tablas: <code>src/</code> y <code>outputs/</code> en este repositorio; el README explica cómo reproducir todo.</p>
   </div>
 </footer>
 

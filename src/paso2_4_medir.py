@@ -179,7 +179,7 @@ def main():
     # Paso 4: mapa
     tr, w, h = rejilla
     ext = [tr.c / 1000, (tr.c + w * RES) / 1000, (tr.f - h * RES) / 1000, tr.f / 1000]
-    colores = ["#fde725", "#fd8d3c", "#e31a1c", "#67000d"]
+    colores = ["#f2d024", "#f08c3a", "#d93a1f", "#6e1708"]
     fig, ax = plt.subplots(figsize=(10, 9), dpi=150)
     fondo = np.where(dentro, nir_d, np.nan)
     ax.imshow(fondo, cmap="Greys_r", extent=ext,
@@ -197,7 +197,8 @@ def main():
                 Line2D([], [], marker="o", ls="", mfc="#00e5ff", mec="black", label=f"Focos VIIRS ({len(p)})"),
                 Line2D([], [], color="black", lw=1.2, label="Zona analizada (focos + 1 km)")]
     ax.legend(handles=leyenda, loc="lower left", fontsize=9, framealpha=0.9)
-    ax.set_title(f"Área quemada (dNBR ≥ 0.10): {quemado.sum() * ha_px:,.0f} ha — {nombre}\n"
+    ha_txt = f"{quemado.sum() * ha_px:,.1f}".replace(",", " ").replace(".", ",")
+    ax.set_title(f"Área quemada (dNBR ≥ 0,10): {ha_txt} ha — {nombre}\n"
                  f"Sentinel-2 L2A {a.fecha} → {d.fecha}  ·  fondo: NIR posterior", fontsize=11)
     ax.set_xlabel("Este UTM 18S (km)")
     ax.set_ylabel("Norte UTM 18S (km)")
