@@ -13,6 +13,10 @@ NOMBRES = {"RioTambo": "Río Tambo", "Callaria": "Callería", "Iparia": "Iparía
            "SanMiguel": "San Miguel"}
 DEPTO = {"Junín": "Junín", "Apurímac": "Apurímac", "Huánuco": "Huánuco"}
 FIRMA = "Gabriela Pozo · Reto C"
+# fecha de descarga de data/raw/firms_*_SA_7d.csv (hora de modificación de los archivos: 21 oct 2026, 21:11 hora de Lima)
+DESCARGA_FIRMS = ("21 oct 2026", "21 de octubre de 2026")
+NAV = [("resultado", "Resultado"), ("nacional", "Mapa nacional"), ("chichas", "Chichas"), ("reto", "Qué se quemó"),
+       ("hipotesis", "Hipótesis"), ("robustez", "Robustez"), ("validacion", "Validación"), ("metodo", "Método")]
 
 
 def leer(nombre):
@@ -448,7 +452,40 @@ CSS = """
   code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.9em; overflow-wrap: anywhere; }
   footer { border-top: 1px solid var(--line); padding: 22px 0 40px; font-size: 0.88rem; color: var(--muted); }
   footer p { margin: 0 0 8px; }
+  :root { --barra-h: 50px; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  section[id], header[id] { scroll-margin-top: calc(var(--barra-h) + 12px); }
+  .barra { position: sticky; top: 0; z-index: 2000; background: var(--header-bg); color: var(--header-fg); border-bottom: 1px solid #2a3a35; }
+  .barra-in { max-width: 1240px; margin: 0 auto; padding: 0 16px; display: flex; align-items: center; gap: 16px; }
+  .marca { display: flex; align-items: center; gap: 8px; color: var(--header-fg); text-decoration: none; font-weight: 650; font-size: 0.9rem; white-space: nowrap; }
+  .punto { width: 10px; height: 10px; border-radius: 50%; background: #0d6e5d; box-shadow: 0 0 0 2px #45b39d; flex: none; }
+  .enlaces { position: relative; flex: 1; min-width: 0; display: flex; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .enlaces::-webkit-scrollbar { display: none; }
+  .enlaces > :first-child { margin-left: auto; } .enlaces > :last-child { margin-right: auto; }
+  .enlaces a { color: var(--header-muted); text-decoration: none; font-size: 0.85rem; padding: 14px 9px 12px; white-space: nowrap; border-bottom: 2px solid transparent; }
+  .enlaces a:hover, .enlaces a:focus-visible { color: var(--header-fg); }
+  .enlaces a.activo { color: var(--header-fg); border-bottom-color: #45b39d; }
+  .barra-fecha { margin: 0; font-size: 0.72rem; line-height: 1.35; color: var(--header-muted); white-space: nowrap; text-align: right; }
+  .barra-fecha span { display: block; }
+  .corte { font-size: 0.82rem; color: var(--muted); margin: 0; padding-top: 14px; }
+  h2 a.num { text-decoration: none; }
+  h2 a.num:hover, h2 a.num:focus-visible { text-decoration: underline; }
+  .guia .card h3 { font-size: 1rem; margin-bottom: 6px; }
+  .sev-lista { list-style: none; padding: 0; margin: 0 0 8px; font-size: 0.95rem; }
+  .sev-lista li { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+  .sw { width: 16px; height: 16px; border-radius: 4px; flex: none; border: 1px solid var(--line); }
+  @media (max-width: 1120px) {
+    :root { --barra-h: 76px; }
+    .barra-in { flex-wrap: wrap; gap: 0 12px; }
+    .marca { padding-top: 9px; }
+    .barra-fecha { margin-left: auto; padding-top: 9px; }
+    .barra-fecha span { display: inline; }
+    .enlaces { order: 3; flex-basis: 100%; margin: 0 -16px; padding: 0 7px; }
+    .enlaces a { padding: 10px 9px 9px; }
+  }
   @media (max-width: 560px) {
+    :root { --barra-h: 94px; }
+    .barra-fecha { flex-basis: 100%; margin-left: 0; padding-top: 2px; text-align: left; }
     body { font-size: 16px; }
     header.top { padding: 40px 0 32px; }
     th, td { padding: 7px 6px; }
@@ -459,6 +496,39 @@ CSS = """
     svg.chart text.val.strong { font-size: 22px; }
     svg.chart .t-opc { display: none; }
   }
+"""
+
+
+# Resalta en la barra la sección que se está leyendo. Sin JavaScript los enlaces ancla funcionan igual.
+SCRIPT_BARRA = r"""
+(function () {
+  var barra = document.querySelector('.barra');
+  if (!barra) return;
+  function alto() { document.documentElement.style.setProperty('--barra-h', barra.offsetHeight + 'px'); }
+  alto();
+  window.addEventListener('resize', alto);
+  if (!('IntersectionObserver' in window)) return;
+  var nav = barra.querySelector('.enlaces');
+  var enlaces = [].slice.call(nav.querySelectorAll('a'));
+  var objetivos = enlaces.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+  var actual = null;
+  function marcar() {
+    var linea = window.innerHeight * 0.3 + 1, k = -1;
+    objetivos.forEach(function (s, i) { if (s && s.getBoundingClientRect().top <= linea) k = i; });
+    var a = enlaces[k] || null;
+    if (a === actual) return;
+    if (actual) { actual.classList.remove('activo'); actual.removeAttribute('aria-current'); }
+    actual = a;
+    if (a) {
+      a.classList.add('activo');
+      a.setAttribute('aria-current', 'true');
+      nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
+    }
+  }
+  var io = new IntersectionObserver(marcar, { rootMargin: '-30% 0px -69% 0px' });
+  [].forEach.call(document.querySelectorAll('main section[id]'), function (s) { io.observe(s); });
+  marcar();
+})();
 """
 
 
@@ -495,6 +565,7 @@ def html():
     anillo_txt = " y ".join(f"{'uno' if r.focos_poligono_mas_1km == 1 else ['', 'uno', 'dos', 'tres', 'cuatro', 'cinco'][r.focos_poligono_mas_1km]} en {r.anio}"
                             for r in anillo.itertuples())
     ext = extras_html()
+    enlaces = "\n".join(f'      <a href="#{i}">{t}</a>' for i, t in NAV)
 
     return f"""<!doctype html>
 <html lang="es">
@@ -508,7 +579,17 @@ def html():
 </head>
 <body>
 
-<header class="top">
+<nav class="barra" aria-label="Secciones de la página">
+  <div class="barra-in">
+    <a class="marca" href="#inicio"><span class="punto" aria-hidden="true"></span>Incendios del Perú · Octubre 2026</a>
+    <div class="enlaces">
+{enlaces}
+    </div>
+    <p class="barra-fecha"><span>Ventana 14-21 oct 2026 ·</span> <span>FIRMS descargado el {DESCARGA_FIRMS[0]}</span></p>
+  </div>
+</nav>
+
+<header class="top" id="inicio">
   <div class="wrap">
     <h1>Lo que no se puede medir</h1>
     <p class="bajada">{F['bajada']}</p>
@@ -518,8 +599,29 @@ def html():
 
 <main class="wrap">
 
+  <p class="corte">Corte de datos: {DESCARGA_FIRMS[1]} · Trabajo académico independiente, no reemplaza los reportes del COEN, INDECI, SERFOR ni SERNANP.</p>
+
+  <section id="como-leer">
+    <h2>Cómo leer esta página</h2>
+    <div class="cards guia">
+      <div class="card"><h3>Foco de calor</h3><p>Un píxel de unos 375&nbsp;m donde un satélite VIIRS detectó fuego. Incluye quemas agrícolas y de pastos, no solo incendios forestales.</p></div>
+      <div class="card"><h3>Incendio</h3><p>Aquí, un grupo de focos vecinos: dos focos van al mismo incendio si están a 1&nbsp;km o menos y a 48&nbsp;h o menos entre sí.</p></div>
+      <div class="card"><h3>Envolvente</h3><p>El polígono que rodea los focos de un incendio. Mide la extensión del grupo, <strong>no</strong> el área quemada.</p></div>
+      <div class="card"><h3>dNBR</h3><p>La diferencia del índice NBR entre una imagen Sentinel-2 de antes y otra de después. Mide cambio en la vegetación, no fuego.</p></div>
+      <div class="card"><h3>«Medible»</h3><p>Que existe un par de imágenes Sentinel-2, antes y después, con poca nube sobre la zona del incendio: como máximo el 30&nbsp;% tapado.</p></div>
+      <div class="card"><h3>Colores de severidad</h3>
+        <ul class="sev-lista">
+          <li><span class="sw" style="background:var(--sev-baja)"></span>Baja · dNBR 0,10–0,27</li>
+          <li><span class="sw" style="background:var(--sev-modbaja)"></span>Moderada-baja · 0,27–0,44</li>
+          <li><span class="sw" style="background:var(--sev-modalta)"></span>Moderada-alta · 0,44–0,66</li>
+          <li><span class="sw" style="background:var(--sev-alta)"></span>Alta · 0,66 o más</li>
+        </ul>
+        <p>Por debajo de 0,10 se cuenta como no quemado.</p></div>
+    </div>
+  </section>
+
   <section id="resultado">
-    <h2><span class="num">1</span>El resultado principal: el {num(100 - 100 * n_med / N)}&nbsp;% no era medible</h2>
+    <h2><a class="num" href="#resultado" aria-label="Enlace a la sección 1">1</a>El resultado principal: el {num(100 - 100 * n_med / N)}&nbsp;% no era medible</h2>
     <p>Sobre cada uno de los {N} incendios con más focos de calor entre el 14 y el 21 de octubre de 2026 se corrió exactamente el mismo procedimiento: buscar una imagen Sentinel-2 antes y otra después del fuego, enmascarar nubes, calcular el dNBR y cruzarlo con un mapa de cobertura. La regla para aceptar una imagen se fijó antes de mirar los datos: como máximo el 30&nbsp;% de la zona tapada.</p>
 {s_cards}
     <div class="callout"><p>{F['recuadro_sesgo']}</p></div>
@@ -531,7 +633,7 @@ def html():
   {ext['rejilla']}
 
   <section id="nacional">
-    <h2><span class="num">2</span>El mapa nacional y cómo se comporta el fuego</h2>
+    <h2><a class="num" href="#nacional" aria-label="Enlace a la sección 2">2</a>El mapa nacional y cómo se comporta el fuego</h2>
     {ext['mapa_nacional']}
     <div class="cards">
       <div class="card"><div class="big">{num(nac['% focos diurnos'], 1)}&nbsp;%</div><p>de los {num(nac['focos (confianza nominal/alta, 14-21 oct 2026)'])} focos fue diurno.</p></div>
@@ -544,7 +646,7 @@ def html():
   </section>
 
   <section id="chichas">
-    <h2><span class="num">3</span>El caso medido: Chichas, {num(ch_ha)}&nbsp;ha donde nunca había ardido</h2>
+    <h2><a class="num" href="#chichas" aria-label="Enlace a la sección 3">3</a>El caso medido: Chichas, {num(ch_ha)}&nbsp;ha donde nunca había ardido</h2>
     <figure>
       <img src="outputs/mapa_chichas.png" width="1500" height="1350" loading="lazy" alt="Mapa del área quemada en Chichas, Arequipa: una mancha extensa, mayormente amarilla (severidad baja) con zonas naranjas (moderada-baja), con los 178 focos VIIRS como puntos celestes y la zona analizada rodeada por una línea negra.">
       <figcaption>Severidad (dNBR) sobre el infrarrojo cercano de la imagen Sentinel-2 del 20 de octubre de 2026. Puntos celestes: los 178 focos VIIRS. Línea negra: la zona analizada (focos + 1&nbsp;km). Coordenadas UTM 18S.</figcaption>
@@ -566,13 +668,13 @@ def html():
   </section>
 
   <section id="reto">
-    <h2><span class="num">4</span>Reto C: qué tipo de suelo ardió</h2>
+    <h2><a class="num" href="#reto" aria-label="Enlace a la sección 4">4</a>Reto C: qué tipo de suelo ardió</h2>
     {t_cob}
     <div class="callout"><p><strong>Cero hectáreas de cultivo y una décima de bosque.</strong> El daño es pérdida de forraje y el afectado es la ganadería extensiva. Con recurrencia nula, además, no es forraje que se queme en un ciclo de manejo.</p></div>
   </section>
 
   <section id="hipotesis">
-    <h2><span class="num">5</span>Tres hipótesis que cayeron</h2>
+    <h2><a class="num" href="#hipotesis" aria-label="Enlace a la sección 5">5</a>Tres hipótesis que cayeron</h2>
     <h3>a) «En pastizal la severidad sale baja y en bosque alta»: no se sostiene</h3>
     <figure>
 {chart(svg_severidad())}
@@ -591,7 +693,7 @@ def html():
   </section>
 
   <section id="robustez">
-    <h2><span class="num">6</span>Robustez</h2>
+    <h2><a class="num" href="#robustez" aria-label="Enlace a la sección 6">6</a>Robustez</h2>
     <figure>
 {chart(svg_tornado())}
       <figcaption>Rango de hectáreas quemadas en Chichas al cambiar una decisión por vez. La línea vertical es la base ({num(ch_ha, 1)}&nbsp;ha).</figcaption>
@@ -606,7 +708,7 @@ def html():
   </section>
 
   <section id="validacion">
-    <h2><span class="num">7</span>Validación contra MCD64A1</h2>
+    <h2><a class="num" href="#validacion" aria-label="Enlace a la sección 7">7</a>Validación contra MCD64A1</h2>
     <p>MCD64A1, el producto mensual de área quemada de MODIS, aún no existe para octubre de 2026, así que se validó el método en incendios de 2024 con una regla fijada antes de ver resultados.</p>
     <figure>
 {chart(svg_validacion())}
@@ -617,7 +719,7 @@ def html():
   </section>
 
   <section id="maup">
-    <h2><span class="num">8</span>Concentración y MAUP</h2>
+    <h2><a class="num" href="#maup" aria-label="Enlace a la sección 8">8</a>Concentración y MAUP</h2>
     <figure>
 {chart(svg_lorenz())}
       <figcaption>Curvas de Lorenz de los {num(nac['focos (confianza nominal/alta, 14-21 oct 2026)'])} focos con cuatro particiones, contando también las unidades sin focos.</figcaption>
@@ -627,7 +729,7 @@ def html():
   </section>
 
   <section id="implicaciones">
-    <h2><span class="num">9</span>Implicaciones</h2>
+    <h2><a class="num" href="#implicaciones" aria-label="Enlace a la sección 9">9</a>Implicaciones</h2>
     <ul class="clean">
       <li>No se puede construir un indicador nacional de área quemada en tiempo casi real para el Perú en octubre: con {n_med} de {N}, lo que se reporta es una muestra sesgada.</li>
       <li>Las hectáreas no son comparables entre estudios si no declaran el umbral: en Chichas, solo el umbral las mueve {num(umbral_r, 1)}&nbsp;ha.</li>
@@ -639,7 +741,7 @@ def html():
   </section>
 
   <section id="precio">
-    <h2><span class="num">10</span>Qué haría falta para ponerle precio</h2>
+    <h2><a class="num" href="#precio" aria-label="Enlace a la sección 10">10</a>Qué haría falta para ponerle precio</h2>
     <ul class="clean">
       <li><strong>Capacidad de carga</strong> del pastizal quemado: cuántos animales sostenía.</li>
       <li><strong>Tiempo de recuperación del forraje</strong>: cuántas temporadas tarda en volver.</li>
@@ -650,7 +752,7 @@ def html():
   </section>
 
   <section id="metodo">
-    <h2><span class="num">11</span>Método</h2>
+    <h2><a class="num" href="#metodo" aria-label="Enlace a la sección 11">11</a>Método</h2>
     <ol class="clean">
       <li><strong>Focos</strong>: VIIRS de NASA FIRMS (Suomi-NPP, NOAA-20 y NOAA-21, CSV de 7 días descargado el 21 de octubre de 2026), confianza nominal o alta, filtrados a Perú con GADM 4.1.</li>
       <li><strong>Incendios</strong>: dos focos pertenecen al mismo incendio si están a ≤&nbsp;1&nbsp;km y ≤&nbsp;48&nbsp;h entre sí.</li>
@@ -670,7 +772,7 @@ def html():
   </section>
 
   <section id="limitaciones">
-    <h2><span class="num">12</span>Limitaciones y qué no se pudo hacer</h2>
+    <h2><a class="num" href="#limitaciones" aria-label="Enlace a la sección 12">12</a>Limitaciones y qué no se pudo hacer</h2>
     <ul class="clean">
       <li><strong>n&nbsp;=&nbsp;{n_med}.</strong> Ninguna comparación entre incendios medidos tiene potencia estadística.</li>
       <li><strong>Un foco no es un incendio ni una hectárea</strong>: es un píxel de 375&nbsp;m donde un satélite detectó calor.</li>
@@ -693,6 +795,7 @@ def html():
   </div>
 </footer>
 {ext['scripts']}
+<script>{SCRIPT_BARRA}</script>
 </body>
 </html>
 """
