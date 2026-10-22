@@ -1,0 +1,13 @@
+fecha,tile,nubes_escena_pct,nubes_zona_pct,invalido_zona_pct,momento,elegida
+2026-10-15,18LYJ,0.0,0.0,97.1,antes,False
+2026-10-15,18LYH,0.3,0.0,0.0,antes,True
+2026-10-13,18LYJ,0.0,0.0,97.1,antes,False
+2026-10-13,18LYH,2.6,0.0,0.0,antes,False
+2026-10-10,18LYJ,0.0,0.0,97.1,antes,False
+2026-10-10,18LYH,0.0,0.0,0.0,antes,False
+2026-10-10,18LYJ,0.0,0.0,97.1,antes,False
+2026-10-10,18LYH,0.0,0.0,0.0,antes,False
+2026-10-08,18LYJ,0.1,0.0,97.1,antes,False
+2026-10-08,18LYH,0.4,0.0,0.0,antes,False
+2026-10-20,18LYH,11.4,0.2,0.2,despues,True
+2026-10-20,18LYH,26.6,17.4,17.4,despues,False

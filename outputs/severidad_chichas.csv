@@ -1,0 +1,7 @@
+severidad,dnbr_min,dnbr_max,hectareas,pct_zona
+Sin quemar,-inf,0.1,3697.0,68.5
+Baja,0.1,0.27,1447.6,26.8
+Moderada-baja,0.27,0.44,240.8,4.5
+Moderada-alta,0.44,0.66,1.1,0.0
+Alta,0.66,inf,0.0,0.0
+Sin dato (nube/agua/sin imagen),,,12.9,0.2
