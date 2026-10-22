@@ -1,0 +1,5 @@
+decision,min_ha,max_ha,rango_ha
+Zona (500 m – 2 km),1688.9,1693.1,4.2
+Máscara SCL (permisiva – estricta),1473.4,1689.5,216.1
+Par de imágenes (2.ª mejor),1276.7,1689.5,412.8
+"Umbral de dNBR (0,05–0,35)",33.9,2007.5,1973.6

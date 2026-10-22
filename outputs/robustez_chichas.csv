@@ -1,0 +1,14 @@
+decision,opcion,base,area_quemada_ha,zona_ha,sin_dato_ha,antes,despues,diferencia_ha,diferencia_pct
+base,"0,10 · mejor par · SCL usada · 1 km",True,1689.5,5399.4,12.9,2026-10-15 18LYH (0.0% inválido),2026-10-20 18LYH (0.2% inválido),0.0,0.0
+umbral,"dNBR ≥ 0,05",False,2007.5,5399.4,12.9,,,318.0,18.8
+umbral,"dNBR ≥ 0,08",False,1842.9,5399.4,12.9,,,153.4,9.1
+umbral,"dNBR ≥ 0,15",False,1168.9,5399.4,12.9,,,-520.6,-30.8
+umbral,"dNBR ≥ 0,20",False,686.6,5399.4,12.9,,,-1002.9,-59.4
+umbral,"dNBR ≥ 0,27",False,241.9,5399.4,12.9,,,-1447.6,-85.7
+umbral,"dNBR ≥ 0,35",False,33.9,5399.4,12.9,,,-1655.6,-98.0
+par,2.ª mejor posterior: 2026-10-20 (17.4% inv.),False,1276.7,5399.4,940.5,2026-10-15 18LYH (0.0% inválido),2026-10-20 18LYH (17.4% inválido),-412.8,-24.4
+par,2.ª mejor previa: 2026-10-13 (0.0% inv.),False,1497.6,5399.4,12.9,2026-10-13 18LYH (0.0% inválido),2026-10-20 18LYH (0.2% inválido),-191.9,-11.4
+mascara,SCL permisiva,False,1689.5,5399.4,0.0,2026-10-15 18LYH (0.0% inválido),2026-10-20 18LYH (0.2% inválido),0.0,0.0
+mascara,SCL estricta,False,1473.4,5399.4,498.5,2026-10-15 18LYH (0.0% inválido),2026-10-20 18LYH (0.2% inválido),-216.1,-12.8
+zona,focos + 500 m,False,1688.9,4099.6,0.0,2026-10-15 18LYH (0.0% inválido),2026-10-20 18LYH (0.2% inválido),-0.6,-0.0
+zona,focos + 2 km,False,1693.1,8469.5,111.6,2026-10-15 18LYH (0.0% inválido),2026-10-20 18LYH (0.2% inválido),3.6,0.2

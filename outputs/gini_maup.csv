@@ -1,0 +1,5 @@
+unidad,unidades_totales,unidades_con_focos,gini_solo_con_focos,gini_todas_las_unidades
+distrito,1815,644,0.735,0.906
+provincia,195,180,0.737,0.758
+grilla 10 x 10 km,13464,1588,0.609,0.954
+grilla 10 x 10 km desplazada 5 km,13453,1595,0.607,0.953
