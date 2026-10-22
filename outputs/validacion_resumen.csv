@@ -1,0 +1,4 @@
+muestra,n,razon_mediana,razon_media,razon_min,razon_max,razon_p25,razon_p75,sesgo_mediano_pct,chichas_corregida_ha
+3 casos (regla fijada),3,1.048,1.087,1.016,1.198,1.032,1.123,4.8,1612.118
+21 candidatos medibles,21,1.171,1.205,0.678,2.018,1.027,1.307,17.1,1442.784
+solo pastizal dominante,1,1.171,1.171,1.171,1.171,1.171,1.171,17.1,1442.784
