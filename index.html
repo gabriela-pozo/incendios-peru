@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿Qué se quemó? · Chichas, Arequipa</title>
+<meta name="description" content="De 8 637 focos de calor en el Perú a 1 690 hectáreas medidas en Chichas, Arequipa: qué tipo de suelo ardió.">
+<style>
+  :root {
+    --bg: #f7f3ec;
+    --text: #1a1613;
+    --muted: #5e554d;
+    --accent: #c0462a;
+    --blue: #2d5f7c;
+    --card: #fffdf9;
+    --line: #e2d9cc;
+    --highlight: #f6e3db;
+    --header-bg: #1a1613;
+    --header-text: #f7f3ec;
+    --sev-baja: #fde725;
+    --sev-modbaja: #fd8d3c;
+    --sev-modalta: #e31a1c;
+    --sev-alta: #67000d;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1a1613;
+      --text: #efe8dd;
+      --muted: #b3a89b;
+      --accent: #e0694c;
+      --blue: #7fb0cf;
+      --card: #24201c;
+      --line: #3a332d;
+      --highlight: #3b2620;
+      --header-bg: #0f0d0b;
+      --header-text: #f7f3ec;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+  header.top { background: var(--header-bg); color: var(--header-text); padding: 56px 0 44px; }
+  header.top h1 { font-size: clamp(2.2rem, 7vw, 3.6rem); line-height: 1.05; margin: 0 0 16px; letter-spacing: -0.02em; }
+  header.top .bajada { font-size: clamp(1.05rem, 2.6vw, 1.3rem); max-width: 40em; margin: 0 0 22px; opacity: 0.92; }
+  header.top .firma { font-size: 0.9rem; color: #d9cfc1; border-top: 2px solid var(--accent); padding-top: 10px; display: inline-block; margin: 0; }
+  main { padding-bottom: 32px; }
+  section { padding: 36px 0 8px; }
+  h2 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 14px; }
+  h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: 6px; }
+  h3 { font-size: 1.08rem; margin: 0 0 6px; }
+  p { margin: 0 0 14px; }
+  .muted { color: var(--muted); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0 8px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
+  .card .big { font-size: 2.4rem; font-weight: 750; line-height: 1.05; color: var(--accent); font-variant-numeric: tabular-nums; margin-bottom: 8px; }
+  .card p { margin: 0; font-size: 0.95rem; }
+  .card.method h3 { color: var(--blue); }
+  figure { margin: 18px 0 0; }
+  figure img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+  figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
+  .table-scroll { overflow-x: auto; margin: 14px 0 10px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+  th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); font-weight: 600; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  tr.total td { font-weight: 700; border-top: 2px solid var(--text); }
+  tr.dim td { color: var(--muted); }
+  tr.medido td { background: var(--highlight); font-weight: 600; }
+  .tag { display: inline-block; background: var(--accent); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 1px 7px; border-radius: 999px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.04em; vertical-align: 1px; }
+  td.bar { width: 32%; min-width: 90px; }
+  .bar span { display: block; height: 14px; border-radius: 3px; min-width: 2px; }
+  .sw { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; border: 1px solid rgba(0,0,0,0.15); }
+  .note { font-size: 0.9rem; color: var(--muted); border-left: 3px solid var(--line); padding-left: 12px; }
+  .callout { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 8px; padding: 16px 18px; margin: 16px 0; }
+  .callout p:last-child { margin-bottom: 0; }
+  ul.clean { padding-left: 1.2em; margin: 0 0 14px; }
+  ul.clean li { margin-bottom: 6px; }
+  code { font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; font-size: 0.9em; }
+  footer { border-top: 1px solid var(--line); padding: 22px 0 40px; font-size: 0.88rem; color: var(--muted); }
+  footer p { margin: 0 0 8px; }
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    header.top { padding: 40px 0 32px; }
+    th, td { padding: 7px 6px; }
+    .card .big { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>¿Qué se quemó?</h1>
+    <p class="bajada">De 8&nbsp;637 focos de calor en todo el Perú a 1&nbsp;690 hectáreas medidas en Chichas, Arequipa. No ardió bosque ni cultivo: ardió pastizal.</p>
+    <p class="firma">Gabriela Pozo · Reto C · Universidad del Pacífico</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="pregunta">
+    <h2><span class="num">1</span>La pregunta</h2>
+    <p>Los satélites detectan <strong>dónde</strong> hay fuego, no <strong>qué tipo de suelo</strong> arde. Esa diferencia decide la política pública. Quemar bosque es conversión de uso de suelo, y se combate con titulación y fiscalización. Quemar pastizal para renovar forraje es manejo ganadero, y se regula con extensión agraria y quema controlada.</p>
+    <p>Por eso este análisis no se queda en contar focos: mide cuántas hectáreas se quemaron en un incendio concreto y cruza esa superficie con un mapa de cobertura del suelo.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="big">1&nbsp;690&nbsp;ha</div>
+        <p>Se quemaron 1&nbsp;690&nbsp;ha (dNBR&nbsp;≥&nbsp;0,10), el 31&nbsp;% de las 5&nbsp;399&nbsp;ha analizadas.</p>
+      </div>
+      <div class="card">
+        <div class="big">72,4&nbsp;%</div>
+        <p>El 72,4&nbsp;% de lo quemado era pastizal; bosque, 0,1&nbsp;ha; cultivo, cero.</p>
+      </div>
+      <div class="card">
+        <div class="big">−43&nbsp;%</div>
+        <p>La medición da 43&nbsp;% menos que lo que sugerían los focos, cuya envolvente apuntaba a 2&nbsp;957&nbsp;ha.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="mapa">
+    <h2><span class="num">2</span>El mapa</h2>
+    <figure>
+      <img src="outputs/mapa_chichas.png" width="1500" height="1350" loading="lazy"
+           alt="Mapa del área quemada en Chichas, Arequipa. Una mancha extensa, mayormente amarilla (severidad baja) con zonas naranjas (moderada-baja), ocupa el centro de la zona analizada. Unos 178 puntos celestes, los focos VIIRS, se reparten sobre la mancha. Una línea negra rodea toda la zona analizada.">
+      <figcaption>Clases de severidad (dNBR) sobre la imagen Sentinel-2 posterior al fuego (20 de octubre de 2026) en infrarrojo cercano. Los puntos celestes son los 178 focos VIIRS del incendio. La línea negra encierra la zona analizada: la envolvente de los focos más 1&nbsp;km. Coordenadas en UTM 18S.</figcaption>
+    </figure>
+  </section>
+
+  <section id="cuanto">
+    <h2><span class="num">3</span>Resultado 1: cuánto se quemó</h2>
+    <p>Dentro de la zona analizada, 1&nbsp;689,5&nbsp;ha superan el umbral de quemado. Casi todo es de severidad baja.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Severidad</th><th class="n">Rango dNBR</th><th class="n">Hectáreas</th><th class="n">% de lo quemado</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td><span class="sw" style="background:var(--sev-baja)"></span>Baja</td><td class="n">0,10 – 0,27</td><td class="n">1&nbsp;447,6</td><td class="n">85,7&nbsp;%</td><td class="bar"><span style="width:85.7%;background:var(--sev-baja)"></span></td></tr>
+          <tr><td><span class="sw" style="background:var(--sev-modbaja)"></span>Moderada-baja</td><td class="n">0,27 – 0,44</td><td class="n">240,8</td><td class="n">14,3&nbsp;%</td><td class="bar"><span style="width:14.3%;background:var(--sev-modbaja)"></span></td></tr>
+          <tr><td><span class="sw" style="background:var(--sev-modalta)"></span>Moderada-alta</td><td class="n">0,44 – 0,66</td><td class="n">1,1</td><td class="n">0,1&nbsp;%</td><td class="bar"><span style="width:0.1%;background:var(--sev-modalta)"></span></td></tr>
+          <tr><td><span class="sw" style="background:var(--sev-alta)"></span>Alta</td><td class="n">≥ 0,66</td><td class="n">0,0</td><td class="n">0,0&nbsp;%</td><td class="bar"></td></tr>
+          <tr class="total"><td>Total quemado</td><td class="n">≥ 0,10</td><td class="n">1&nbsp;689,5</td><td class="n">100&nbsp;%</td><td></td></tr>
+          <tr class="dim"><td>Sin quemar</td><td class="n">&lt; 0,10</td><td class="n">3&nbsp;697,0</td><td class="n">—</td><td></td></tr>
+          <tr class="dim"><td>Sin dato (nube o agua)</td><td class="n">—</td><td class="n">12,9</td><td class="n">—</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">La severidad puede estar subestimada: en pastizal el dNBR sale bajo, porque hay poca biomasa que perder, y la imagen posterior es de solo dos días después del último foco.</p>
+  </section>
+
+  <section id="que">
+    <h2><span class="num">4</span>Resultado 2: qué tipo de suelo ardió</h2>
+    <p>Las hectáreas quemadas, cruzadas con ESA WorldCover 2021:</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Cobertura (WorldCover)</th><th class="n">Hectáreas</th><th class="n">% de lo quemado</th><th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pastizal</td><td class="n">1&nbsp;223,0</td><td class="n">72,4&nbsp;%</td><td class="bar"><span style="width:72.4%;background:var(--accent)"></span></td></tr>
+          <tr><td>Matorral</td><td class="n">455,6</td><td class="n">27,0&nbsp;%</td><td class="bar"><span style="width:27%;background:var(--blue)"></span></td></tr>
+          <tr><td>Suelo desnudo</td><td class="n">10,3</td><td class="n">0,6&nbsp;%</td><td class="bar"><span style="width:0.6%;background:var(--blue)"></span></td></tr>
+          <tr><td>Agua</td><td class="n">0,4</td><td class="n">0,0&nbsp;%</td><td class="bar"><span style="width:0;background:var(--blue)"></span></td></tr>
+          <tr><td>Bosque</td><td class="n">0,1</td><td class="n">0,0&nbsp;%</td><td class="bar"><span style="width:0;background:var(--blue)"></span></td></tr>
+          <tr><td>Cultivo</td><td class="n">0,0</td><td class="n">0,0&nbsp;%</td><td class="bar"></td></tr>
+          <tr class="total"><td>Total</td><td class="n">1&nbsp;689,4</td><td class="n">100&nbsp;%</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">El total difiere en 0,1&nbsp;ha del de la tabla de severidad por el redondeo de cada clase.</p>
+    <div class="callout">
+      <p><strong>Cero hectáreas de cultivo y una décima de bosque.</strong> No hubo deforestación ni pérdida de cosecha: el daño es pérdida de forraje y el afectado es la ganadería extensiva.</p>
+      <p>El patrón es <strong>compatible</strong> con una quema de manejo, pero no lo prueba. Para verificarlo habría que mirar la recurrencia interanual en el archivo FIRMS 2012–2025: si la misma zona arde cada temporada seca, es manejo. Ese análisis no se corrió.</p>
+    </div>
+  </section>
+
+  <section id="focos">
+    <h2><span class="num">5</span>Resultado 3: los focos sobrestiman</h2>
+    <p>La envolvente de los 178 focos cubría 2&nbsp;957&nbsp;ha. La medición con Sentinel-2 da 1&nbsp;689,5&nbsp;ha: <strong>43&nbsp;% menos</strong>.</p>
+    <p>Un foco VIIRS marca un píxel de 375&nbsp;m (unas 14&nbsp;ha) donde el satélite detectó calor, pero dentro de ese píxel puede arder solo una fracción. Por eso, estimar el daño contando focos o dibujando el área que los rodea infla el resultado. Para saber cuánto se quemó hay que medir la cicatriz con una imagen de mayor resolución.</p>
+  </section>
+
+  <section id="eleccion">
+    <h2><span class="num">6</span>Cómo se eligió el caso</h2>
+    <p>Los 8&nbsp;637 focos VIIRS de confianza nominal o alta registrados en el Perú entre el 14 y el 21 de octubre de 2026 se agruparon en 2&nbsp;602 incendios. Estos son los cinco con más focos:</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Distrito</th><th class="n">Focos</th><th>Fechas (UTC)</th><th class="n">Envolvente (ha)</th><th>Cobertura dominante</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Río Tambo, Satipo (Junín)</td><td class="n">279</td><td>14–17 oct</td><td class="n">3&nbsp;051</td><td>Bosque (99,6&nbsp;%)</td></tr>
+          <tr><td>Curahuasi, Abancay (Apurímac)</td><td class="n">201</td><td>14–20 oct</td><td class="n">3&nbsp;227</td><td>Pastizal (55,2&nbsp;%)</td></tr>
+          <tr class="medido"><td>Chichas, Condesuyos (Arequipa)<span class="tag">medido</span></td><td class="n">178</td><td>16–18 oct</td><td class="n">2&nbsp;957</td><td>Pastizal (57,3&nbsp;%)</td></tr>
+          <tr><td>Callería, Coronel Portillo (Ucayali)</td><td class="n">116</td><td>14–16 oct</td><td class="n">1&nbsp;530</td><td>Bosque (65,5&nbsp;%)</td></tr>
+          <tr><td>Iparía, Coronel Portillo (Ucayali)</td><td class="n">108</td><td>15–16 oct</td><td class="n">724</td><td>Bosque (98,1&nbsp;%)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">La cobertura dominante es el porcentaje de los focos de cada grupo que caen sobre esa clase de WorldCover.</p>
+    <p>El candidato preferido era Callería, en la frontera agrícola de Pucallpa, con el 65,5&nbsp;% de sus focos sobre bosque y asentamientos alrededor. Pero no existe ninguna imagen Sentinel-2 posterior al fuego entre el 17 y el 21 de octubre, y sin imagen “después” no hay dNBR. La regla estaba fijada de antemano, así que se pasó a Chichas.</p>
+  </section>
+
+  <section id="decisiones">
+    <h2><span class="num">7</span>Las decisiones declaradas</h2>
+    <p>Este es el par de imágenes elegido. Se evaluaron 12 candidatas: 10 anteriores y 2 posteriores al fuego. Las del tile 18LYJ se descartaron porque el 97,1&nbsp;% de la zona queda fuera de su cobertura válida.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Imagen</th><th>Fecha</th><th>Tile</th><th class="n">Nubes en la zona</th><th class="n">Nubes en la escena</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Antes</td><td>15 oct 2026</td><td>18LYH</td><td class="n">0,0&nbsp;%</td><td class="n">0,3&nbsp;%</td></tr>
+          <tr><td>Después</td><td>20 oct 2026</td><td>18LYH</td><td class="n">0,2&nbsp;%</td><td class="n">11,4&nbsp;%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="clean">
+      <li><strong>Umbral:</strong> dNBR&nbsp;≥&nbsp;0,10 cuenta como quemado; las clases de severidad siguen la escala de Key y Benson.</li>
+      <li><strong>Nubes:</strong> se enmascaran con la capa SCL de Sentinel-2 (sombra, nube media, nube alta y cirros), además del agua y los píxeles sin dato.</li>
+      <li><strong>Zona:</strong> la envolvente de los focos más 1&nbsp;km, igual a 5&nbsp;399&nbsp;ha, en una rejilla de 20&nbsp;m.</li>
+    </ul>
+  </section>
+
+  <section id="metodo">
+    <h2><span class="num">8</span>Método</h2>
+    <div class="cards">
+      <div class="card method"><h3>Focos VIIRS</h3><p>CSV “South America 7d” de NASA FIRMS, de los satélites Suomi-NPP, NOAA-20 y NOAA-21. Se filtraron a Perú con los límites distritales de GADM y se descartaron los de confianza baja.</p></div>
+      <div class="card method"><h3>Agrupamiento</h3><p>Dos focos pertenecen al mismo incendio si están a ≤&nbsp;1&nbsp;km y a ≤&nbsp;48&nbsp;h entre sí. Las cadenas se unen en un solo grupo.</p></div>
+      <div class="card method"><h3>Sentinel-2 L2A</h3><p>Imágenes de reflectancia de superficie de Microsoft Planetary Computer, bandas B8A y B12 a 20&nbsp;m. Se elige la imagen con menos nubes sobre la zona, antes y después del fuego.</p></div>
+      <div class="card method"><h3>dNBR</h3><p><code>NBR = (NIR − SWIR2) / (NIR + SWIR2)</code>. El dNBR es el NBR de antes menos el de después: cuanto más alto, más vegetación se perdió.</p></div>
+      <div class="card method"><h3>Máscara SCL</h3><p>La capa de clasificación de escena excluye nubes, sombras, cirros, agua y píxeles sin dato en cualquiera de las dos fechas.</p></div>
+      <div class="card method"><h3>WorldCover 2021</h3><p>Mapa global de cobertura del suelo de la ESA, a 10&nbsp;m, remuestreado a la rejilla de 20&nbsp;m y cruzado con los píxeles quemados.</p></div>
+    </div>
+  </section>
+
+  <section id="limitaciones">
+    <h2><span class="num">9</span>Limitaciones</h2>
+    <ul class="clean">
+      <li><strong>Un foco no es un incendio ni una hectárea.</strong> Es un píxel de 375&nbsp;m donde un satélite detectó calor, incluidas las quemas agrícolas.</li>
+      <li><strong>La cifra depende de cuatro decisiones:</strong> fechas, nubes, umbral y zona. Si cambia cualquiera, cambian las hectáreas.</li>
+      <li><strong>La severidad puede estar subestimada</strong>, porque en pastizal el dNBR sale bajo y la imagen posterior es muy cercana al fuego.</li>
+      <li><strong>El encadenamiento puede fusionar incendios distintos</strong> que estén cerca en el espacio y en el tiempo.</li>
+      <li><strong>VIIRS no detecta bien</strong> los incendios pequeños, bajo dosel cerrado o cubiertos por nubes, así que la cifra es un piso.</li>
+      <li><strong>WorldCover es de 2021:</strong> la cobertura pudo cambiar antes del incendio.</li>
+      <li><strong>Las cifras oficiales no se suman a estas.</strong> Usan otros métodos y otras definiciones de incendio.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Herramienta independiente con datos públicos; no reemplaza los reportes del COEN, INDECI, SERFOR ni SERNANP.</p>
+    <p>Fuentes: NASA FIRMS, Copernicus Sentinel-2 y ESA WorldCover vía Microsoft Planetary Computer. Corte: 21 de octubre de 2026.</p>
+    <p>Código y tablas: <code>src/</code> y <code>outputs/</code> en este repositorio.</p>
+  </div>
+</footer>
+
+</body>
+</html>

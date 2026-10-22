@@ -25,12 +25,12 @@
 
 ## Tres hallazgos
 
-1. **Se quemaron unas 1 690 ha** (dNBR ≥ 0.10), el 31 % de la zona analizada.
-2. **Fue sobre todo un fuego de pastizal (72 %) y matorral (27 %)**; casi nada de
-   bosque (0.1 ha) ni de cultivo. El 86 % fue de severidad baja, el 14 %
-   moderada-baja y prácticamente nada de severidad alta.
-3. **Focos no son hectáreas**: los 178 focos y su envolvente (~2 960 ha) sugieren
-   más área que la que Sentinel-2 mide como quemada (~1 690 ha).
+1. Se quemaron 1 690 ha (dNBR ≥ 0,10), el 31 % de las 5 399 ha analizadas.
+2. El 72,4 % de lo quemado era pastizal; bosque, 0,1 ha; cultivo, cero.
+3. La medición da 43 % menos que lo que sugerían los focos, cuya envolvente apuntaba a 2 957 ha.
+
+La historia completa está en la página [index.html](index.html)
+(publicada en https://gabriela-pozo.github.io/incendios-peru/ cuando se active GitHub Pages).
 
 Tablas: `outputs/severidad_chichas.csv`, `outputs/cobertura_quemada_chichas.csv`
 (y `_detalle.csv`), `outputs/imagenes_chichas.csv`, `outputs/top5_incendios.csv`.
