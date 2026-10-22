@@ -89,6 +89,7 @@
   tr.dim td { color: var(--muted); }
   tr.medido td { background: var(--highlight); font-weight: 600; }
   .tag { display: inline-block; background: var(--accent); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 1px 7px; border-radius: 999px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.04em; vertical-align: 1px; }
+  .tag.gris { background: var(--muted); }
   td.bar { width: 32%; min-width: 90px; }
   .bar span { display: block; height: 14px; border-radius: 3px; min-width: 2px; }
   .sw { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; border: 1px solid rgba(0,0,0,0.15); }
@@ -355,8 +356,32 @@
     <p class="note">Solo se usó Suomi-NPP, que tiene la serie completa desde 2012. Sumar NOAA-20 (desde 2018) y NOAA-21 (desde 2023) inflaría los años recientes solo porque hay más satélites mirando.</p>
   </section>
 
+  <section id="riotambo">
+    <h2><span class="num">8</span>El segundo caso, amazónico, no se pudo medir</h2>
+    <p>Para contrastar con Chichas se intentó medir Río Tambo (Satipo, Junín), el incendio con más focos de la semana: 279 entre el 14 y el 17 de octubre, el 99,6&nbsp;% sobre bosque. El método era exactamente el mismo: zona de focos más 1&nbsp;km (5&nbsp;530&nbsp;ha), umbral 0,10, máscara SCL, WorldCover y curva de sensibilidad.</p>
+    <p>Hay una buena imagen anterior (8 de octubre, tile 18LXM, 0,0&nbsp;% de la zona inválida), pero ninguna posterior utilizable. La regla fijada antes de mirar los datos exige que como máximo el 30&nbsp;% de la zona esté tapado:</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Imagen posterior</th><th>Tile</th><th class="n">Nubes en la zona</th><th class="n">Zona inválida</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>18 oct 2026</td><td>18LXM</td><td class="n">85,6&nbsp;%</td><td class="n">85,6&nbsp;%</td></tr>
+          <tr><td>18 oct 2026</td><td>18LXN</td><td class="n">59,1&nbsp;%</td><td class="n">96,0&nbsp;%</td></tr>
+          <tr class="medido"><td>20 oct 2026<span class="tag">la mejor</span></td><td>18LXM</td><td class="n">55,4&nbsp;%</td><td class="n">55,4&nbsp;%</td></tr>
+          <tr><td>20 oct 2026</td><td>18LXN</td><td class="n">44,8&nbsp;%</td><td class="n">81,7&nbsp;%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">“Zona inválida” suma nubes, sombras, cirros y píxeles fuera de la cobertura del tile.</p>
+    <p>Medir la mitad sin nubes daría una cifra que no se puede comparar con la de Chichas, así que no se forzó. Es el mismo problema que dejó fuera a Callería: los dos candidatos amazónicos quedaron sin imagen posterior. En la Amazonía, octubre es el pico de la temporada de quemas y también el inicio de las lluvias, así que la nubosidad impide medir justo cuando más arde. Eso sesga cualquier análisis óptico como este hacia los incendios andinos.</p>
+    <div class="callout">
+      <p><strong>La hipótesis queda sin contrastar.</strong> Se esperaba que en bosque la severidad saliera alta y la curva de sensibilidad plana, y que en pastizal saliera baja y la curva empinada. Chichas es compatible con la mitad de pastizal (85,7&nbsp;% de severidad baja, factor de 59 entre umbrales), pero sin un caso de bosque no hay comparación: un solo caso no respalda ni refuta la hipótesis.</p>
+    </div>
+  </section>
+
   <section id="eleccion">
-    <h2><span class="num">8</span>Cómo se eligió el caso</h2>
+    <h2><span class="num">9</span>Cómo se eligió el caso</h2>
     <p>Los 8&nbsp;637 focos VIIRS de confianza nominal o alta registrados en el Perú entre el 14 y el 21 de octubre de 2026 se agruparon en 2&nbsp;602 incendios. Estos son los cinco con más focos:</p>
     <div class="table-scroll">
       <table>
@@ -364,10 +389,10 @@
           <tr><th>Distrito</th><th class="n">Focos</th><th>Fechas (UTC)</th><th class="n">Envolvente (ha)</th><th>Cobertura dominante</th></tr>
         </thead>
         <tbody>
-          <tr><td>Río Tambo, Satipo (Junín)</td><td class="n">279</td><td>14–17 oct</td><td class="n">3&nbsp;051</td><td>Bosque (99,6&nbsp;%)</td></tr>
+          <tr><td>Río Tambo, Satipo (Junín)<span class="tag gris">nublado</span></td><td class="n">279</td><td>14–17 oct</td><td class="n">3&nbsp;051</td><td>Bosque (99,6&nbsp;%)</td></tr>
           <tr><td>Curahuasi, Abancay (Apurímac)</td><td class="n">201</td><td>14–20 oct</td><td class="n">3&nbsp;227</td><td>Pastizal (55,2&nbsp;%)</td></tr>
           <tr class="medido"><td>Chichas, Condesuyos (Arequipa)<span class="tag">medido</span></td><td class="n">178</td><td>16–18 oct</td><td class="n">2&nbsp;957</td><td>Pastizal (57,3&nbsp;%)</td></tr>
-          <tr><td>Callería, Coronel Portillo (Ucayali)</td><td class="n">116</td><td>14–16 oct</td><td class="n">1&nbsp;530</td><td>Bosque (65,5&nbsp;%)</td></tr>
+          <tr><td>Callería, Coronel Portillo (Ucayali)<span class="tag gris">sin imagen</span></td><td class="n">116</td><td>14–16 oct</td><td class="n">1&nbsp;530</td><td>Bosque (65,5&nbsp;%)</td></tr>
           <tr><td>Iparía, Coronel Portillo (Ucayali)</td><td class="n">108</td><td>15–16 oct</td><td class="n">724</td><td>Bosque (98,1&nbsp;%)</td></tr>
         </tbody>
       </table>
@@ -377,7 +402,7 @@
   </section>
 
   <section id="decisiones">
-    <h2><span class="num">9</span>Las decisiones declaradas</h2>
+    <h2><span class="num">10</span>Las decisiones declaradas</h2>
     <p>Este es el par de imágenes elegido. Se evaluaron 12 candidatas: 10 anteriores y 2 posteriores al fuego. Las del tile 18LYJ se descartaron porque el 97,1&nbsp;% de la zona queda fuera de su cobertura válida.</p>
     <div class="table-scroll">
       <table>
@@ -398,7 +423,7 @@
   </section>
 
   <section id="metodo">
-    <h2><span class="num">10</span>Método</h2>
+    <h2><span class="num">11</span>Método</h2>
     <div class="cards">
       <div class="card method"><h3>Focos VIIRS</h3><p>CSV “South America 7d” de NASA FIRMS, de los satélites Suomi-NPP, NOAA-20 y NOAA-21. Se filtraron a Perú con los límites distritales de GADM y se descartaron los de confianza baja.</p></div>
       <div class="card method"><h3>Agrupamiento</h3><p>Dos focos pertenecen al mismo incendio si están a ≤&nbsp;1&nbsp;km y a ≤&nbsp;48&nbsp;h entre sí. Las cadenas se unen en un solo grupo.</p></div>
@@ -410,13 +435,14 @@
   </section>
 
   <section id="limitaciones">
-    <h2><span class="num">11</span>Limitaciones</h2>
+    <h2><span class="num">12</span>Limitaciones</h2>
     <ul class="clean">
       <li><strong>Un foco no es un incendio ni una hectárea.</strong> Es un píxel de 375&nbsp;m donde un satélite detectó calor, incluidas las quemas agrícolas.</li>
       <li><strong>La cifra depende de cuatro decisiones:</strong> fechas, nubes, umbral y zona. Si cambia cualquiera, cambian las hectáreas; solo el umbral la mueve entre 34 y 2&nbsp;008&nbsp;ha (sección 6).</li>
       <li><strong>La severidad puede estar subestimada</strong>, porque en pastizal el dNBR sale bajo y la imagen posterior es muy cercana al fuego.</li>
       <li><strong>El encadenamiento puede fusionar incendios distintos</strong> que estén cerca en el espacio y en el tiempo.</li>
       <li><strong>VIIRS no detecta bien</strong> los incendios pequeños, bajo dosel cerrado o cubiertos por nubes, así que la cifra es un piso.</li>
+      <li><strong>Un solo caso medido.</strong> Los dos candidatos amazónicos (Callería y Río Tambo) no tenían imagen posterior sin nubes, así que no hay contraste entre bosque y pastizal.</li>
       <li><strong>WorldCover es de 2021:</strong> la cobertura pudo cambiar antes del incendio.</li>
       <li><strong>Las cifras oficiales no se suman a estas.</strong> Usan otros métodos y otras definiciones de incendio.</li>
     </ul>

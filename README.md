@@ -113,6 +113,36 @@ y NOAA-21 (desde 2023) inflaría los años recientes.
 Tablas: `outputs/recurrencia_chichas.csv`, `outputs/focos_historicos_chichas.csv`;
 polígono: `outputs/poligono_quemado_chichas.geojson`.
 
+## Segundo caso, amazónico: Río Tambo (no medible)
+
+Se intentó medir Río Tambo (Satipo, Junín), el incendio con más focos de la semana
+(279 focos del 14 al 17 de octubre, el 99,6 % sobre bosque), con exactamente el mismo
+método: zona de focos + 1 km (5 530 ha), umbral 0,10, máscara SCL, WorldCover y curva
+de sensibilidad. Hay buena imagen anterior (8-oct-2026, tile 18LXM, 0,0 % de la zona
+inválida), pero **ninguna posterior utilizable**; la regla exige como máximo el 30 %
+de la zona inválida:
+
+| Imagen posterior | Tile | Nubes en la zona | Zona inválida |
+|---|---|---:|---:|
+| 18-oct-2026 | 18LXM | 85,6 % | 85,6 % |
+| 18-oct-2026 | 18LXN | 59,1 % | 96,0 % |
+| 20-oct-2026 (la mejor) | 18LXM | 55,4 % | 55,4 % |
+| 20-oct-2026 | 18LXN | 44,8 % | 81,7 % |
+
+No se forzó la medición con la mitad sin nubes, porque la cifra no sería comparable
+con la de Chichas. Es el mismo problema que dejó fuera a Callería. En la Amazonía,
+octubre es el pico de la temporada de quemas y también el inicio de las lluvias: la
+nubosidad impide medir justo cuando más arde, y eso sesga el análisis óptico hacia
+los incendios andinos.
+
+**La hipótesis queda sin contrastar.** Se esperaba que en bosque la severidad saliera
+alta y la curva plana, y que en pastizal saliera baja y la curva empinada. Chichas es
+compatible con la mitad de pastizal (85,7 % de lo quemado en severidad baja, factor de
+59 entre umbrales), pero sin un caso de bosque un solo caso no respalda ni refuta la
+hipótesis.
+
+Tabla: `outputs/imagenes_riotambo.csv`.
+
 ## Limitaciones
 
 - Un foco de calor es un píxel de 375 m donde un satélite detectó fuego, incluidas
@@ -121,6 +151,8 @@ polígono: `outputs/poligono_quemado_chichas.geojson`.
   Solo el umbral la mueve entre 34 y 2 008 ha (ver "Sensibilidad al umbral").
 - VIIRS no detecta de forma confiable incendios pequeños, bajo dosel cerrado o
   cubiertos por nubes.
+- Un solo caso medido: los dos candidatos amazónicos (Callería y Río Tambo) no
+  tenían imagen posterior sin nubes, así que no hay contraste entre bosque y pastizal.
 - WorldCover es de 2021, así que la cobertura pudo cambiar antes del incendio.
 - Herramienta independiente con datos públicos; no reemplaza los reportes del
   COEN, INDECI, SERFOR ni SERNANP.

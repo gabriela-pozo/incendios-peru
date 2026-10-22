@@ -23,7 +23,8 @@ from matplotlib.lines import Line2D
 OUT = Path("outputs")
 CRS, RES = 32718, 20
 INCENDIOS = {"calleria": (173, "Callería (Coronel Portillo, Ucayali)"),
-             "chichas": (1052, "Chichas (Condesuyos, Arequipa)")}
+             "chichas": (1052, "Chichas (Condesuyos, Arequipa)"),
+             "riotambo": (30, "Río Tambo (Satipo, Junín)")}
 MAX_INVALIDO = 30  # % máximo de la zona tapada por nube/sombra/sin dato
 NUBES = [3, 8, 9, 10]
 SIN_DATO = [0, 1]
@@ -61,11 +62,11 @@ def leer(href, rejilla, remuestreo=Resampling.nearest):
         return vrt.read(1)
 
 
-def candidatas(aoi, desde, hasta, rejilla, dentro, max_items):
+def candidatas(aoi, desde, hasta, rejilla, dentro, max_items, max_nube_escena=80):
     geom = mapping(gpd.GeoSeries([aoi], crs=CRS).to_crs(4326).iloc[0])
     items = list(cat.search(collections=["sentinel-2-l2a"], intersects=geom,
                             datetime=f"{desde}/{hasta}",
-                            query={"eo:cloud_cover": {"lt": 80}}).items())
+                            query={"eo:cloud_cover": {"lt": max_nube_escena}}).items())
     items = sorted(items, key=lambda i: i.datetime, reverse=True)[:max_items]
     filas = []
     for it in items:
