@@ -528,6 +528,8 @@ def html():
     <p class="note">{F['nota_paracas']}</p>
   </section>
 
+  {ext['rejilla']}
+
   <section id="nacional">
     <h2><span class="num">2</span>El mapa nacional y cómo se comporta el fuego</h2>
     {ext['mapa_nacional']}
@@ -647,8 +649,6 @@ def html():
     <p>La teledetección acota qué y cuánto se quemó, pero no determina si fue una pérdida.</p>
   </section>
 
-  {ext['rejilla']}
-
   <section id="metodo">
     <h2><span class="num">11</span>Método</h2>
     <ol class="clean">
@@ -719,6 +719,15 @@ def md_tabla(cab, filas):
         .replace("---:", "---:") + "|\n" + "\n".join(filas)
 
 
+def rejilla_md():
+    mapas = [OUT / f"mapa_caso_{d.lower()}.png" for d in med.distrito]
+    if not all(m.exists() for m in mapas):
+        return ""
+    filas = "\n".join(f"![{nombre(r.distrito)}: {num(r.area_quemada_ha, 1, False)} ha]({m.as_posix()})"
+                      for r, m in zip(med.itertuples(), mapas))
+    return f"\n**Los cuatro que sí se pudieron medir** (mismo método y escala de colores):\n\n{filas}\n"
+
+
 def readme():
     t = lambda x: plano(x)
     cab20 = "| Incendio | Región | Focos | Envolvente (ha) | Quemado (ha) | Resultado |\n|---|---|---:|---:|---:|---|"
@@ -757,7 +766,7 @@ el 30 % de la zona tapada.
 {t(F['nota_pref'])}
 
 {t(F['nota_paracas'])}
-
+{rejilla_md()}
 Tablas: `outputs/medicion_top20.csv`, `outputs/top20_exito_region.csv`, `outputs/top20_pruebas.csv`,
 `outputs/fuentes_estaticas_candidatos.csv`.
 

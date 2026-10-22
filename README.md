@@ -45,6 +45,13 @@ Nueva Requena (Ucayali, 49 focos): la zona estaba limpia en un 81,8 %, pero el p
 
 Se excluyó un grupo de focos en Paracas (Ica, 42 focos en 49 ha) con un criterio escrito y aplicado a los 40 primeros candidatos: no es un incendio si más de la mitad de las detecciones S-NPP de 2012-2025 en su zona son de tipo 2 en FIRMS (fuente estática terrestre, como una planta industrial). En Paracas lo son 3 770 de 3 838 (98,2 %), detectadas en 2 139 días distintos; en los demás candidatos, ninguna. Su lugar lo ocupa San Miguel (Ayacucho), el siguiente por número de focos.
 
+**Los cuatro que sí se pudieron medir** (mismo método y escala de colores):
+
+![Chichas: 1 689,5 ha](outputs/mapa_caso_chichas.png)
+![Iparía: 255,4 ha](outputs/mapa_caso_iparia.png)
+![San Cristóbal: 609,9 ha](outputs/mapa_caso_sancristobal.png)
+![Curahuasi: 306,0 ha](outputs/mapa_caso_curahuasi.png)
+
 Tablas: `outputs/medicion_top20.csv`, `outputs/top20_exito_region.csv`, `outputs/top20_pruebas.csv`,
 `outputs/fuentes_estaticas_candidatos.csv`.
 
