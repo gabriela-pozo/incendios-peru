@@ -1,0 +1,405 @@
+unidad,pct_unidades,pct_focos
+distrito,0.0,0.0
+distrito,1.0,0.0
+distrito,2.0,0.0
+distrito,3.0,0.0
+distrito,4.0,0.0
+distrito,5.0,0.0
+distrito,6.0,0.0
+distrito,7.0,0.0
+distrito,8.0,0.0
+distrito,9.0,0.0
+distrito,10.0,0.0
+distrito,11.0,0.0
+distrito,12.0,0.0
+distrito,13.0,0.0
+distrito,14.0,0.0
+distrito,15.0,0.0
+distrito,16.0,0.0
+distrito,17.0,0.0
+distrito,18.0,0.0
+distrito,19.0,0.0
+distrito,20.0,0.0
+distrito,21.0,0.0
+distrito,22.0,0.0
+distrito,23.0,0.0
+distrito,24.0,0.0
+distrito,25.0,0.0
+distrito,26.0,0.0
+distrito,27.0,0.0
+distrito,28.0,0.0
+distrito,29.0,0.0
+distrito,30.0,0.0
+distrito,31.0,0.0
+distrito,32.0,0.0
+distrito,33.0,0.0
+distrito,34.0,0.0
+distrito,35.0,0.0
+distrito,36.0,0.0
+distrito,37.0,0.0
+distrito,38.0,0.0
+distrito,39.0,0.0
+distrito,40.0,0.0
+distrito,41.0,0.0
+distrito,42.0,0.0
+distrito,43.0,0.0
+distrito,44.0,0.0
+distrito,45.0,0.0
+distrito,46.0,0.0
+distrito,47.0,0.0
+distrito,48.0,0.0
+distrito,49.0,0.0
+distrito,50.0,0.0
+distrito,51.0,0.0
+distrito,52.0,0.0
+distrito,53.0,0.0
+distrito,54.0,0.0
+distrito,55.0,0.0
+distrito,56.0,0.0
+distrito,57.0,0.0
+distrito,58.0,0.0
+distrito,59.0,0.0
+distrito,60.0,0.0
+distrito,61.0,0.0
+distrito,62.0,0.0
+distrito,63.0,0.0
+distrito,64.0,0.0
+distrito,65.0,0.1
+distrito,66.0,0.31
+distrito,67.0,0.52
+distrito,68.0,0.73
+distrito,69.0,0.94
+distrito,70.0,1.15
+distrito,71.0,1.36
+distrito,72.0,1.57
+distrito,73.0,1.81
+distrito,74.0,2.23
+distrito,75.0,2.65
+distrito,76.0,3.07
+distrito,77.0,3.49
+distrito,78.0,3.91
+distrito,79.0,4.39
+distrito,80.0,5.02
+distrito,81.0,5.66
+distrito,82.0,6.29
+distrito,83.0,7.06
+distrito,84.0,7.9
+distrito,85.0,8.89
+distrito,86.0,9.94
+distrito,87.0,11.19
+distrito,88.0,12.56
+distrito,89.0,14.05
+distrito,90.0,15.76
+distrito,91.0,17.74
+distrito,92.0,19.99
+distrito,93.0,22.59
+distrito,94.0,25.66
+distrito,95.0,29.33
+distrito,96.0,33.96
+distrito,97.0,39.85
+distrito,98.0,47.47
+distrito,99.0,59.1
+distrito,100.0,100.0
+provincia,0.0,0.0
+provincia,1.0,0.0
+provincia,2.0,0.0
+provincia,3.0,0.0
+provincia,4.0,0.0
+provincia,5.0,0.0
+provincia,6.0,0.0
+provincia,7.0,0.0
+provincia,8.0,0.01
+provincia,9.0,0.03
+provincia,10.0,0.05
+provincia,11.0,0.07
+provincia,12.0,0.1
+provincia,13.0,0.12
+provincia,14.0,0.14
+provincia,15.0,0.16
+provincia,16.0,0.19
+provincia,17.0,0.24
+provincia,18.0,0.28
+provincia,19.0,0.33
+provincia,20.0,0.37
+provincia,21.0,0.43
+provincia,22.0,0.49
+provincia,23.0,0.56
+provincia,24.0,0.63
+provincia,25.0,0.7
+provincia,26.0,0.77
+provincia,27.0,0.83
+provincia,28.0,0.92
+provincia,29.0,1.01
+provincia,30.0,1.12
+provincia,31.0,1.23
+provincia,32.0,1.34
+provincia,33.0,1.46
+provincia,34.0,1.6
+provincia,35.0,1.73
+provincia,36.0,1.87
+provincia,37.0,2.03
+provincia,38.0,2.18
+provincia,39.0,2.35
+provincia,40.0,2.54
+provincia,41.0,2.72
+provincia,42.0,2.9
+provincia,43.0,3.09
+provincia,44.0,3.29
+provincia,45.0,3.49
+provincia,46.0,3.7
+provincia,47.0,3.93
+provincia,48.0,4.16
+provincia,49.0,4.41
+provincia,50.0,4.67
+provincia,51.0,4.94
+provincia,52.0,5.21
+provincia,53.0,5.48
+provincia,54.0,5.78
+provincia,55.0,6.1
+provincia,56.0,6.41
+provincia,57.0,6.74
+provincia,58.0,7.09
+provincia,59.0,7.45
+provincia,60.0,7.85
+provincia,61.0,8.27
+provincia,62.0,8.7
+provincia,63.0,9.14
+provincia,64.0,9.59
+provincia,65.0,10.04
+provincia,66.0,10.52
+provincia,67.0,11.05
+provincia,68.0,11.59
+provincia,69.0,12.15
+provincia,70.0,12.76
+provincia,71.0,13.41
+provincia,72.0,14.08
+provincia,73.0,14.78
+provincia,74.0,15.56
+provincia,75.0,16.39
+provincia,76.0,17.25
+provincia,77.0,18.19
+provincia,78.0,19.17
+provincia,79.0,20.21
+provincia,80.0,21.33
+provincia,81.0,22.51
+provincia,82.0,23.75
+provincia,83.0,25.06
+provincia,84.0,26.42
+provincia,85.0,27.82
+provincia,86.0,29.35
+provincia,87.0,30.96
+provincia,88.0,32.69
+provincia,89.0,34.71
+provincia,90.0,36.89
+provincia,91.0,39.12
+provincia,92.0,41.42
+provincia,93.0,43.9
+provincia,94.0,46.84
+provincia,95.0,50.29
+provincia,96.0,54.2
+provincia,97.0,58.34
+provincia,98.0,64.38
+provincia,99.0,74.68
+provincia,100.0,100.0
+grilla 10 x 10 km,0.0,0.0
+grilla 10 x 10 km,1.0,0.0
+grilla 10 x 10 km,2.0,0.0
+grilla 10 x 10 km,3.0,0.0
+grilla 10 x 10 km,4.0,0.0
+grilla 10 x 10 km,5.0,0.0
+grilla 10 x 10 km,6.0,0.0
+grilla 10 x 10 km,7.0,0.0
+grilla 10 x 10 km,8.0,0.0
+grilla 10 x 10 km,9.0,0.0
+grilla 10 x 10 km,10.0,0.0
+grilla 10 x 10 km,11.0,0.0
+grilla 10 x 10 km,12.0,0.0
+grilla 10 x 10 km,13.0,0.0
+grilla 10 x 10 km,14.0,0.0
+grilla 10 x 10 km,15.0,0.0
+grilla 10 x 10 km,16.0,0.0
+grilla 10 x 10 km,17.0,0.0
+grilla 10 x 10 km,18.0,0.0
+grilla 10 x 10 km,19.0,0.0
+grilla 10 x 10 km,20.0,0.0
+grilla 10 x 10 km,21.0,0.0
+grilla 10 x 10 km,22.0,0.0
+grilla 10 x 10 km,23.0,0.0
+grilla 10 x 10 km,24.0,0.0
+grilla 10 x 10 km,25.0,0.0
+grilla 10 x 10 km,26.0,0.0
+grilla 10 x 10 km,27.0,0.0
+grilla 10 x 10 km,28.0,0.0
+grilla 10 x 10 km,29.0,0.0
+grilla 10 x 10 km,30.0,0.0
+grilla 10 x 10 km,31.0,0.0
+grilla 10 x 10 km,32.0,0.0
+grilla 10 x 10 km,33.0,0.0
+grilla 10 x 10 km,34.0,0.0
+grilla 10 x 10 km,35.0,0.0
+grilla 10 x 10 km,36.0,0.0
+grilla 10 x 10 km,37.0,0.0
+grilla 10 x 10 km,38.0,0.0
+grilla 10 x 10 km,39.0,0.0
+grilla 10 x 10 km,40.0,0.0
+grilla 10 x 10 km,41.0,0.0
+grilla 10 x 10 km,42.0,0.0
+grilla 10 x 10 km,43.0,0.0
+grilla 10 x 10 km,44.0,0.0
+grilla 10 x 10 km,45.0,0.0
+grilla 10 x 10 km,46.0,0.0
+grilla 10 x 10 km,47.0,0.0
+grilla 10 x 10 km,48.0,0.0
+grilla 10 x 10 km,49.0,0.0
+grilla 10 x 10 km,50.0,0.0
+grilla 10 x 10 km,51.0,0.0
+grilla 10 x 10 km,52.0,0.0
+grilla 10 x 10 km,53.0,0.0
+grilla 10 x 10 km,54.0,0.0
+grilla 10 x 10 km,55.0,0.0
+grilla 10 x 10 km,56.0,0.0
+grilla 10 x 10 km,57.0,0.0
+grilla 10 x 10 km,58.0,0.0
+grilla 10 x 10 km,59.0,0.0
+grilla 10 x 10 km,60.0,0.0
+grilla 10 x 10 km,61.0,0.0
+grilla 10 x 10 km,62.0,0.0
+grilla 10 x 10 km,63.0,0.0
+grilla 10 x 10 km,64.0,0.0
+grilla 10 x 10 km,65.0,0.0
+grilla 10 x 10 km,66.0,0.0
+grilla 10 x 10 km,67.0,0.0
+grilla 10 x 10 km,68.0,0.0
+grilla 10 x 10 km,69.0,0.0
+grilla 10 x 10 km,70.0,0.0
+grilla 10 x 10 km,71.0,0.0
+grilla 10 x 10 km,72.0,0.0
+grilla 10 x 10 km,73.0,0.0
+grilla 10 x 10 km,74.0,0.0
+grilla 10 x 10 km,75.0,0.0
+grilla 10 x 10 km,76.0,0.0
+grilla 10 x 10 km,77.0,0.0
+grilla 10 x 10 km,78.0,0.0
+grilla 10 x 10 km,79.0,0.0
+grilla 10 x 10 km,80.0,0.0
+grilla 10 x 10 km,81.0,0.0
+grilla 10 x 10 km,82.0,0.0
+grilla 10 x 10 km,83.0,0.0
+grilla 10 x 10 km,84.0,0.0
+grilla 10 x 10 km,85.0,0.0
+grilla 10 x 10 km,86.0,0.0
+grilla 10 x 10 km,87.0,0.0
+grilla 10 x 10 km,88.0,0.0
+grilla 10 x 10 km,89.0,1.24
+grilla 10 x 10 km,90.0,2.8
+grilla 10 x 10 km,91.0,4.36
+grilla 10 x 10 km,92.0,5.92
+grilla 10 x 10 km,93.0,8.58
+grilla 10 x 10 km,94.0,11.7
+grilla 10 x 10 km,95.0,15.98
+grilla 10 x 10 km,96.0,21.35
+grilla 10 x 10 km,97.0,28.51
+grilla 10 x 10 km,98.0,38.19
+grilla 10 x 10 km,99.0,52.92
+grilla 10 x 10 km,100.0,100.0
+grilla 10 x 10 km desplazada 5 km,0.0,0.0
+grilla 10 x 10 km desplazada 5 km,1.0,0.0
+grilla 10 x 10 km desplazada 5 km,2.0,0.0
+grilla 10 x 10 km desplazada 5 km,3.0,0.0
+grilla 10 x 10 km desplazada 5 km,4.0,0.0
+grilla 10 x 10 km desplazada 5 km,5.0,0.0
+grilla 10 x 10 km desplazada 5 km,6.0,0.0
+grilla 10 x 10 km desplazada 5 km,7.0,0.0
+grilla 10 x 10 km desplazada 5 km,8.0,0.0
+grilla 10 x 10 km desplazada 5 km,9.0,0.0
+grilla 10 x 10 km desplazada 5 km,10.0,0.0
+grilla 10 x 10 km desplazada 5 km,11.0,0.0
+grilla 10 x 10 km desplazada 5 km,12.0,0.0
+grilla 10 x 10 km desplazada 5 km,13.0,0.0
+grilla 10 x 10 km desplazada 5 km,14.0,0.0
+grilla 10 x 10 km desplazada 5 km,15.0,0.0
+grilla 10 x 10 km desplazada 5 km,16.0,0.0
+grilla 10 x 10 km desplazada 5 km,17.0,0.0
+grilla 10 x 10 km desplazada 5 km,18.0,0.0
+grilla 10 x 10 km desplazada 5 km,19.0,0.0
+grilla 10 x 10 km desplazada 5 km,20.0,0.0
+grilla 10 x 10 km desplazada 5 km,21.0,0.0
+grilla 10 x 10 km desplazada 5 km,22.0,0.0
+grilla 10 x 10 km desplazada 5 km,23.0,0.0
+grilla 10 x 10 km desplazada 5 km,24.0,0.0
+grilla 10 x 10 km desplazada 5 km,25.0,0.0
+grilla 10 x 10 km desplazada 5 km,26.0,0.0
+grilla 10 x 10 km desplazada 5 km,27.0,0.0
+grilla 10 x 10 km desplazada 5 km,28.0,0.0
+grilla 10 x 10 km desplazada 5 km,29.0,0.0
+grilla 10 x 10 km desplazada 5 km,30.0,0.0
+grilla 10 x 10 km desplazada 5 km,31.0,0.0
+grilla 10 x 10 km desplazada 5 km,32.0,0.0
+grilla 10 x 10 km desplazada 5 km,33.0,0.0
+grilla 10 x 10 km desplazada 5 km,34.0,0.0
+grilla 10 x 10 km desplazada 5 km,35.0,0.0
+grilla 10 x 10 km desplazada 5 km,36.0,0.0
+grilla 10 x 10 km desplazada 5 km,37.0,0.0
+grilla 10 x 10 km desplazada 5 km,38.0,0.0
+grilla 10 x 10 km desplazada 5 km,39.0,0.0
+grilla 10 x 10 km desplazada 5 km,40.0,0.0
+grilla 10 x 10 km desplazada 5 km,41.0,0.0
+grilla 10 x 10 km desplazada 5 km,42.0,0.0
+grilla 10 x 10 km desplazada 5 km,43.0,0.0
+grilla 10 x 10 km desplazada 5 km,44.0,0.0
+grilla 10 x 10 km desplazada 5 km,45.0,0.0
+grilla 10 x 10 km desplazada 5 km,46.0,0.0
+grilla 10 x 10 km desplazada 5 km,47.0,0.0
+grilla 10 x 10 km desplazada 5 km,48.0,0.0
+grilla 10 x 10 km desplazada 5 km,49.0,0.0
+grilla 10 x 10 km desplazada 5 km,50.0,0.0
+grilla 10 x 10 km desplazada 5 km,51.0,0.0
+grilla 10 x 10 km desplazada 5 km,52.0,0.0
+grilla 10 x 10 km desplazada 5 km,53.0,0.0
+grilla 10 x 10 km desplazada 5 km,54.0,0.0
+grilla 10 x 10 km desplazada 5 km,55.0,0.0
+grilla 10 x 10 km desplazada 5 km,56.0,0.0
+grilla 10 x 10 km desplazada 5 km,57.0,0.0
+grilla 10 x 10 km desplazada 5 km,58.0,0.0
+grilla 10 x 10 km desplazada 5 km,59.0,0.0
+grilla 10 x 10 km desplazada 5 km,60.0,0.0
+grilla 10 x 10 km desplazada 5 km,61.0,0.0
+grilla 10 x 10 km desplazada 5 km,62.0,0.0
+grilla 10 x 10 km desplazada 5 km,63.0,0.0
+grilla 10 x 10 km desplazada 5 km,64.0,0.0
+grilla 10 x 10 km desplazada 5 km,65.0,0.0
+grilla 10 x 10 km desplazada 5 km,66.0,0.0
+grilla 10 x 10 km desplazada 5 km,67.0,0.0
+grilla 10 x 10 km desplazada 5 km,68.0,0.0
+grilla 10 x 10 km desplazada 5 km,69.0,0.0
+grilla 10 x 10 km desplazada 5 km,70.0,0.0
+grilla 10 x 10 km desplazada 5 km,71.0,0.0
+grilla 10 x 10 km desplazada 5 km,72.0,0.0
+grilla 10 x 10 km desplazada 5 km,73.0,0.0
+grilla 10 x 10 km desplazada 5 km,74.0,0.0
+grilla 10 x 10 km desplazada 5 km,75.0,0.0
+grilla 10 x 10 km desplazada 5 km,76.0,0.0
+grilla 10 x 10 km desplazada 5 km,77.0,0.0
+grilla 10 x 10 km desplazada 5 km,78.0,0.0
+grilla 10 x 10 km desplazada 5 km,79.0,0.0
+grilla 10 x 10 km desplazada 5 km,80.0,0.0
+grilla 10 x 10 km desplazada 5 km,81.0,0.0
+grilla 10 x 10 km desplazada 5 km,82.0,0.0
+grilla 10 x 10 km desplazada 5 km,83.0,0.0
+grilla 10 x 10 km desplazada 5 km,84.0,0.0
+grilla 10 x 10 km desplazada 5 km,85.0,0.0
+grilla 10 x 10 km desplazada 5 km,86.0,0.0
+grilla 10 x 10 km desplazada 5 km,87.0,0.0
+grilla 10 x 10 km desplazada 5 km,88.0,0.0
+grilla 10 x 10 km desplazada 5 km,89.0,1.33
+grilla 10 x 10 km desplazada 5 km,90.0,2.89
+grilla 10 x 10 km desplazada 5 km,91.0,4.45
+grilla 10 x 10 km desplazada 5 km,92.0,6.01
+grilla 10 x 10 km desplazada 5 km,93.0,8.91
+grilla 10 x 10 km desplazada 5 km,94.0,12.03
+grilla 10 x 10 km desplazada 5 km,95.0,16.46
+grilla 10 x 10 km desplazada 5 km,96.0,21.71
+grilla 10 x 10 km desplazada 5 km,97.0,28.78
+grilla 10 x 10 km desplazada 5 km,98.0,38.38
+grilla 10 x 10 km desplazada 5 km,99.0,52.86
+grilla 10 x 10 km desplazada 5 km,100.0,100.0

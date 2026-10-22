@@ -1,4 +1,6 @@
 .venv/
-data/raw/
+data/raw/*
+# CSV de 7 días de FIRMS descargados el 21-oct-2026: necesarios para reproducir el paso 1
+!data/raw/firms_*_SA_7d.csv
 __pycache__/
 data/cache/

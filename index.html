@@ -3,53 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>¿Qué se quemó? · Chichas, Arequipa</title>
-<meta name="description" content="De 8 637 focos de calor en el Perú a 1 690 hectáreas medidas en Chichas, Arequipa: qué tipo de suelo ardió y si la zona arde cada año.">
+<title>Lo que no se puede medir</title>
+<meta name="description" content="Intentamos medir el área quemada de los veinte incendios más grandes del Perú. Lo conseguimos con cuatro. Ese fracaso, y no las hectáreas, es el resultado.">
 <style>
   :root {
-    --bg: #f2f5f2;
-    --fg: #14201d;
-    --muted: #5c6b66;
-    --card: #ffffff;
-    --line: #d9e0dc;
-    --accent: #0d6e5d;
-    --accent2: #a85c32;
-    --on-accent: #ffffff;
-    --highlight: #dcebe6;
-    --header-bg: #14201d;
-    --header-fg: #f2f5f2;
-    --header-muted: #b6c4be;
-    --sev-baja: #f2d024;
-    --sev-modbaja: #f08c3a;
-    --sev-modalta: #d93a1f;
-    --sev-alta: #6e1708;
+    --bg: #f2f5f2; --fg: #14201d; --muted: #5c6b66; --card: #ffffff; --line: #d9e0dc;
+    --accent: #0d6e5d; --accent2: #a85c32; --on-accent: #ffffff; --highlight: #dcebe6;
+    --header-bg: #14201d; --header-fg: #f2f5f2; --header-muted: #b6c4be;
+    --sev-baja: #f2d024; --sev-modbaja: #f08c3a; --sev-modalta: #d93a1f; --sev-alta: #6e1708;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #0e1715;
-      --fg: #e4ebe8;
-      --muted: #9aaba5;
-      --card: #16221f;
-      --line: #2a3a35;
-      --accent: #45b39d;
-      --accent2: #d98c5f;
-      --on-accent: #0e1715;
-      --highlight: #1b332d;
-      --header-bg: #14201d;
-      --header-fg: #f2f5f2;
-      --header-muted: #b6c4be;
+      --bg: #0e1715; --fg: #e4ebe8; --muted: #9aaba5; --card: #16221f; --line: #2a3a35;
+      --accent: #45b39d; --accent2: #d98c5f; --on-accent: #0e1715; --highlight: #1b332d;
     }
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; color-scheme: light dark; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
-  }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 17px; line-height: 1.6; }
   .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
   header.top { background: var(--header-bg); color: var(--header-fg); padding: 56px 0 44px; border-bottom: 1px solid var(--line); }
   header.top h1 { font-size: clamp(2.2rem, 7vw, 3.6rem); line-height: 1.05; margin: 0 0 16px; letter-spacing: -0.02em; }
@@ -59,17 +30,18 @@
   section { padding: 36px 0 8px; }
   h2 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 14px; }
   h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; margin-right: 6px; }
-  h3 { font-size: 1.08rem; margin: 0 0 6px; }
+  h3 { font-size: 1.08rem; margin: 26px 0 6px; }
   p { margin: 0 0 14px; }
   a { color: var(--accent); }
   .muted { color: var(--muted); }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 20px 0 8px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 20px 0 8px; }
   .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; }
   .card .big { font-size: 2.4rem; font-weight: 750; line-height: 1.05; color: var(--accent); font-variant-numeric: tabular-nums; margin-bottom: 8px; }
   .card p { margin: 0; font-size: 0.95rem; }
-  .card.method h3 { color: var(--accent2); }
+  .card h3 { margin-top: 0; color: var(--accent2); }
   figure { margin: 18px 0 0; }
   figure img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+  figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
   .chart-scroll { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
   svg.chart { width: 100%; min-width: 540px; max-width: 760px; height: auto; display: block; margin: 0 auto; }
   svg.chart .grid { stroke: var(--line); stroke-width: 1; }
@@ -77,26 +49,23 @@
   svg.chart text { fill: var(--muted); font-size: 13px; font-family: inherit; }
   svg.chart text.lbl { fill: var(--fg); font-size: 14px; font-weight: 600; }
   svg.chart text.axis { font-size: 14px; }
-  svg.chart .bar { fill: var(--accent); }
-  svg.chart .bar.b2026 { fill: var(--accent2); }
-  svg.chart .hit { fill: transparent; }
   svg.chart text.val { font-size: 12px; }
   svg.chart text.val.strong { fill: var(--fg); font-weight: 700; font-size: 14px; }
+  svg.chart .hit { fill: transparent; }
+  svg.chart .b-pol { fill: var(--accent2); }
+  svg.chart .b-ani { fill: var(--accent2); opacity: 0.45; }
   svg.chart .line { fill: none; stroke-width: 2; }
   svg.chart .s1 { stroke: var(--accent); }
   svg.chart .dot.s1 { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
-  svg.chart .sev-b { fill: var(--sev-baja); }
-  svg.chart .sev-mb { fill: var(--sev-modbaja); }
-  svg.chart .sev-ma { fill: var(--sev-modalta); }
-  svg.chart .sev-a { fill: var(--sev-alta); }
+  svg.chart .sev-b { fill: var(--sev-baja); } svg.chart .sev-mb { fill: var(--sev-modbaja); }
+  svg.chart .sev-ma { fill: var(--sev-modalta); } svg.chart .sev-a { fill: var(--sev-alta); }
   svg.chart .pt-pasto { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
   svg.chart .pt-bosque { fill: var(--accent2); stroke: var(--card); stroke-width: 2; }
   svg.chart .pt-otro { fill: var(--muted); opacity: 0.55; stroke: var(--card); stroke-width: 1.5; }
-  svg.chart .torn-lo { fill: var(--accent2); }
-  svg.chart .torn-hi { fill: var(--accent); }
+  svg.chart .torn-lo { fill: var(--accent2); } svg.chart .torn-hi { fill: var(--accent); }
   svg.chart .base { stroke: var(--fg); stroke-width: 1.5; }
-  section h3 { margin-top: 26px; }
-  figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
+  svg.chart .lz-a { stroke: var(--accent); } svg.chart .lz-b { stroke: var(--accent2); }
+  svg.chart .lz-c { stroke: var(--fg); } svg.chart .lz-d { stroke: var(--fg); stroke-dasharray: 2 5; stroke-width: 2.5; }
   .table-scroll { overflow-x: auto; margin: 14px 0 10px; }
   table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
   th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
@@ -104,12 +73,7 @@
   td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
   tr.total td { font-weight: 700; border-top: 2px solid var(--fg); }
   tr.dim td { color: var(--muted); }
-  tr.medido td { background: var(--highlight); font-weight: 600; }
-  .tag { display: inline-block; background: var(--accent); color: var(--on-accent); font-size: 0.72rem; font-weight: 700; padding: 1px 7px; border-radius: 999px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.04em; vertical-align: 1px; }
-  .tag.gris { background: var(--muted); }
-  td.bar { width: 32%; min-width: 90px; }
-  .bar span { display: block; height: 14px; border-radius: 3px; min-width: 2px; }
-  .sw { display: inline-block; width: 11px; height: 11px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; border: 1px solid rgba(0,0,0,0.15); }
+  tr.medido td { background: var(--highlight); }
   .note { font-size: 0.9rem; color: var(--muted); border-left: 3px solid var(--line); padding-left: 12px; }
   .callout { background: var(--card); border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 8px; padding: 16px 18px; margin: 16px 0; }
   .callout.alt { border-left-color: var(--accent2); }
@@ -131,314 +95,182 @@
     svg.chart .t-opc { display: none; }
   }
 </style>
+
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <h1>¿Qué se quemó?</h1>
-    <p class="bajada">De 8&nbsp;637 focos de calor en todo el Perú a 1&nbsp;690 hectáreas medidas en Chichas, Arequipa. No ardió bosque ni cultivo: ardió pastizal, en una zona donde el satélite no había visto fuego en 14 años.</p>
-    <p class="firma">Gabriela Pozo · Reto C · Universidad del Pacífico</p>
+    <h1>Lo que no se puede medir</h1>
+    <p class="bajada">Intentamos medir el área quemada de los veinte incendios más grandes del Perú. Lo conseguimos con cuatro. Ese fracaso, y no las hectáreas, es el resultado.</p>
+    <p class="firma">Gabriela Pozo · Reto C</p>
   </div>
 </header>
 
 <main class="wrap">
 
-  <section id="pregunta">
-    <h2><span class="num">1</span>La pregunta</h2>
-    <p>Los satélites detectan <strong>dónde</strong> hay fuego, no <strong>qué tipo de suelo</strong> arde. Esa diferencia decide la política pública. Quemar bosque es conversión de uso de suelo, y se combate con titulación y fiscalización. Quemar pastizal para renovar forraje es manejo ganadero, y se regula con extensión agraria y quema controlada.</p>
-    <p>Por eso este análisis no se queda en contar focos: mide cuántas hectáreas se quemaron en un incendio concreto y cruza esa superficie con un mapa de cobertura del suelo.</p>
+  <section id="resultado">
+    <h2><span class="num">1</span>El resultado principal: el 80&nbsp;% no era medible</h2>
+    <p>Sobre cada uno de los 20 incendios con más focos de calor entre el 14 y el 21 de octubre de 2026 se corrió exactamente el mismo procedimiento: buscar una imagen Sentinel-2 antes y otra después del fuego, enmascarar nubes, calcular el dNBR y cruzarlo con un mapa de cobertura. La regla para aceptar una imagen se fijó antes de mirar los datos: como máximo el 30&nbsp;% de la zona tapada.</p>
+
     <div class="cards">
-      <div class="card">
-        <div class="big">1&nbsp;690&nbsp;ha</div>
-        <p>Se quemaron 1&nbsp;690&nbsp;ha (dNBR&nbsp;≥&nbsp;0,10), el 31&nbsp;% de las 5&nbsp;399&nbsp;ha analizadas.</p>
-      </div>
-      <div class="card">
-        <div class="big">72,4&nbsp;%</div>
-        <p>El 72,4&nbsp;% de lo quemado era pastizal; bosque, 0,1&nbsp;ha; cultivo, cero.</p>
-      </div>
-      <div class="card">
-        <div class="big">−43&nbsp;%</div>
-        <p>La medición da 43&nbsp;% menos que lo que sugerían los focos, cuya envolvente apuntaba a 2&nbsp;957&nbsp;ha.</p>
-      </div>
+      <div class="card"><div class="big">4 de 20</div><p>incendios medidos: una tasa de éxito del 20&nbsp;%.</p></div>
+      <div class="card"><div class="big">13</div><p>descartados por nubes sobre la zona; otros 2 sin ninguna pasada de Sentinel-2 y 1 por el prefiltro.</p></div>
+      <div class="card"><div class="big">p&nbsp;=&nbsp;0,62</div><p>sin diferencia significativa entre Andes y Amazonía en la tasa de éxito.</p></div>
     </div>
+    <div class="callout"><p>El sesgo no es geográfico sino de calendario. En la Amazonía se midió el 12,5&nbsp;% de los incendios y en los Andes el 25,0&nbsp;%, una diferencia que la prueba exacta de Fisher no distingue del azar (p&nbsp;=&nbsp;0,62). En octubre empieza la temporada de lluvias en ambas regiones. La consecuencia es incómoda: la temporada de fuego coincide con la temporada en que no se ve el suelo, así que cualquier indicador nacional de área quemada en tiempo casi real mide solo el subconjunto de incendios que las nubes dejaron pasar.</p></div>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Incendio</th><th>Región</th><th class="n">Focos</th><th class="n">Envolvente (ha)</th><th class="n">Quemado (ha)</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr class="medido"><td>Chichas <span class="muted">(Arequipa)</span></td><td>Andes</td><td class="n">178</td><td class="n">2&nbsp;957</td><td class="n"><strong>1&nbsp;689,5</strong></td><td>Medido · pastizal</td></tr>
+          <tr class="medido"><td>Iparía <span class="muted">(Ucayali)</span></td><td>Amazonía</td><td class="n">108</td><td class="n">724</td><td class="n"><strong>255,4</strong></td><td>Medido · bosque</td></tr>
+          <tr class="medido"><td>San Cristóbal <span class="muted">(Moquegua)</span></td><td>Andes</td><td class="n">59</td><td class="n">587</td><td class="n"><strong>609,9</strong></td><td>Medido · pastizal</td></tr>
+          <tr class="medido"><td>Curahuasi <span class="muted">(Apurímac)</span></td><td>Andes</td><td class="n">45</td><td class="n">475</td><td class="n"><strong>306,0</strong></td><td>Medido · pastizal</td></tr>
+          <tr class="dim"><td>Río Tambo <span class="muted">(Junín)</span></td><td>Amazonía</td><td class="n">279</td><td class="n">3&nbsp;051</td><td class="n">—</td><td>Nubes sobre la zona (55,4&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Curahuasi <span class="muted">(Apurímac)</span></td><td>Andes</td><td class="n">201</td><td class="n">3&nbsp;227</td><td class="n">—</td><td>Sin pasada de Sentinel-2</td></tr>
+          <tr class="dim"><td>Callería <span class="muted">(Ucayali)</span></td><td>Amazonía</td><td class="n">116</td><td class="n">1&nbsp;530</td><td class="n">—</td><td>Nubes sobre la zona (47,2&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Huanoquite <span class="muted">(Cusco)</span></td><td>Andes</td><td class="n">80</td><td class="n">1&nbsp;220</td><td class="n">—</td><td>Nubes sobre la zona (100,0&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Nueva Requena <span class="muted">(Ucayali)</span></td><td>Amazonía</td><td class="n">65</td><td class="n">416</td><td class="n">—</td><td>Nubes sobre la zona (77,7&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Cayna <span class="muted">(Huánuco)</span></td><td>Andes</td><td class="n">63</td><td class="n">724</td><td class="n">—</td><td>Nubes sobre la zona (100,0&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Mazamari <span class="muted">(Junín)</span></td><td>Amazonía</td><td class="n">62</td><td class="n">793</td><td class="n">—</td><td>Sin pasada de Sentinel-2</td></tr>
+          <tr class="dim"><td>Palca <span class="muted">(Junín)</span></td><td>Andes</td><td class="n">61</td><td class="n">853</td><td class="n">—</td><td>Nubes sobre la zona (100,0&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Santa Cruz <span class="muted">(Loreto)</span></td><td>Amazonía</td><td class="n">50</td><td class="n">560</td><td class="n">—</td><td>Nubes sobre la zona (100,0&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Nueva Requena <span class="muted">(Ucayali)</span></td><td>Amazonía</td><td class="n">49</td><td class="n">315</td><td class="n">—</td><td>Descartada por el prefiltro (18,2&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Nueva Requena <span class="muted">(Ucayali)</span></td><td>Amazonía</td><td class="n">48</td><td class="n">308</td><td class="n">—</td><td>Nubes sobre la zona (100,0&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>San Juan de Jarpa <span class="muted">(Junín)</span></td><td>Andes</td><td class="n">42</td><td class="n">497</td><td class="n">—</td><td>Nubes sobre la zona (89,4&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Caja <span class="muted">(Huancavelica)</span></td><td>Andes</td><td class="n">39</td><td class="n">181</td><td class="n">—</td><td>Nubes sobre la zona (47,5&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Ayahuanco <span class="muted">(Ayacucho)</span></td><td>Andes</td><td class="n">39</td><td class="n">400</td><td class="n">—</td><td>Nubes sobre la zona (55,1&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>Ancahuasi <span class="muted">(Cusco)</span></td><td>Andes</td><td class="n">36</td><td class="n">259</td><td class="n">—</td><td>Nubes sobre la zona (65,7&nbsp;% de la zona inválida)</td></tr>
+          <tr class="dim"><td>San Miguel <span class="muted">(Ayacucho)</span></td><td>Andes</td><td class="n">35</td><td class="n">264</td><td class="n">—</td><td>Nubes sobre la zona (63,7&nbsp;% de la zona inválida)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Nueva Requena (Ucayali, 49 focos): la zona estaba limpia en un 81,8&nbsp;%, pero el pipeline descarta de entrada las escenas con más del 80&nbsp;% de nubes en la escena completa. Es un caso medible perdido por una decisión propia. No se corrigió para no cambiar el método a mitad del análisis.</p>
+    <p class="note">Se excluyó un grupo de focos en Paracas (Ica, 42 focos en 49&nbsp;ha) con un criterio escrito y aplicado a los 40 primeros candidatos: no es un incendio si más de la mitad de las detecciones S-NPP de 2012-2025 en su zona son de tipo 2 en FIRMS (fuente estática terrestre, como una planta industrial). En Paracas lo son 3&nbsp;770 de 3&nbsp;838 (98,2&nbsp;%), detectadas en 2&nbsp;139 días distintos; en los demás candidatos, ninguna. Su lugar lo ocupa San Miguel (Ayacucho), el siguiente por número de focos.</p>
   </section>
 
-  <section id="mapa">
-    <h2><span class="num">2</span>El mapa</h2>
+  <section id="nacional">
+    <h2><span class="num">2</span>El mapa nacional y cómo se comporta el fuego</h2>
     <figure>
-      <img src="outputs/mapa_chichas.png" width="1500" height="1350" loading="lazy"
-           alt="Mapa del área quemada en Chichas, Arequipa. Una mancha extensa, mayormente amarilla (severidad baja) con zonas naranjas (moderada-baja), ocupa el centro de la zona analizada. Unos 178 puntos celestes, los focos VIIRS, se reparten sobre la mancha. Una línea negra rodea toda la zona analizada.">
-      <figcaption>Clases de severidad (dNBR) sobre la imagen Sentinel-2 posterior al fuego (20 de octubre de 2026) en infrarrojo cercano. Los puntos celestes son los 178 focos VIIRS del incendio. La línea negra encierra la zona analizada: la envolvente de los focos más 1&nbsp;km. Coordenadas en UTM 18S.</figcaption>
+      <img src="outputs/mapa_nacional.png" width="1200" height="1500" loading="lazy" alt="Mapa del Perú con los 8 637 focos VIIRS del 14 al 21 de octubre de 2026 coloreados por potencia radiativa, concentrados en la selva central y los Andes del sur, y los 20 incendios con más focos marcados con círculos: cuatro verdes (medidos) y dieciséis grises (no medibles).">
+      <figcaption>Focos VIIRS por potencia radiativa (FRP) y los 20 incendios con más focos: verde, los 4 medidos; gris, los 16 que no se pudieron medir.</figcaption>
     </figure>
-  </section>
-
-  <section id="cuanto">
-    <h2><span class="num">3</span>Resultado 1: cuánto se quemó</h2>
-    <p>Dentro de la zona analizada, 1&nbsp;689,5&nbsp;ha superan el umbral de quemado. Casi todo es de severidad baja.</p>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Severidad</th><th class="n">Rango dNBR</th><th class="n">Hectáreas</th><th class="n">% de lo quemado</th><th></th></tr>
-        </thead>
-        <tbody>
-          <tr><td><span class="sw" style="background:var(--sev-baja)"></span>Baja</td><td class="n">0,10 – 0,27</td><td class="n">1&nbsp;447,6</td><td class="n">85,7&nbsp;%</td><td class="bar"><span style="width:85.7%;background:var(--sev-baja)"></span></td></tr>
-          <tr><td><span class="sw" style="background:var(--sev-modbaja)"></span>Moderada-baja</td><td class="n">0,27 – 0,44</td><td class="n">240,8</td><td class="n">14,3&nbsp;%</td><td class="bar"><span style="width:14.3%;background:var(--sev-modbaja)"></span></td></tr>
-          <tr><td><span class="sw" style="background:var(--sev-modalta)"></span>Moderada-alta</td><td class="n">0,44 – 0,66</td><td class="n">1,1</td><td class="n">0,1&nbsp;%</td><td class="bar"><span style="width:0.1%;background:var(--sev-modalta)"></span></td></tr>
-          <tr><td><span class="sw" style="background:var(--sev-alta)"></span>Alta</td><td class="n">≥ 0,66</td><td class="n">0,0</td><td class="n">0,0&nbsp;%</td><td class="bar"></td></tr>
-          <tr class="total"><td>Total quemado</td><td class="n">≥ 0,10</td><td class="n">1&nbsp;689,5</td><td class="n">100&nbsp;%</td><td></td></tr>
-          <tr class="dim"><td>Sin quemar</td><td class="n">&lt; 0,10</td><td class="n">3&nbsp;697,0</td><td class="n">—</td><td></td></tr>
-          <tr class="dim"><td>Sin dato (nube o agua)</td><td class="n">—</td><td class="n">12,9</td><td class="n">—</td><td></td></tr>
-        </tbody>
-      </table>
+    <div class="cards">
+      <div class="card"><div class="big">79,9&nbsp;%</div><p>de los 8&nbsp;637 focos fue diurno.</p></div>
+      <div class="card"><div class="big">89,5&nbsp;%</div><p>de los 2&nbsp;602 incendios duró menos de 12&nbsp;h entre su primer y su último foco.</p></div>
+      <div class="card"><div class="big">6,55&nbsp;MW</div><p>de potencia radiativa (FRP) mediana por foco.</p></div>
+      <div class="card"><div class="big">11</div><p>de 2&nbsp;602 incendios superaron los 3 días.</p></div>
     </div>
-    <p class="note">La severidad puede estar subestimada: en pastizal el dNBR sale bajo, porque hay poca biomasa que perder, y la imagen posterior es de solo dos días después del último foco.</p>
+    <p>El fuego peruano de esa semana fue mayoritariamente corto, de baja potencia y de día. VIIRS detecta mejor de noche, cuando el suelo está frío y el contraste térmico es mayor, así que el predominio diurno no se explica por el sensor.</p>
+    <p class="note">1&nbsp;345 de los 2&nbsp;602 incendios tienen un solo foco; para ellos la duración es cero. La duración mide el tiempo entre la primera y la última detección, no cuánto ardió el fuego.</p>
   </section>
 
-  <section id="que">
-    <h2><span class="num">4</span>Resultado 2: qué tipo de suelo ardió</h2>
-    <p>Las hectáreas quemadas, cruzadas con ESA WorldCover 2021:</p>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Cobertura (WorldCover)</th><th class="n">Hectáreas</th><th class="n">% de lo quemado</th><th></th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Pastizal</td><td class="n">1&nbsp;223,0</td><td class="n">72,4&nbsp;%</td><td class="bar"><span style="width:72.4%;background:var(--accent)"></span></td></tr>
-          <tr><td>Matorral</td><td class="n">455,6</td><td class="n">27,0&nbsp;%</td><td class="bar"><span style="width:27%;background:var(--accent2)"></span></td></tr>
-          <tr><td>Suelo desnudo</td><td class="n">10,3</td><td class="n">0,6&nbsp;%</td><td class="bar"><span style="width:0.6%;background:var(--accent2)"></span></td></tr>
-          <tr><td>Agua</td><td class="n">0,4</td><td class="n">0,0&nbsp;%</td><td class="bar"><span style="width:0;background:var(--accent2)"></span></td></tr>
-          <tr><td>Bosque</td><td class="n">0,1</td><td class="n">0,0&nbsp;%</td><td class="bar"><span style="width:0;background:var(--accent2)"></span></td></tr>
-          <tr><td>Cultivo</td><td class="n">0,0</td><td class="n">0,0&nbsp;%</td><td class="bar"></td></tr>
-          <tr class="total"><td>Total</td><td class="n">1&nbsp;689,4</td><td class="n">100&nbsp;%</td><td></td></tr>
-        </tbody>
-      </table>
+  <section id="chichas">
+    <h2><span class="num">3</span>El caso medido: Chichas, 1&nbsp;690&nbsp;ha donde nunca había ardido</h2>
+    <figure>
+      <img src="outputs/mapa_chichas.png" width="1500" height="1350" loading="lazy" alt="Mapa del área quemada en Chichas, Arequipa: una mancha extensa, mayormente amarilla (severidad baja) con zonas naranjas (moderada-baja), con los 178 focos VIIRS como puntos celestes y la zona analizada rodeada por una línea negra.">
+      <figcaption>Severidad (dNBR) sobre el infrarrojo cercano de la imagen Sentinel-2 del 20 de octubre de 2026. Puntos celestes: los 178 focos VIIRS. Línea negra: la zona analizada (focos + 1&nbsp;km). Coordenadas UTM 18S.</figcaption>
+    </figure>
+    
+    <div class="cards">
+      <div class="card"><div class="big">1&nbsp;690&nbsp;ha</div><p>quemadas (dNBR&nbsp;≥&nbsp;0,10), el 31&nbsp;% de las 5&nbsp;399&nbsp;ha analizadas.</p></div>
+      <div class="card"><div class="big">4,3&nbsp;%</div><p>del distrito de Chichas (38&nbsp;976&nbsp;ha según los límites GADM 4.1).</p></div>
+      <div class="card"><div class="big">0</div><p>focos dentro del área quemada entre 2012 y 2025.</p></div>
     </div>
-    <p class="note">El total difiere en 0,1&nbsp;ha del de la tabla de severidad por el redondeo de cada clase.</p>
-    <div class="callout">
-      <p><strong>Cero hectáreas de cultivo y una décima de bosque.</strong> No hubo deforestación ni pérdida de cosecha: el daño es pérdida de forraje y el afectado es la ganadería extensiva.</p>
-      <p>Que ardiera pastizal no dice por sí solo si fue una quema de manejo o un accidente. La recurrencia interanual (sección 7) sugiere lo segundo: la zona no había ardido en 14 años.</p>
-    </div>
-  </section>
-
-  <section id="focos">
-    <h2><span class="num">5</span>Resultado 3: los focos sobrestiman</h2>
-    <p>La envolvente de los 178 focos cubría 2&nbsp;957&nbsp;ha. La medición con Sentinel-2 da 1&nbsp;689,5&nbsp;ha: <strong>43&nbsp;% menos</strong>.</p>
-    <p>Un foco VIIRS marca un píxel de 375&nbsp;m (unas 14&nbsp;ha) donde el satélite detectó calor, pero dentro de ese píxel puede arder solo una fracción. Por eso, estimar el daño contando focos o dibujando el área que los rodea infla el resultado. Para saber cuánto se quemó hay que medir la cicatriz con una imagen de mayor resolución.</p>
-    <p>En los otros tres incendios que se pudieron medir, la dirección se repite en dos (−64,7&nbsp;% y −35,6&nbsp;%) y no en el tercero (+3,9&nbsp;%): la sobrestimación es frecuente pero no un factor fijo (sección 8).</p>
-  </section>
-
-  <section id="sensibilidad">
-    <h2><span class="num">6</span>Cuánto depende del umbral</h2>
-    <p>Con el corte estándar de 0,10 el área quemada es de 1&nbsp;690&nbsp;ha. Pero la cifra es muy elástica: entre 0,05 y 0,35 va de 2&nbsp;008&nbsp;ha a 34&nbsp;ha, un factor de 59.</p>
+    <h3>Recurrencia: catorce años sin un solo foco</h3>
     <figure>
 <div class="chart-scroll">
-<svg class="chart" viewBox="0 0 640 330" role="img" aria-label="Hectáreas quemadas según el umbral de dNBR">
-<line class="grid" x1="62" x2="620" y1="280.0" y2="280.0"/><text class="tick" x="54" y="284.0" text-anchor="end">0</text>
-<line class="grid" x1="62" x2="620" y1="251.6" y2="251.6"/><text class="tick" x="54" y="255.6" text-anchor="end">250</text>
-<line class="grid" x1="62" x2="620" y1="223.1" y2="223.1"/><text class="tick" x="54" y="227.1" text-anchor="end">500</text>
-<line class="grid" x1="62" x2="620" y1="194.7" y2="194.7"/><text class="tick" x="54" y="198.7" text-anchor="end">750</text>
-<line class="grid" x1="62" x2="620" y1="166.2" y2="166.2"/><text class="tick" x="54" y="170.2" text-anchor="end">1&#160;000</text>
-<line class="grid" x1="62" x2="620" y1="137.8" y2="137.8"/><text class="tick" x="54" y="141.8" text-anchor="end">1&#160;250</text>
-<line class="grid" x1="62" x2="620" y1="109.3" y2="109.3"/><text class="tick" x="54" y="113.3" text-anchor="end">1&#160;500</text>
-<line class="grid" x1="62" x2="620" y1="80.9" y2="80.9"/><text class="tick" x="54" y="84.9" text-anchor="end">1&#160;750</text>
-<line class="grid" x1="62" x2="620" y1="52.4" y2="52.4"/><text class="tick" x="54" y="56.4" text-anchor="end">2&#160;000</text>
-<line class="grid" x1="62" x2="620" y1="24.0" y2="24.0"/><text class="tick" x="54" y="28.0" text-anchor="end">2&#160;250</text>
-<text class="tick" x="62.0" y="298" text-anchor="middle">0,05</text>
-<text class="tick t-opc" x="117.8" y="298" text-anchor="middle">0,08</text>
-<text class="tick" x="155.0" y="298" text-anchor="middle">0,10</text>
-<text class="tick" x="248.0" y="298" text-anchor="middle">0,15</text>
-<text class="tick" x="341.0" y="298" text-anchor="middle">0,20</text>
-<text class="tick" x="471.2" y="298" text-anchor="middle">0,27</text>
-<text class="tick" x="620.0" y="298" text-anchor="middle">0,35</text>
-<line class="ref" x1="155.0" x2="155.0" y1="24" y2="280"/>
-<text class="axis" x="341.0" y="322" text-anchor="middle">Umbral de dNBR</text>
-<polyline class="line s1" points="62.0,51.6 117.8,70.3 155.0,87.8 248.0,147.0 341.0,201.9 471.2,252.5 620.0,276.1"/>
-<circle class="dot s1" cx="62.0" cy="51.6" r="4.5"><title>Chichas · umbral 0,05: 2&#160;007,5 ha</title></circle>
-<circle class="dot s1" cx="117.8" cy="70.3" r="4.5"><title>Chichas · umbral 0,08: 1&#160;842,9 ha</title></circle>
-<circle class="dot s1" cx="155.0" cy="87.8" r="6"><title>Chichas · umbral 0,10: 1&#160;689,5 ha</title></circle>
-<circle class="dot s1" cx="248.0" cy="147.0" r="4.5"><title>Chichas · umbral 0,15: 1&#160;168,9 ha</title></circle>
-<circle class="dot s1" cx="341.0" cy="201.9" r="4.5"><title>Chichas · umbral 0,20: 686,6 ha</title></circle>
-<circle class="dot s1" cx="471.2" cy="252.5" r="4.5"><title>Chichas · umbral 0,27: 241,9 ha</title></circle>
-<circle class="dot s1" cx="620.0" cy="276.1" r="4.5"><title>Chichas · umbral 0,35: 33,9 ha</title></circle>
-<text class="lbl" x="167.0" y="77.8">Umbral usado (0,10): 1&#160;690 ha</text>
-</svg>
-</div>
-
-      <figcaption>Hectáreas quemadas en Chichas según el umbral de dNBR, en la misma zona de 5&nbsp;399&nbsp;ha y con el mismo par de imágenes. La línea discontinua marca el umbral usado (0,10).</figcaption>
-    </figure>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Umbral dNBR</th><th class="n">Hectáreas quemadas</th><th class="n">% de la zona</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>0,05</td><td class="n">2&nbsp;007,5</td><td class="n">37,2&nbsp;%</td></tr>
-          <tr><td>0,08</td><td class="n">1&nbsp;842,9</td><td class="n">34,1&nbsp;%</td></tr>
-          <tr class="medido"><td>0,10<span class="tag">usado</span></td><td class="n">1&nbsp;689,5</td><td class="n">31,3&nbsp;%</td></tr>
-          <tr><td>0,15</td><td class="n">1&nbsp;168,9</td><td class="n">21,6&nbsp;%</td></tr>
-          <tr><td>0,20</td><td class="n">686,6</td><td class="n">12,7&nbsp;%</td></tr>
-          <tr><td>0,27</td><td class="n">241,9</td><td class="n">4,5&nbsp;%</td></tr>
-          <tr><td>0,35</td><td class="n">33,9</td><td class="n">0,6&nbsp;%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>La razón es que el incendio fue de baja severidad y sus píxeles se concentran cerca del umbral: moverlo un poco cambia mucho cuántos quedan de cada lado. Si hubiera sido un incendio forestal intenso, con píxeles muy por encima de 0,27, la curva sería plana.</p>
-    <p>La escala de Key y Benson se calibró sobre incendios forestales. En pastizal casi todo cae en la banda baja, así que la elección del umbral pesa más que el propio fuego.</p>
-    <p>La sección 9 compara el umbral con las otras tres decisiones: ninguna lo mueve tanto.</p>
-    <p class="note">34–2&nbsp;008&nbsp;ha <strong>no</strong> es “el rango del incendio”. Con 0,05 se recogen ruido y cambios que no son fuego (vegetación que se seca, diferencias de iluminación entre fechas); con 0,35 solo quedan los núcleos más calientes.</p>
-  </section>
-
-  <section id="recurrencia">
-    <h2><span class="num">7</span>¿Arde cada año o fue excepcional?</h2>
-    <p>Si la misma zona ardiera cada temporada seca, el incendio de 2026 sería compatible con una quema de manejo de pastos. Para verlo se contaron los focos del satélite Suomi-NPP de cada año, de 2012 a 2025, dentro del área que ardió en 2026 (1&nbsp;689,5&nbsp;ha) y dentro de esa área más 1&nbsp;km (5&nbsp;855,2&nbsp;ha).</p>
-    <figure>
-<div class="chart-scroll">
-<svg class="chart" viewBox="0 0 640 300" role="img" aria-label="Focos S-NPP por año en el área quemada de Chichas (polígono más 1 km), 2012 a 2026">
+<svg class="chart" viewBox="0 0 640 300" role="img" aria-label="Focos S-NPP por año en el área quemada de Chichas, 2012 a 2026">
+<rect class="b-pol" x="44" y="6" width="12" height="12" rx="2"/><text class="tick" x="61" y="16">dentro del área quemada</text><rect class="b-ani" x="244" y="6" width="12" height="12" rx="2"/><text class="tick" x="261" y="16">anillo de 1&#160;km</text>
 <line class="grid" x1="44" x2="628" y1="248.0" y2="248.0"/><text class="tick" x="38" y="252.0" text-anchor="end">0</text>
-<line class="grid" x1="44" x2="628" y1="216.0" y2="216.0"/><text class="tick" x="38" y="220.0" text-anchor="end">10</text>
-<line class="grid" x1="44" x2="628" y1="184.0" y2="184.0"/><text class="tick" x="38" y="188.0" text-anchor="end">20</text>
-<line class="grid" x1="44" x2="628" y1="152.0" y2="152.0"/><text class="tick" x="38" y="156.0" text-anchor="end">30</text>
-<line class="grid" x1="44" x2="628" y1="120.0" y2="120.0"/><text class="tick" x="38" y="124.0" text-anchor="end">40</text>
-<line class="grid" x1="44" x2="628" y1="88.0" y2="88.0"/><text class="tick" x="38" y="92.0" text-anchor="end">50</text>
-<line class="grid" x1="44" x2="628" y1="56.0" y2="56.0"/><text class="tick" x="38" y="60.0" text-anchor="end">60</text>
-<line class="grid" x1="44" x2="628" y1="24.0" y2="24.0"/><text class="tick" x="38" y="28.0" text-anchor="end">70</text>
-<rect class="hit" x="49.8" y="24" width="27.3" height="224.0"><title>2012: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<line class="grid" x1="44" x2="628" y1="217.4" y2="217.4"/><text class="tick" x="38" y="221.4" text-anchor="end">10</text>
+<line class="grid" x1="44" x2="628" y1="186.9" y2="186.9"/><text class="tick" x="38" y="190.9" text-anchor="end">20</text>
+<line class="grid" x1="44" x2="628" y1="156.3" y2="156.3"/><text class="tick" x="38" y="160.3" text-anchor="end">30</text>
+<line class="grid" x1="44" x2="628" y1="125.7" y2="125.7"/><text class="tick" x="38" y="129.7" text-anchor="end">40</text>
+<line class="grid" x1="44" x2="628" y1="95.1" y2="95.1"/><text class="tick" x="38" y="99.1" text-anchor="end">50</text>
+<line class="grid" x1="44" x2="628" y1="64.6" y2="64.6"/><text class="tick" x="38" y="68.6" text-anchor="end">60</text>
+<line class="grid" x1="44" x2="628" y1="34.0" y2="34.0"/><text class="tick" x="38" y="38.0" text-anchor="end">70</text>
+<rect class="hit" x="49.8" y="34" width="27.3" height="214.0"><title>2012: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="63.5" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="63.5" y="264" text-anchor="end" transform="rotate(-45 63.5 264)">2012</text>
-<path class="bar" d="M88.8,248.0 V247.8 q0,-3 3,-3 H113.0 q3,0 3,3 V248.0 Z"><title>2013: 1 foco a ≤1 km del área quemada, 0 dentro del polígono</title></path>
-<text class="val" x="102.4" y="239.8" text-anchor="middle">1</text>
+<rect class="b-ani" x="88.8" y="244.9" width="27.3" height="3.1"><title>2013: 0 focos dentro del área, 1 en el anillo de 1 km</title></rect>
+<text class="val" x="102.4" y="239.9" text-anchor="middle">1</text>
 <text class="tick" x="102.4" y="264" text-anchor="end" transform="rotate(-45 102.4 264)">2013</text>
-<rect class="hit" x="127.7" y="24" width="27.3" height="224.0"><title>2014: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="127.7" y="34" width="27.3" height="214.0"><title>2014: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="141.3" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="141.3" y="264" text-anchor="end" transform="rotate(-45 141.3 264)">2014</text>
-<rect class="hit" x="166.6" y="24" width="27.3" height="224.0"><title>2015: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="166.6" y="34" width="27.3" height="214.0"><title>2015: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="180.3" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="180.3" y="264" text-anchor="end" transform="rotate(-45 180.3 264)">2015</text>
-<rect class="hit" x="205.6" y="24" width="27.3" height="224.0"><title>2016: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="205.6" y="34" width="27.3" height="214.0"><title>2016: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="219.2" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="219.2" y="264" text-anchor="end" transform="rotate(-45 219.2 264)">2016</text>
-<rect class="hit" x="244.5" y="24" width="27.3" height="224.0"><title>2017: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="244.5" y="34" width="27.3" height="214.0"><title>2017: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="258.1" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="258.1" y="264" text-anchor="end" transform="rotate(-45 258.1 264)">2017</text>
-<path class="bar" d="M283.4,248.0 V238.2 q0,-3 3,-3 H307.7 q3,0 3,3 V248.0 Z"><title>2018: 4 focos a ≤1 km del área quemada, 0 dentro del polígono</title></path>
-<text class="val" x="297.1" y="230.2" text-anchor="middle">4</text>
+<rect class="b-ani" x="283.4" y="235.8" width="27.3" height="12.2"><title>2018: 0 focos dentro del área, 4 en el anillo de 1 km</title></rect>
+<text class="val" x="297.1" y="230.8" text-anchor="middle">4</text>
 <text class="tick" x="297.1" y="264" text-anchor="end" transform="rotate(-45 297.1 264)">2018</text>
-<rect class="hit" x="322.4" y="24" width="27.3" height="224.0"><title>2019: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="322.4" y="34" width="27.3" height="214.0"><title>2019: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="336.0" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="336.0" y="264" text-anchor="end" transform="rotate(-45 336.0 264)">2019</text>
-<rect class="hit" x="361.3" y="24" width="27.3" height="224.0"><title>2020: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="361.3" y="34" width="27.3" height="214.0"><title>2020: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="374.9" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="374.9" y="264" text-anchor="end" transform="rotate(-45 374.9 264)">2020</text>
-<rect class="hit" x="400.2" y="24" width="27.3" height="224.0"><title>2021: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="400.2" y="34" width="27.3" height="214.0"><title>2021: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="413.9" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="413.9" y="264" text-anchor="end" transform="rotate(-45 413.9 264)">2021</text>
-<rect class="hit" x="439.2" y="24" width="27.3" height="224.0"><title>2022: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="439.2" y="34" width="27.3" height="214.0"><title>2022: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="452.8" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="452.8" y="264" text-anchor="end" transform="rotate(-45 452.8 264)">2022</text>
-<rect class="hit" x="478.1" y="24" width="27.3" height="224.0"><title>2023: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="478.1" y="34" width="27.3" height="214.0"><title>2023: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="491.7" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="491.7" y="264" text-anchor="end" transform="rotate(-45 491.7 264)">2023</text>
-<rect class="hit" x="517.0" y="24" width="27.3" height="224.0"><title>2024: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="517.0" y="34" width="27.3" height="214.0"><title>2024: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="530.7" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="530.7" y="264" text-anchor="end" transform="rotate(-45 530.7 264)">2024</text>
-<rect class="hit" x="556.0" y="24" width="27.3" height="224.0"><title>2025: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<rect class="hit" x="556.0" y="34" width="27.3" height="214.0"><title>2025: 0 focos dentro del área, 0 en el anillo de 1 km</title></rect>
 <text class="val" x="569.6" y="243.0" text-anchor="middle">0</text>
 <text class="tick" x="569.6" y="264" text-anchor="end" transform="rotate(-45 569.6 264)">2025</text>
-<path class="bar b2026" d="M594.9,248.0 V55.8 q0,-3 3,-3 H619.2 q3,0 3,3 V248.0 Z"><title>2026*: 61 focos a ≤1 km del área quemada, 44 dentro del polígono</title></path>
-<text class="val strong" x="608.5" y="47.8" text-anchor="middle">61</text>
+<rect class="b-pol" x="594.9" y="113.5" width="27.3" height="134.5"><title>2026*: 44 focos dentro del área, 17 en el anillo de 1 km</title></rect>
+<rect class="b-ani" x="594.9" y="61.5" width="27.3" height="51.0"><title>2026*: 44 focos dentro del área, 17 en el anillo de 1 km</title></rect>
+<text class="val strong" x="608.5" y="56.5" text-anchor="middle">61</text>
 <text class="tick" x="608.5" y="264" text-anchor="end" transform="rotate(-45 608.5 264)">2026*</text>
 </svg>
 </div>
-
-      <figcaption>Focos S-NPP de confianza nominal o alta por año, en el área quemada en 2026 más 1&nbsp;km. *2026: solo del 14 al 21 de octubre (CSV de 7 días). 2012–2025: año completo, archivo anual de NASA FIRMS.</figcaption>
+      <figcaption>Focos Suomi-NPP de confianza nominal o alta por año: oscuro, dentro del área que ardió en 2026; claro, en el anillo de 1&nbsp;km alrededor. *2026: solo los ocho días del 14 al 21 de octubre.</figcaption>
     </figure>
-    <div class="callout">
-      <p><strong>Los datos apuntan a un evento excepcional.</strong> En 14 años completos, S-NPP no registró ni un foco dentro del área que ardió en 2026. En el anillo de 1&nbsp;km hubo focos en solo 2 años: 1 en marzo de 2013 y 4 en diciembre de 2018. En 2026, en dos días (17 y 18 de octubre), hubo 44 focos dentro del área y 61 contando el anillo.</p>
-    </div>
-    <p><strong>Cuánta confianza.</strong> Los 14 años (2012–2025) tienen datos utilizables: cada archivo anual trae detecciones en el Perú en 346 a 366 días del año. Con eso se puede afirmar con <strong>confianza alta</strong> que entre 2012 y 2025 no hubo ahí un incendio del tamaño del de 2026: ese generó 61 focos S-NPP en dos días y uno parecido difícilmente pasaría inadvertido. La confianza es <strong>baja</strong> para afirmar que la zona nunca se quema: S-NPP pasa sobre el Perú unas dos veces al día, y una quema de pastos pequeña y rápida puede empezar y apagarse entre dos pasadas. El resultado no cambia al incluir los focos de confianza baja: siguen siendo cero dentro del área.</p>
-    <p><strong>Lectura económica.</strong> Una recurrencia alta habría sugerido quema de manejo de pastos: una práctica productiva que renueva el forraje pero genera externalidades (humo, emisiones, riesgo de que el fuego escape). Una recurrencia nula, como la de Chichas, es más compatible con un evento excepcional, es decir, con un daño: forraje que los ganaderos pierden sin haberlo planeado. Es evidencia compatible, no prueba: las quemas pequeñas pueden escapar al satélite, y un evento excepcional también puede ser una quema de manejo que se salió de control.</p>
-    <p><strong>Cruce con la firma nocturna.</strong> Chichas fue muy nocturno: el 56,7&nbsp;% de sus focos fueron de noche (70,5&nbsp;% solo con S-NPP), frente al 20,1&nbsp;% del Perú en la misma semana y una mediana de 34,3&nbsp;% en los otros 19 del top 20; es el tercero más nocturno de los 20. La lectura «zona de quema habitual donde esta vez el fuego se escapó» exigiría dos cosas: recurrencia alta y firma nocturna. Aquí solo se cumple la segunda. Lo más simple es que un incendio grande siga ardiendo de noche, sin que eso indique una práctica de manejo.</p>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Año</th><th class="n">Focos en el área</th><th class="n">Focos en área + 1&nbsp;km</th><th class="n">Días con datos (Perú)</th></tr>
-        </thead>
-        <tbody>
-          <tr class="dim"><td>2012</td><td class="n">0</td><td class="n">0</td><td class="n">346</td></tr>
-          <tr><td>2013</td><td class="n">0</td><td class="n">1</td><td class="n">365</td></tr>
-          <tr class="dim"><td>2014</td><td class="n">0</td><td class="n">0</td><td class="n">363</td></tr>
-          <tr class="dim"><td>2015</td><td class="n">0</td><td class="n">0</td><td class="n">365</td></tr>
-          <tr class="dim"><td>2016</td><td class="n">0</td><td class="n">0</td><td class="n">365</td></tr>
-          <tr class="dim"><td>2017</td><td class="n">0</td><td class="n">0</td><td class="n">364</td></tr>
-          <tr><td>2018</td><td class="n">0</td><td class="n">4</td><td class="n">365</td></tr>
-          <tr class="dim"><td>2019</td><td class="n">0</td><td class="n">0</td><td class="n">364</td></tr>
-          <tr class="dim"><td>2020</td><td class="n">0</td><td class="n">0</td><td class="n">366</td></tr>
-          <tr class="dim"><td>2021</td><td class="n">0</td><td class="n">0</td><td class="n">365</td></tr>
-          <tr class="dim"><td>2022</td><td class="n">0</td><td class="n">0</td><td class="n">350</td></tr>
-          <tr class="dim"><td>2023</td><td class="n">0</td><td class="n">0</td><td class="n">363</td></tr>
-          <tr class="dim"><td>2024</td><td class="n">0</td><td class="n">0</td><td class="n">346</td></tr>
-          <tr class="dim"><td>2025</td><td class="n">0</td><td class="n">0</td><td class="n">362</td></tr>
-          <tr class="medido"><td>2026*</td><td class="n">44</td><td class="n">61</td><td class="n">8</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">Solo se usó Suomi-NPP, que tiene la serie completa desde 2012. Sumar NOAA-20 (desde 2018) y NOAA-21 (desde 2023) inflaría los años recientes solo porque hay más satélites mirando.</p>
+    <p>Entre 2012 y 2025, con entre 346 y 366 días de registro al año, el área que ardió en 2026 no registró <strong>ni un solo foco</strong>. En el anillo de 1&nbsp;km hubo uno en 2013 y cuatro en 2018. En los ocho días de registro de octubre de 2026 hubo 44 focos dentro y 61 contando el anillo.</p>
+    <div class="callout alt"><p><strong>Queda descartada una quema de manejo recurrente.</strong> Una zona de quema habitual aparece en el registro año tras año, y esta no aparece nunca. La salvedad es de escala: una quema muy pequeña o muy rápida puede ocurrir entre dos pasadas del satélite sin dejar foco.</p></div>
+    <p>Además, el 56,7&nbsp;% de los focos de Chichas fue nocturno: la tercera firma más nocturna de los veinte, en un país donde el 79,9&nbsp;% de los focos fue diurno.</p>
   </section>
 
-  <section id="veinte">
-    <h2><span class="num">8</span>De uno a veinte incendios</h2>
-    <p>Un caso no basta para generalizar. Se corrió exactamente el mismo pipeline (búsqueda del par Sentinel-2, máscara SCL, dNBR, severidad y WorldCover) sobre los 20 incendios con más focos de la semana. Solo <strong>4 de 20</strong> se pudieron medir.</p>
+  <section id="reto">
+    <h2><span class="num">4</span>Reto C: qué tipo de suelo ardió</h2>
     <div class="table-scroll">
       <table>
-        <thead>
-          <tr><th class="n">#</th><th>Distrito</th><th>Región</th><th class="n">Focos</th><th class="n">Nocturnos</th><th class="n">Envolvente (ha)</th><th class="n">Quemado (ha)</th><th>Cobertura o motivo</th></tr>
-        </thead>
+        <thead><tr><th>Cobertura (WorldCover 2021)</th><th class="n">Hectáreas</th><th class="n">% de lo quemado</th></tr></thead>
         <tbody>
-          <tr class="dim"><td class="n">1</td><td>Río Tambo</td><td>Amazonía</td><td class="n">279</td><td class="n">56&nbsp;%</td><td class="n">3&nbsp;051</td><td class="n">—</td><td><span class="tag gris">nubes</span> (55,4&nbsp;%)</td></tr>
-          <tr class="dim"><td class="n">2</td><td>Curahuasi</td><td>Andes</td><td class="n">201</td><td class="n">34&nbsp;%</td><td class="n">3&nbsp;227</td><td class="n">—</td><td><span class="tag gris">sin pasada</span></td></tr>
-          <tr class="medido"><td class="n">3</td><td>Chichas</td><td>Andes</td><td class="n">178</td><td class="n">57&nbsp;%</td><td class="n">2&nbsp;957</td><td class="n">1&nbsp;689,5</td><td>pastizal</td></tr>
-          <tr class="dim"><td class="n">4</td><td>Callería</td><td>Amazonía</td><td class="n">116</td><td class="n">2&nbsp;%</td><td class="n">1&nbsp;530</td><td class="n">—</td><td><span class="tag gris">nubes</span> (47,2&nbsp;%)</td></tr>
-          <tr class="medido"><td class="n">5</td><td>Iparía</td><td>Amazonía</td><td class="n">108</td><td class="n">44&nbsp;%</td><td class="n">724</td><td class="n">255,4</td><td>bosque</td></tr>
-          <tr class="dim"><td class="n">6</td><td>Huanoquite</td><td>Andes</td><td class="n">80</td><td class="n">51&nbsp;%</td><td class="n">1&nbsp;220</td><td class="n">—</td><td><span class="tag gris">nubes</span> (100,0&nbsp;%)</td></tr>
-          <tr class="dim"><td class="n">7</td><td>Nueva Requena</td><td>Amazonía</td><td class="n">65</td><td class="n">32&nbsp;%</td><td class="n">416</td><td class="n">—</td><td><span class="tag gris">nubes</span> (77,7&nbsp;%)</td></tr>
-          <tr class="dim"><td class="n">8</td><td>Cayna</td><td>Andes</td><td class="n">63</td><td class="n">33&nbsp;%</td><td class="n">724</td><td class="n">—</td><td><span class="tag gris">nubes</span> (100,0&nbsp;%)</td></tr>
-          <tr class="dim"><td class="n">9</td><td>Mazamari</td><td>Amazonía</td><td class="n">62</td><td class="n">32&nbsp;%</td><td class="n">793</td><td class="n">—</td><td><span class="tag gris">sin pasada</span></td></tr>
-          <tr class="dim"><td class="n">10</td><td>Palca</td><td>Andes</td><td class="n">61</td><td class="n">16&nbsp;%</td><td class="n">853</td><td class="n">—</td><td><span class="tag gris">nubes</span> (100,0&nbsp;%)</td></tr>
-          <tr class="medido"><td class="n">11</td><td>San Cristóbal</td><td>Andes</td><td class="n">59</td><td class="n">68&nbsp;%</td><td class="n">587</td><td class="n">609,9</td><td>pastizal</td></tr>
-          <tr class="dim"><td class="n">12</td><td>Santa Cruz</td><td>Amazonía</td><td class="n">50</td><td class="n">22&nbsp;%</td><td class="n">560</td><td class="n">—</td><td><span class="tag gris">nubes</span> (100,0&nbsp;%)</td></tr>
-          <tr class="dim"><td class="n">13</td><td>Nueva Requena</td><td>Amazonía</td><td class="n">49</td><td class="n">33&nbsp;%</td><td class="n">315</td><td class="n">—</td><td><span class="tag gris">prefiltro</span> (18,2&nbsp;%)</td></tr>
-          <tr class="dim"><td class="n">14</td><td>Nueva Requena</td><td>Amazonía</td><td class="n">48</td><td class="n">33&nbsp;%</td><td class="n">308</td><td class="n">—</td><td><span class="tag gris">nubes</span> (100,0&nbsp;%)</td></tr>
-          <tr class="medido"><td class="n">15</td><td>Curahuasi</td><td>Andes</td><td class="n">45</td><td class="n">38&nbsp;%</td><td class="n">475</td><td class="n">306,0</td><td>pastizal</td></tr>
-          <tr class="dim"><td class="n">16</td><td>Paracas</td><td>Costa</td><td class="n">42</td><td class="n">52&nbsp;%</td><td class="n">49</td><td class="n">—</td><td><span class="tag gris">sin pasada</span></td></tr>
-          <tr class="dim"><td class="n">17</td><td>San Juan de Jarpa</td><td>Andes</td><td class="n">42</td><td class="n">0&nbsp;%</td><td class="n">497</td><td class="n">—</td><td><span class="tag gris">nubes</span> (89,4&nbsp;%)</td></tr>
-          <tr class="dim"><td class="n">18</td><td>Caja</td><td>Andes</td><td class="n">39</td><td class="n">56&nbsp;%</td><td class="n">181</td><td class="n">—</td><td><span class="tag gris">nubes</span> (47,5&nbsp;%)</td></tr>
-          <tr class="dim"><td class="n">19</td><td>Ayahuanco</td><td>Andes</td><td class="n">39</td><td class="n">67&nbsp;%</td><td class="n">400</td><td class="n">—</td><td><span class="tag gris">nubes</span> (55,1&nbsp;%)</td></tr>
-          <tr class="dim"><td class="n">20</td><td>Ancahuasi</td><td>Andes</td><td class="n">36</td><td class="n">47&nbsp;%</td><td class="n">259</td><td class="n">—</td><td><span class="tag gris">nubes</span> (65,7&nbsp;%)</td></tr>
+          <tr><td>Pastizal</td><td class="n">1&nbsp;223,0</td><td class="n">72,4&nbsp;%</td></tr>
+          <tr><td>Matorral</td><td class="n">455,6</td><td class="n">27,0&nbsp;%</td></tr>
+          <tr><td>Suelo desnudo</td><td class="n">10,3</td><td class="n">0,6&nbsp;%</td></tr>
+          <tr><td>Agua</td><td class="n">0,4</td><td class="n">0,0&nbsp;%</td></tr>
+          <tr><td>Bosque</td><td class="n">0,1</td><td class="n">0,0&nbsp;%</td></tr>
+          <tr><td>Cultivo</td><td class="n">0,0</td><td class="n">0,0&nbsp;%</td></tr>
+          <tr class="total"><td>Total</td><td class="n">1&nbsp;689,4</td><td class="n">100&nbsp;%</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">Región: Andes si el centro del incendio está a 1&nbsp;500&nbsp;m o más; por debajo, Amazonía (o Costa en departamentos sin selva). Entre paréntesis, el % de la zona inválida en la mejor imagen posterior. «Sin pasada»: ningún Sentinel-2 pasó entre el fin del fuego y el 21 de octubre. «Prefiltro»: la imagen tenía más del 80&nbsp;% de nubes en la escena completa y el pipeline la descarta, aunque la zona estaba limpia en un 81,8&nbsp;%; es un defecto del pipeline, no de la imagen. Paracas (49&nbsp;ha de envolvente y 42 focos en 7 días) probablemente es una fuente de calor industrial, no un incendio.</p>
+    <div class="callout"><p><strong>Cero hectáreas de cultivo y una décima de bosque.</strong> El daño es pérdida de forraje y el afectado es la ganadería extensiva. Con recurrencia nula, además, no es forraje que se queme en un ciclo de manejo.</p></div>
+  </section>
 
-    <h3>a) ¿Se mide peor en la Amazonía?</h3>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Región</th><th class="n">Incendios</th><th class="n">Medidos</th><th class="n">% medidos</th><th class="n">Fallo: nubes</th><th class="n">Fallo: sin pasada</th><th class="n">Fallo: prefiltro</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Amazonía</td><td class="n">8</td><td class="n">1</td><td class="n">12,5&nbsp;%</td><td class="n">5</td><td class="n">1</td><td class="n">1</td></tr>
-          <tr><td>Andes</td><td class="n">11</td><td class="n">3</td><td class="n">27,3&nbsp;%</td><td class="n">7</td><td class="n">1</td><td class="n">0</td></tr>
-          <tr><td>Costa</td><td class="n">1</td><td class="n">0</td><td class="n">0,0&nbsp;%</td><td class="n">0</td><td class="n">1</td><td class="n">0</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>En la Amazonía se midió 1 de 8 (12,5&nbsp;%) y en los Andes 3 de 11 (27,3&nbsp;%), pero la diferencia no es significativa (Fisher, p&nbsp;=&nbsp;0,60). Las nubes tumbaron casi la misma proporción en ambas regiones: el 62,5&nbsp;% de los casos amazónicos y el 63,6&nbsp;% de los andinos. <strong>La hipótesis no se confirma como sesgo regional.</strong> Lo que sí aparece es un sesgo de calendario: a mediados de octubre empiezan las lluvias en la selva y en la sierra, y 16 de los 20 incendios más grandes de la semana no se pueden medir. Además, el corte de datos (21 de octubre) dejó a varios incendios con muy pocos días para conseguir una imagen posterior.</p>
-
-    <h3>b) ¿La severidad depende de la cobertura?</h3>
+  <section id="hipotesis">
+    <h2><span class="num">5</span>Tres hipótesis que cayeron</h2>
+    <h3>a) «En pastizal la severidad sale baja y en bosque alta»: no se sostiene</h3>
     <figure>
 <div class="chart-scroll">
-<svg class="chart" viewBox="0 0 640 252" role="img" aria-label="Distribución de severidad del área quemada en los cuatro incendios medibles">
+<svg class="chart" viewBox="0 0 640 252" role="img" aria-label="Distribución de severidad del área quemada en los cuatro incendios medidos">
 <rect class="sev-b" x="150" y="8" width="12" height="12" rx="2"/><text class="tick" x="167" y="18">Baja</text>
 <rect class="sev-mb" x="214.6" y="8" width="12" height="12" rx="2"/><text class="tick" x="231.6" y="18">Moderada-baja</text>
 <rect class="sev-ma" x="345.79999999999995" y="8" width="12" height="12" rx="2"/><text class="tick" x="362.79999999999995" y="18">Moderada-alta</text>
@@ -449,178 +281,177 @@
 <line class="grid" x1="505.5" x2="505.5" y1="34" y2="222"/><text class="tick" x="505.5" y="240" text-anchor="middle">75&#160;%</text>
 <line class="grid" x1="624.0" x2="624.0" y1="34" y2="222"/><text class="tick" x="624.0" y="240" text-anchor="middle">100&#160;%</text>
 <text class="lbl" x="140" y="55" text-anchor="end">Chichas</text><text class="tick" x="140" y="71" text-anchor="end">pastizal</text>
-<rect class="sev-b" x="150.0" y="42" width="405.2" height="28"><title>Chichas · Baja: 85,7 % del área quemada</title></rect>
-<rect class="sev-mb" x="556.2" y="42" width="66.8" height="28"><title>Chichas · Moderada-baja: 14,3 % del área quemada</title></rect>
-<rect class="sev-ma" x="624.0" y="42" width="0.5" height="28"><title>Chichas · Moderada-alta: 0,1 % del área quemada</title></rect>
+<rect class="sev-b" x="150.0" y="42" width="405.2" height="28"><title>Chichas · Baja: 85,7 %</title></rect>
+<rect class="sev-mb" x="556.2" y="42" width="66.8" height="28"><title>Chichas · Moderada-baja: 14,3 %</title></rect>
+<rect class="sev-ma" x="624.0" y="42" width="0.5" height="28"><title>Chichas · Moderada-alta: 0,1 %</title></rect>
 <text class="lbl" x="140" y="101" text-anchor="end">Curahuasi</text><text class="tick" x="140" y="117" text-anchor="end">pastizal</text>
-<rect class="sev-b" x="150.0" y="88" width="264.4" height="28"><title>Curahuasi · Baja: 56,0 % del área quemada</title></rect>
-<rect class="sev-mb" x="415.4" y="88" width="174.9" height="28"><title>Curahuasi · Moderada-baja: 37,1 % del área quemada</title></rect>
-<rect class="sev-ma" x="591.3" y="88" width="30.3" height="28"><title>Curahuasi · Moderada-alta: 6,6 % del área quemada</title></rect>
-<rect class="sev-a" x="622.6" y="88" width="0.5" height="28"><title>Curahuasi · Alta: 0,3 % del área quemada</title></rect>
+<rect class="sev-b" x="150.0" y="88" width="264.4" height="28"><title>Curahuasi · Baja: 56,0 %</title></rect>
+<rect class="sev-mb" x="415.4" y="88" width="174.9" height="28"><title>Curahuasi · Moderada-baja: 37,1 %</title></rect>
+<rect class="sev-ma" x="591.3" y="88" width="30.3" height="28"><title>Curahuasi · Moderada-alta: 6,6 %</title></rect>
+<rect class="sev-a" x="622.6" y="88" width="0.5" height="28"><title>Curahuasi · Alta: 0,3 %</title></rect>
 <text class="lbl" x="140" y="147" text-anchor="end">Iparía</text><text class="tick" x="140" y="163" text-anchor="end">bosque</text>
-<rect class="sev-b" x="150.0" y="134" width="199.0" height="28"><title>Iparia · Baja: 42,2 % del área quemada</title></rect>
-<rect class="sev-mb" x="350.0" y="134" width="188.6" height="28"><title>Iparia · Moderada-baja: 40,0 % del área quemada</title></rect>
-<rect class="sev-ma" x="539.6" y="134" width="82.4" height="28"><title>Iparia · Moderada-alta: 17,6 % del área quemada</title></rect>
-<rect class="sev-a" x="623.1" y="134" width="0.5" height="28"><title>Iparia · Alta: 0,1 % del área quemada</title></rect>
+<rect class="sev-b" x="150.0" y="134" width="199.0" height="28"><title>Iparía · Baja: 42,2 %</title></rect>
+<rect class="sev-mb" x="350.0" y="134" width="188.6" height="28"><title>Iparía · Moderada-baja: 40,0 %</title></rect>
+<rect class="sev-ma" x="539.6" y="134" width="82.4" height="28"><title>Iparía · Moderada-alta: 17,6 %</title></rect>
+<rect class="sev-a" x="623.1" y="134" width="0.5" height="28"><title>Iparía · Alta: 0,1 %</title></rect>
 <text class="lbl" x="140" y="193" text-anchor="end">San Cristóbal</text><text class="tick" x="140" y="209" text-anchor="end">pastizal</text>
-<rect class="sev-b" x="150.0" y="180" width="193.8" height="28"><title>SanCristobal · Baja: 41,1 % del área quemada</title></rect>
-<rect class="sev-mb" x="344.8" y="180" width="273.0" height="28"><title>SanCristobal · Moderada-baja: 57,8 % del área quemada</title></rect>
-<rect class="sev-ma" x="618.8" y="180" width="4.2" height="28"><title>SanCristobal · Moderada-alta: 1,1 % del área quemada</title></rect>
+<rect class="sev-b" x="150.0" y="180" width="193.8" height="28"><title>San Cristóbal · Baja: 41,1 %</title></rect>
+<rect class="sev-mb" x="344.8" y="180" width="273.0" height="28"><title>San Cristóbal · Moderada-baja: 57,8 %</title></rect>
+<rect class="sev-ma" x="618.8" y="180" width="4.2" height="28"><title>San Cristóbal · Moderada-alta: 1,1 %</title></rect>
 </svg>
 </div>
-      <figcaption>Distribución de severidad (escala de Key y Benson) del área quemada en los cuatro incendios medibles.</figcaption>
+      <figcaption>Distribución de severidad (escala de Key y Benson) del área quemada en los cuatro incendios medidos.</figcaption>
     </figure>
-    <p>La hipótesis era que en bosque la severidad sale alta y en pastizal casi todo cae en la banda baja. <strong>Los datos no la respaldan.</strong> El único bosque medible, Iparía, tiene el 57,7&nbsp;% de lo quemado en severidad moderada o más; San Cristóbal, un pastizal, tiene el 58,9&nbsp;%. Chichas es el caso atípico, con solo el 14,4&nbsp;%. Con un bosque y tres pastizales no se pueden comparar distribuciones.</p>
-    <p class="note">Aunque la hipótesis se cumpliera, no probaría que la escala esté mal calibrada para el pastizal andino: que el pastizal salga «bajo» puede ser exactamente lo que pasa en el terreno. Para probar una mala calibración hace falta severidad medida en campo (CBI). La literatura (sección 11) sí muestra que los umbrales calibrados en bosque no se trasladan sin más a vegetación rala o herbácea.</p>
-
-    <h3>c) ¿Los focos sobrestiman siempre?</h3>
+    <p>Los pastizales van del 14,4&nbsp;% al 58,9&nbsp;% de severidad moderada o superior, y el único bosque medible, Iparía, cae dentro de ese rango con 57,7&nbsp;%. Chichas es el atípico. Con n&nbsp;=&nbsp;4 no se puede concluir que la escala de Key y Benson esté mal calibrada para el pastizal andino; para eso hace falta severidad medida en campo. Y no encontramos ningún estudio de dNBR con validación de campo en puna o páramo: ese vacío es en sí mismo un hallazgo.</p>
+    <h3>b) «Los focos sobrestiman de forma sistemática»: no</h3>
     <figure>
 <div class="chart-scroll">
-<svg class="chart" viewBox="0 0 640 420" role="img" aria-label="Envolvente de focos frente a área medida en los cuatro incendios medibles">
+<svg class="chart" viewBox="0 0 640 420" role="img" aria-label="Envolvente de focos frente a área medida en los cuatro incendios medidos">
 <line class="grid" x1="64" x2="620" y1="370.0" y2="370.0"/><text class="tick" x="56" y="374.0" text-anchor="end">0</text><text class="tick" x="64.0" y="388" text-anchor="middle">0</text>
 <line class="grid" x1="64" x2="620" y1="318.5" y2="318.5"/><text class="tick" x="56" y="322.5" text-anchor="end">500</text><text class="tick" x="145.8" y="388" text-anchor="middle">500</text>
-<line class="grid" x1="64" x2="620" y1="267.1" y2="267.1"/><text class="tick" x="56" y="271.1" text-anchor="end">1&#160;000</text><text class="tick" x="227.5" y="388" text-anchor="middle">1&#160;000</text>
-<line class="grid" x1="64" x2="620" y1="215.6" y2="215.6"/><text class="tick" x="56" y="219.6" text-anchor="end">1&#160;500</text><text class="tick" x="309.3" y="388" text-anchor="middle">1&#160;500</text>
-<line class="grid" x1="64" x2="620" y1="164.1" y2="164.1"/><text class="tick" x="56" y="168.1" text-anchor="end">2&#160;000</text><text class="tick" x="391.1" y="388" text-anchor="middle">2&#160;000</text>
-<line class="grid" x1="64" x2="620" y1="112.6" y2="112.6"/><text class="tick" x="56" y="116.6" text-anchor="end">2&#160;500</text><text class="tick" x="472.8" y="388" text-anchor="middle">2&#160;500</text>
-<line class="grid" x1="64" x2="620" y1="61.2" y2="61.2"/><text class="tick" x="56" y="65.2" text-anchor="end">3&#160;000</text><text class="tick" x="554.6" y="388" text-anchor="middle">3&#160;000</text>
+<line class="grid" x1="64" x2="620" y1="267.1" y2="267.1"/><text class="tick" x="56" y="271.1" text-anchor="end">1&nbsp;000</text><text class="tick" x="227.5" y="388" text-anchor="middle">1&nbsp;000</text>
+<line class="grid" x1="64" x2="620" y1="215.6" y2="215.6"/><text class="tick" x="56" y="219.6" text-anchor="end">1&nbsp;500</text><text class="tick" x="309.3" y="388" text-anchor="middle">1&nbsp;500</text>
+<line class="grid" x1="64" x2="620" y1="164.1" y2="164.1"/><text class="tick" x="56" y="168.1" text-anchor="end">2&nbsp;000</text><text class="tick" x="391.1" y="388" text-anchor="middle">2&nbsp;000</text>
+<line class="grid" x1="64" x2="620" y1="112.6" y2="112.6"/><text class="tick" x="56" y="116.6" text-anchor="end">2&nbsp;500</text><text class="tick" x="472.8" y="388" text-anchor="middle">2&nbsp;500</text>
+<line class="grid" x1="64" x2="620" y1="61.2" y2="61.2"/><text class="tick" x="56" y="65.2" text-anchor="end">3&nbsp;000</text><text class="tick" x="554.6" y="388" text-anchor="middle">3&nbsp;000</text>
 <line class="ref" x1="64.0" y1="370.0" x2="620.0" y2="20.0"/><text class="tick" x="505.5" y="83.8" transform="rotate(-38 505.5 83.8)">medida = envolvente</text><text class="axis" x="342.0" y="412" text-anchor="middle">Envolvente de los focos (ha)</text><text class="axis" x="14" y="195.0" text-anchor="middle" transform="rotate(-90 14 195.0)">Área medida (ha)</text>
-<circle class="pt-pasto" cx="547.6" cy="196.1" r="7"><title>Chichas: envolvente 2&#160;957 ha, medida 1&#160;689,5 ha (-42,9 %)</title></circle><text class="lbl" x="535.6" y="186.1" text-anchor="end">Chichas (−43 %)</text>
-<circle class="pt-pasto" cx="141.7" cy="338.5" r="7"><title>Curahuasi: envolvente 475 ha, medida 306,0 ha (-35,6 %)</title></circle><text class="lbl" x="153.7" y="328.5" text-anchor="start">Curahuasi (−36 %)</text>
-<circle class="pt-bosque" cx="182.4" cy="343.7" r="7"><title>Iparía: envolvente 724 ha, medida 255,4 ha (-64,7 %)</title></circle><text class="lbl" x="194.4" y="361.7" text-anchor="start">Iparía (−65 %)</text>
-<circle class="pt-pasto" cx="160.0" cy="307.2" r="7"><title>San Cristóbal: envolvente 587 ha, medida 609,9 ha (3,9 %)</title></circle><text class="lbl" x="172.0" y="297.2" text-anchor="start">San Cristóbal (+4 %)</text>
+<circle class="pt-pasto" cx="547.6" cy="196.1" r="7"><title>Chichas: envolvente 2 957 ha, medida 1 689,5 ha</title></circle><text class="lbl" x="535.6" y="186.1" text-anchor="end">Chichas (−42,9&#160;%)</text>
+<circle class="pt-bosque" cx="182.4" cy="343.7" r="7"><title>Iparía: envolvente 724 ha, medida 255,4 ha</title></circle><text class="lbl" x="194.4" y="361.7" text-anchor="start">Iparía (−64,7&#160;%)</text>
+<circle class="pt-pasto" cx="160.0" cy="307.2" r="7"><title>San Cristóbal: envolvente 587 ha, medida 609,9 ha</title></circle><text class="lbl" x="172.0" y="297.2" text-anchor="start">San Cristóbal (+3,9&#160;%)</text>
+<circle class="pt-pasto" cx="141.7" cy="338.5" r="7"><title>Curahuasi: envolvente 475 ha, medida 306,0 ha</title></circle><text class="lbl" x="153.7" y="328.5" text-anchor="start">Curahuasi (−35,6&#160;%)</text>
 </svg>
 </div>
-      <figcaption>Envolvente de los focos frente al área medida (dNBR&nbsp;≥&nbsp;0,10). Verde: pastizal dominante; ocre: bosque. Bajo la diagonal, la envolvente sobrestima.</figcaption>
+      <figcaption>Envolvente de los focos frente al área medida. Verde: pastizal dominante; ocre: bosque. Bajo la diagonal, la envolvente sobrestima.</figcaption>
     </figure>
-    <p>En tres de los cuatro casos la envolvente sobrestima: Iparía −64,7&nbsp;%, Chichas −42,9&nbsp;% y Curahuasi −35,6&nbsp;%. En San Cristóbal la medida supera a la envolvente (+3,9&nbsp;%). La dirección se repite, pero el tamaño varía de casi cero a casi dos tercios; con cuatro casos no se puede hablar de un factor sistemático.</p>
-
-    <h3>d) ¿Los incendios nocturnos son más grandes o más severos?</h3>
-    <p>No hay evidencia. Con los cuatro medidos, la correlación de Spearman entre el % de focos nocturnos y el área quemada es 0,60 (p&nbsp;=&nbsp;0,40) y con el % de severidad moderada o más, 0,40 (p&nbsp;=&nbsp;0,60). Con los 20 casos y la envolvente como medida de tamaño, la correlación es −0,11 (p&nbsp;=&nbsp;0,64).</p>
+    <p>−64,7&nbsp;% en Iparía, −42,9&nbsp;% en Chichas, −35,6&nbsp;% en Curahuasi y +3,9&nbsp;% en San Cristóbal. Tres sobrestiman y uno subestima, en un rango demasiado amplio para un factor de corrección. Lo que queda en pie es que contar focos no mide hectáreas.</p>
+    <h3>c) «Las nubes castigan sobre todo a la Amazonía»: no</h3>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Región</th><th class="n">Incendios</th><th class="n">Medidos</th><th class="n">% medidos</th><th class="n">Nubes</th><th class="n">Sin pasada</th><th class="n">Prefiltro</th></tr></thead>
+        <tbody>
+          <tr><td>Amazonía</td><td class="n">8</td><td class="n">1</td><td class="n">12,5&nbsp;%</td><td class="n">5</td><td class="n">1</td><td class="n">1</td></tr>
+          <tr><td>Andes</td><td class="n">12</td><td class="n">3</td><td class="n">25,0&nbsp;%</td><td class="n">8</td><td class="n">1</td><td class="n">0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Fisher, p&nbsp;=&nbsp;0,62. Las nubes tumbaron el 62,5&nbsp;% de los casos amazónicos y el 66,7&nbsp;% de los andinos.</p>
   </section>
 
   <section id="robustez">
-    <h2><span class="num">9</span>Robustez</h2>
-    <h3>Cuánto mueve cada decisión las hectáreas de Chichas</h3>
-    <p>«La cifra depende de cuatro decisiones» es una advertencia; aquí se mide cuánto pesa cada una, cambiando una por vez y dejando las otras en su valor base.</p>
+    <h2><span class="num">6</span>Robustez</h2>
     <figure>
 <div class="chart-scroll">
 <svg class="chart" viewBox="0 0 640 262" role="img" aria-label="Tornado: cuánto mueve cada decisión el área quemada de Chichas">
 <line class="grid" x1="250.2" x2="250.2" y1="14" y2="228"/><text class="tick" x="250.2" y="246" text-anchor="middle">0</text>
 <line class="grid" x1="327.4" x2="327.4" y1="14" y2="228"/><text class="tick" x="327.4" y="246" text-anchor="middle">500</text>
-<line class="grid" x1="404.6" x2="404.6" y1="14" y2="228"/><text class="tick" x="404.6" y="246" text-anchor="middle">1&#160;000</text>
-<line class="grid" x1="481.9" x2="481.9" y1="14" y2="228"/><text class="tick" x="481.9" y="246" text-anchor="middle">1&#160;500</text>
-<line class="grid" x1="559.1" x2="559.1" y1="14" y2="228"/><text class="tick" x="559.1" y="246" text-anchor="middle">2&#160;000</text>
-<text class="lbl" x="200" y="36" text-anchor="end">Umbral de dNBR</text><text class="tick" x="200" y="52" text-anchor="end">(0,05–0,35)</text>
+<line class="grid" x1="404.6" x2="404.6" y1="14" y2="228"/><text class="tick" x="404.6" y="246" text-anchor="middle">1&nbsp;000</text>
+<line class="grid" x1="481.9" x2="481.9" y1="14" y2="228"/><text class="tick" x="481.9" y="246" text-anchor="middle">1&nbsp;500</text>
+<line class="grid" x1="559.1" x2="559.1" y1="14" y2="228"/><text class="tick" x="559.1" y="246" text-anchor="middle">2&nbsp;000</text>
+<text class="lbl" x="200" y="36" text-anchor="end">Umbral de dNBR</text><text class="tick" x="200" y="52" text-anchor="end">(0,05–0,35) · 1&nbsp;973,6&#160;ha</text>
 <rect class="torn-lo" x="255.4" y="24" width="255.7" height="30"><title>Umbral de dNBR: mínimo 33,9 ha</title></rect>
-<rect class="torn-hi" x="511.1" y="24" width="49.1" height="30"><title>Umbral de dNBR: máximo 2&#160;007,5 ha</title></rect>
+<rect class="torn-hi" x="511.1" y="24" width="49.1" height="30"><title>Umbral de dNBR: máximo 2 007,5 ha</title></rect>
 <text class="tick" x="250.4" y="43" text-anchor="end">34</text>
-<text class="tick" x="565.3" y="43">2&#160;008</text>
-<text class="lbl" x="200" y="88" text-anchor="end">Par de imágenes</text><text class="tick" x="200" y="104" text-anchor="end">(2.ª mejor)</text>
-<rect class="torn-lo" x="447.4" y="76" width="63.8" height="30"><title>Par de imágenes: mínimo 1&#160;276,7 ha</title></rect>
-<text class="tick" x="442.4" y="95" text-anchor="end">1&#160;277</text>
-<text class="lbl" x="200" y="140" text-anchor="end">Máscara SCL</text><text class="tick" x="200" y="156" text-anchor="end">(permisiva – estricta)</text>
-<rect class="torn-lo" x="477.8" y="128" width="33.4" height="30"><title>Máscara SCL: mínimo 1&#160;473,4 ha</title></rect>
-<text class="tick" x="472.8" y="147" text-anchor="end">1&#160;473</text>
-<text class="lbl" x="200" y="192" text-anchor="end">Zona</text><text class="tick" x="200" y="208" text-anchor="end">(500 m – 2 km)</text>
-<rect class="torn-lo" x="511.0" y="180" width="0.1" height="30"><title>Zona: mínimo 1&#160;688,9 ha</title></rect>
-<rect class="torn-hi" x="511.1" y="180" width="0.6" height="30"><title>Zona: máximo 1&#160;693,1 ha</title></rect>
-<text class="tick" x="506.0" y="199" text-anchor="end">1&#160;689</text>
-<text class="tick" x="516.7" y="199">1&#160;693</text>
+<text class="tick" x="565.3" y="43">2&nbsp;008</text>
+<text class="lbl" x="200" y="88" text-anchor="end">Par de imágenes</text><text class="tick" x="200" y="104" text-anchor="end">(2.ª mejor) · 412,8&#160;ha</text>
+<rect class="torn-lo" x="447.4" y="76" width="63.8" height="30"><title>Par de imágenes: mínimo 1 276,7 ha</title></rect>
+<text class="tick" x="442.4" y="95" text-anchor="end">1&nbsp;277</text>
+<text class="lbl" x="200" y="140" text-anchor="end">Máscara SCL</text><text class="tick" x="200" y="156" text-anchor="end">(permisiva – estricta) · 216,1&#160;ha</text>
+<rect class="torn-lo" x="477.8" y="128" width="33.4" height="30"><title>Máscara SCL: mínimo 1 473,4 ha</title></rect>
+<text class="tick" x="472.8" y="147" text-anchor="end">1&nbsp;473</text>
+<text class="lbl" x="200" y="192" text-anchor="end">Zona</text><text class="tick" x="200" y="208" text-anchor="end">(500 m – 2 km) · 4,2&#160;ha</text>
+<rect class="torn-lo" x="511.0" y="180" width="0.1" height="30"><title>Zona: mínimo 1 688,9 ha</title></rect>
+<rect class="torn-hi" x="511.1" y="180" width="0.6" height="30"><title>Zona: máximo 1 693,1 ha</title></rect>
+<text class="tick" x="506.0" y="199" text-anchor="end">1&nbsp;689</text>
+<text class="tick" x="516.7" y="199">1&nbsp;693</text>
 <line class="base" x1="511.1" x2="511.1" y1="14" y2="228"/>
 </svg>
 </div>
-      <figcaption>Rango de hectáreas quemadas en Chichas al cambiar cada decisión. La línea vertical es la base (1&nbsp;689,5&nbsp;ha). Ocre: hacia abajo; verde: hacia arriba.</figcaption>
+      <figcaption>Rango de hectáreas quemadas en Chichas al cambiar una decisión por vez. La línea vertical es la base (1&nbsp;689,5&nbsp;ha).</figcaption>
     </figure>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Decisión</th><th>Opción</th><th class="n">Hectáreas</th><th class="n">Cambio</th></tr>
-        </thead>
-        <tbody>
-          <tr class="medido"><td>Base</td><td>0,10 · mejor par · SCL usada · 1 km</td><td class="n">1&nbsp;689,5</td><td class="n">—</td></tr>
-          <tr><td>Par de imágenes</td><td>2.ª mejor posterior: 2026-10-20 (17,4&nbsp;% inválido)</td><td class="n">1&nbsp;276,7</td><td class="n">−24,4&nbsp;%</td></tr>
-          <tr><td>Par de imágenes</td><td>2.ª mejor previa: 2026-10-13 (0,0&nbsp;% inválido)</td><td class="n">1&nbsp;497,6</td><td class="n">−11,4&nbsp;%</td></tr>
-          <tr><td>Máscara SCL</td><td>SCL permisiva</td><td class="n">1&nbsp;689,5</td><td class="n">0,0&nbsp;%</td></tr>
-          <tr><td>Máscara SCL</td><td>SCL estricta</td><td class="n">1&nbsp;473,4</td><td class="n">−12,8&nbsp;%</td></tr>
-          <tr><td>Zona</td><td>focos + 500 m</td><td class="n">1&nbsp;688,9</td><td class="n">0,0&nbsp;%</td></tr>
-          <tr><td>Zona</td><td>focos + 2 km</td><td class="n">1&nbsp;693,1</td><td class="n">+0,2&nbsp;%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <ul class="clean">
-      <li><strong>El umbral domina</strong>: de 34 a 2&nbsp;008&nbsp;ha (sección 6).</li>
-      <li><strong>Par de imágenes</strong>: la segunda mejor imagen posterior (Sentinel-2B, otra órbita, el mismo 20 de octubre) da 1&nbsp;276,7&nbsp;ha, pero tiene el 17,4&nbsp;% de la zona tapada. Comparadas solo donde ambas son válidas (4&nbsp;449,8&nbsp;ha), la diferencia es de 1&nbsp;353,9 a 1&nbsp;276,5&nbsp;ha, un 5,7&nbsp;% menos.</li>
-      <li><strong>Máscara</strong>: la permisiva no cambia nada. La estricta quita 216&nbsp;ha, pero no porque quite nubes: Sentinel-2 marca 178,7&nbsp;ha de la cicatriz como «zona oscura» (SCL 2) y 37,4&nbsp;ha como «sin clasificar» (SCL 7). El suelo quemado es oscuro, así que la máscara estricta borra parte del propio incendio. Es un artefacto, no incertidumbre real.</li>
-      <li><strong>Zona</strong>: prácticamente irrelevante (1&nbsp;688,9 a 1&nbsp;693,1&nbsp;ha), porque la cicatriz queda entera dentro de cualquiera de los tres buffers.</li>
-    </ul>
-
-    <h3>La concentración de focos depende de la unidad (MAUP)</h3>
-    <p>El coeficiente de Gini mide qué tan concentrados están los 8&nbsp;637 focos. Su valor depende de la unidad espacial elegida y de si se cuentan las unidades sin focos:</p>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Unidad</th><th class="n">Con focos</th><th class="n">Gini (solo con focos)</th><th class="n">Gini (todas)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>distrito</td><td class="n">644 de 1&nbsp;815</td><td class="n">0,735</td><td class="n">0,906</td></tr>
-          <tr><td>provincia</td><td class="n">180 de 195</td><td class="n">0,737</td><td class="n">0,758</td></tr>
-          <tr><td>grilla 10&nbsp;×&nbsp;10 km</td><td class="n">1&nbsp;588 de 13&nbsp;464</td><td class="n">0,609</td><td class="n">0,954</td></tr>
-          <tr><td>grilla 10&nbsp;×&nbsp;10 km desplazada 5 km</td><td class="n">1&nbsp;595 de 13&nbsp;453</td><td class="n">0,607</td><td class="n">0,953</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p>Según la unidad, el mismo conjunto de focos da un Gini entre 0,607 y 0,954. Cualquier afirmación del tipo «los focos están muy concentrados» tiene que decir con qué unidad y con qué denominador se midió: <strong>la concentración depende de la unidad elegida</strong>. Desplazar la grilla 5&nbsp;km casi no la cambia (0,609 frente a 0,607), así que con un tamaño de celda fijo el resultado es estable.</p>
-    <p class="note">Una versión anterior del análisis reportaba un Gini por distrito de 0,733; con estos datos y la fórmula estándar se obtiene 0,735 (644 distritos con focos). No se pudo reproducir el 0,733.</p>
+    <p>El umbral recorre 1&nbsp;973,6&nbsp;ha; el par de imágenes, 412,8; la máscara, 216,1; la zona, 4,2. El umbral solo mueve 3,1 veces más que las otras tres decisiones juntas (633,1&nbsp;ha).</p>
+    <figure>
+<div class="chart-scroll">
+<svg class="chart" viewBox="0 0 640 330" role="img" aria-label="Hectáreas quemadas en Chichas según el umbral de dNBR">
+<line class="grid" x1="62" x2="620" y1="280.0" y2="280.0"/><text class="tick" x="54" y="284.0" text-anchor="end">0</text>
+<line class="grid" x1="62" x2="620" y1="251.6" y2="251.6"/><text class="tick" x="54" y="255.6" text-anchor="end">250</text>
+<line class="grid" x1="62" x2="620" y1="223.1" y2="223.1"/><text class="tick" x="54" y="227.1" text-anchor="end">500</text>
+<line class="grid" x1="62" x2="620" y1="194.7" y2="194.7"/><text class="tick" x="54" y="198.7" text-anchor="end">750</text>
+<line class="grid" x1="62" x2="620" y1="166.2" y2="166.2"/><text class="tick" x="54" y="170.2" text-anchor="end">1&nbsp;000</text>
+<line class="grid" x1="62" x2="620" y1="137.8" y2="137.8"/><text class="tick" x="54" y="141.8" text-anchor="end">1&nbsp;250</text>
+<line class="grid" x1="62" x2="620" y1="109.3" y2="109.3"/><text class="tick" x="54" y="113.3" text-anchor="end">1&nbsp;500</text>
+<line class="grid" x1="62" x2="620" y1="80.9" y2="80.9"/><text class="tick" x="54" y="84.9" text-anchor="end">1&nbsp;750</text>
+<line class="grid" x1="62" x2="620" y1="52.4" y2="52.4"/><text class="tick" x="54" y="56.4" text-anchor="end">2&nbsp;000</text>
+<line class="grid" x1="62" x2="620" y1="24.0" y2="24.0"/><text class="tick" x="54" y="28.0" text-anchor="end">2&nbsp;250</text>
+<text class="tick" x="62.0" y="298" text-anchor="middle">0,05</text>
+<text class="tick t-opc" x="117.8" y="298" text-anchor="middle">0,08</text>
+<text class="tick" x="155.0" y="298" text-anchor="middle">0,10</text>
+<text class="tick" x="248.0" y="298" text-anchor="middle">0,15</text>
+<text class="tick" x="341.0" y="298" text-anchor="middle">0,20</text>
+<text class="tick" x="471.2" y="298" text-anchor="middle">0,27</text>
+<text class="tick" x="620.0" y="298" text-anchor="middle">0,35</text>
+<line class="ref" x1="155.0" x2="155.0" y1="24" y2="280"/><text class="axis" x="341.0" y="322" text-anchor="middle">Umbral de dNBR</text>
+<polyline class="line s1" points="62.0,51.6 117.8,70.3 155.0,87.8 248.0,147.0 341.0,201.9 471.2,252.5 620.0,276.1"/>
+<circle class="dot s1" cx="62.0" cy="51.6" r="4.5"><title>Umbral 0,05: 2 007,5 ha</title></circle>
+<circle class="dot s1" cx="117.8" cy="70.3" r="4.5"><title>Umbral 0,08: 1 842,9 ha</title></circle>
+<circle class="dot s1" cx="155.0" cy="87.8" r="6"><title>Umbral 0,10: 1 689,5 ha</title></circle>
+<circle class="dot s1" cx="248.0" cy="147.0" r="4.5"><title>Umbral 0,15: 1 168,9 ha</title></circle>
+<circle class="dot s1" cx="341.0" cy="201.9" r="4.5"><title>Umbral 0,20: 686,6 ha</title></circle>
+<circle class="dot s1" cx="471.2" cy="252.5" r="4.5"><title>Umbral 0,27: 241,9 ha</title></circle>
+<circle class="dot s1" cx="620.0" cy="276.1" r="4.5"><title>Umbral 0,35: 33,9 ha</title></circle>
+<text class="lbl" x="167.0" y="77.8">Umbral usado (0,10): 1&nbsp;690&#160;ha</text>
+</svg>
+</div>
+      <figcaption>Hectáreas quemadas en Chichas según el umbral de dNBR. La línea discontinua marca el umbral usado (0,10).</figcaption>
+    </figure>
+    <p>La curva colapsa rápido porque los píxeles quemados se apiñan cerca del umbral. Con 0,35, a Chichas le queda el 2&nbsp;% del área medida con 0,10; a Iparía, el 39&nbsp;%.</p>
+    <div class="callout alt"><p><strong>Más rigor aparente, menos señal.</strong> Endurecer la máscara de nubes <em>reduce</em> el área en 216,1&nbsp;ha, pero no porque quite nubes: la capa SCL de Sentinel-2 clasifica 178,7&nbsp;ha de la propia cicatriz como «zona oscura» y 37,4&nbsp;ha como «sin clasificar», y la máscara estricta las descarta.</p></div>
   </section>
 
   <section id="validacion">
-    <h2><span class="num">10</span>Validación contra MCD64A1</h2>
-    <p>MCD64A1, el producto mensual de área quemada de MODIS, todavía no existe para octubre de 2026, así que se validó el <strong>método</strong> y no este incendio. La regla se fijó antes de ver resultados: se agruparon los focos S-NPP de junio a noviembre de 2024 y 2025, se ordenaron por número de focos y se tomaron los 3 primeros medibles. Las dos cifras se comparan en la misma zona y sobre los mismos píxeles válidos.</p>
+    <h2><span class="num">7</span>Validación contra MCD64A1</h2>
+    <p>MCD64A1, el producto mensual de área quemada de MODIS, aún no existe para octubre de 2026, así que se validó el método en incendios de 2024 con una regla fijada antes de ver resultados.</p>
     <figure>
 <div class="chart-scroll">
-<svg class="chart" viewBox="0 0 640 420" role="img" aria-label="Validación: nuestro método frente a MCD64A1 en 21 incendios de 2024">
+<svg class="chart" viewBox="0 0 640 420" role="img" aria-label="Nuestro método frente a MCD64A1 en los incendios de validación de 2024">
 <line class="grid" x1="64" x2="620" y1="370.0" y2="370.0"/><text class="tick" x="56" y="374.0" text-anchor="end">0</text><text class="tick" x="64.0" y="388" text-anchor="middle">0</text>
-<line class="grid" x1="64" x2="620" y1="314.4" y2="314.4"/><text class="tick" x="56" y="318.4" text-anchor="end">1&#160;000</text><text class="tick" x="152.3" y="388" text-anchor="middle">1&#160;000</text>
-<line class="grid" x1="64" x2="620" y1="258.9" y2="258.9"/><text class="tick" x="56" y="262.9" text-anchor="end">2&#160;000</text><text class="tick" x="240.5" y="388" text-anchor="middle">2&#160;000</text>
-<line class="grid" x1="64" x2="620" y1="203.3" y2="203.3"/><text class="tick" x="56" y="207.3" text-anchor="end">3&#160;000</text><text class="tick" x="328.8" y="388" text-anchor="middle">3&#160;000</text>
-<line class="grid" x1="64" x2="620" y1="147.8" y2="147.8"/><text class="tick" x="56" y="151.8" text-anchor="end">4&#160;000</text><text class="tick" x="417.0" y="388" text-anchor="middle">4&#160;000</text>
-<line class="grid" x1="64" x2="620" y1="92.2" y2="92.2"/><text class="tick" x="56" y="96.2" text-anchor="end">5&#160;000</text><text class="tick" x="505.3" y="388" text-anchor="middle">5&#160;000</text>
-<line class="grid" x1="64" x2="620" y1="36.7" y2="36.7"/><text class="tick" x="56" y="40.7" text-anchor="end">6&#160;000</text><text class="tick" x="593.5" y="388" text-anchor="middle">6&#160;000</text>
+<line class="grid" x1="64" x2="620" y1="314.4" y2="314.4"/><text class="tick" x="56" y="318.4" text-anchor="end">1&nbsp;000</text><text class="tick" x="152.3" y="388" text-anchor="middle">1&nbsp;000</text>
+<line class="grid" x1="64" x2="620" y1="258.9" y2="258.9"/><text class="tick" x="56" y="262.9" text-anchor="end">2&nbsp;000</text><text class="tick" x="240.5" y="388" text-anchor="middle">2&nbsp;000</text>
+<line class="grid" x1="64" x2="620" y1="203.3" y2="203.3"/><text class="tick" x="56" y="207.3" text-anchor="end">3&nbsp;000</text><text class="tick" x="328.8" y="388" text-anchor="middle">3&nbsp;000</text>
+<line class="grid" x1="64" x2="620" y1="147.8" y2="147.8"/><text class="tick" x="56" y="151.8" text-anchor="end">4&nbsp;000</text><text class="tick" x="417.0" y="388" text-anchor="middle">4&nbsp;000</text>
+<line class="grid" x1="64" x2="620" y1="92.2" y2="92.2"/><text class="tick" x="56" y="96.2" text-anchor="end">5&nbsp;000</text><text class="tick" x="505.3" y="388" text-anchor="middle">5&nbsp;000</text>
+<line class="grid" x1="64" x2="620" y1="36.7" y2="36.7"/><text class="tick" x="56" y="40.7" text-anchor="end">6&nbsp;000</text><text class="tick" x="593.5" y="388" text-anchor="middle">6&nbsp;000</text>
 <line class="ref" x1="64.0" y1="370.0" x2="620.0" y2="20.0"/><text class="axis" x="342.0" y="412" text-anchor="middle">MCD64A1 (ha)</text><text class="axis" x="14" y="195.0" text-anchor="middle" transform="rotate(-90 14 195.0)">Nuestro método (ha)</text>
-<circle class="pt-otro" cx="259.2" cy="243.0" r="6"><title>2024-23859 (bosque): nuestro 2&#160;286,7 ha, MCD64A1 2&#160;212,2 ha</title></circle>
-<circle class="pt-otro" cx="288.9" cy="200.6" r="6"><title>2024-28172 (bosque): nuestro 3&#160;049,5 ha, MCD64A1 2&#160;547,8 ha</title></circle>
-<circle class="pt-otro" cx="288.5" cy="274.2" r="6"><title>2024-25613 (bosque): nuestro 1&#160;724,9 ha, MCD64A1 2&#160;543,6 ha</title></circle>
-<circle class="pt-otro" cx="244.7" cy="221.3" r="6"><title>2024-21152 (bosque): nuestro 2&#160;676,0 ha, MCD64A1 2&#160;047,0 ha</title></circle>
-<circle class="pt-otro" cx="174.8" cy="250.0" r="6"><title>2024-7631 (bosque): nuestro 2&#160;159,8 ha, MCD64A1 1&#160;255,0 ha</title></circle>
-<circle class="pt-otro" cx="183.1" cy="230.6" r="6"><title>2024-7629 (bosque): nuestro 2&#160;509,6 ha, MCD64A1 1&#160;349,4 ha</title></circle>
-<circle class="pt-bosque" cx="196.3" cy="272.5" r="6"><title>2024-9748 (pastizal): nuestro 1&#160;754,8 ha, MCD64A1 1&#160;498,7 ha</title></circle>
-<circle class="pt-otro" cx="295.5" cy="215.7" r="6"><title>2024-27870 (bosque): nuestro 2&#160;777,2 ha, MCD64A1 2&#160;622,8 ha</title></circle>
-<circle class="pt-otro" cx="243.7" cy="217.9" r="6"><title>2024-28664 (bosque): nuestro 2&#160;737,4 ha, MCD64A1 2&#160;036,7 ha</title></circle>
-<circle class="pt-otro" cx="342.5" cy="195.7" r="6"><title>2024-23334 (bosque): nuestro 3&#160;138,0 ha, MCD64A1 3&#160;155,7 ha</title></circle>
-<circle class="pt-otro" cx="258.1" cy="244.6" r="6"><title>2024-23382 (bosque): nuestro 2&#160;257,6 ha, MCD64A1 2&#160;199,1 ha</title></circle>
+<circle class="pt-otro" cx="259.2" cy="243.0" r="6"><title>2024-23859 (bosque): nuestro 2 286,7 ha, MCD64A1 2 212,2 ha</title></circle>
+<circle class="pt-otro" cx="288.9" cy="200.6" r="6"><title>2024-28172 (bosque): nuestro 3 049,5 ha, MCD64A1 2 547,8 ha</title></circle>
+<circle class="pt-otro" cx="288.5" cy="274.2" r="6"><title>2024-25613 (bosque): nuestro 1 724,9 ha, MCD64A1 2 543,6 ha</title></circle>
+<circle class="pt-otro" cx="244.7" cy="221.3" r="6"><title>2024-21152 (bosque): nuestro 2 676,0 ha, MCD64A1 2 047,0 ha</title></circle>
+<circle class="pt-otro" cx="174.8" cy="250.0" r="6"><title>2024-7631 (bosque): nuestro 2 159,8 ha, MCD64A1 1 255,0 ha</title></circle>
+<circle class="pt-otro" cx="183.1" cy="230.6" r="6"><title>2024-7629 (bosque): nuestro 2 509,6 ha, MCD64A1 1 349,4 ha</title></circle>
+<circle class="pt-bosque" cx="196.3" cy="272.5" r="6"><title>2024-9748 (pastizal): nuestro 1 754,8 ha, MCD64A1 1 498,7 ha</title></circle>
+<circle class="pt-otro" cx="295.5" cy="215.7" r="6"><title>2024-27870 (bosque): nuestro 2 777,2 ha, MCD64A1 2 622,8 ha</title></circle>
+<circle class="pt-otro" cx="243.7" cy="217.9" r="6"><title>2024-28664 (bosque): nuestro 2 737,4 ha, MCD64A1 2 036,7 ha</title></circle>
+<circle class="pt-otro" cx="342.5" cy="195.7" r="6"><title>2024-23334 (bosque): nuestro 3 138,0 ha, MCD64A1 3 155,7 ha</title></circle>
+<circle class="pt-otro" cx="258.1" cy="244.6" r="6"><title>2024-23382 (bosque): nuestro 2 257,6 ha, MCD64A1 2 199,1 ha</title></circle>
 <circle class="pt-otro" cx="88.9" cy="338.4" r="6"><title>2024-8669 (bosque): nuestro 568,4 ha, MCD64A1 281,7 ha</title></circle>
-<circle class="pt-otro" cx="257.5" cy="241.7" r="6"><title>2024-27840 (bosque): nuestro 2&#160;308,7 ha, MCD64A1 2&#160;192,4 ha</title></circle>
-<circle class="pt-otro" cx="168.4" cy="288.7" r="6"><title>2024-7552 (bosque): nuestro 1&#160;463,6 ha, MCD64A1 1&#160;183,4 ha</title></circle>
+<circle class="pt-otro" cx="257.5" cy="241.7" r="6"><title>2024-27840 (bosque): nuestro 2 308,7 ha, MCD64A1 2 192,4 ha</title></circle>
+<circle class="pt-otro" cx="168.4" cy="288.7" r="6"><title>2024-7552 (bosque): nuestro 1 463,6 ha, MCD64A1 1 183,4 ha</title></circle>
 <circle class="pt-otro" cx="130.4" cy="317.7" r="6"><title>2024-23352 (bosque): nuestro 941,3 ha, MCD64A1 752,0 ha</title></circle>
-<circle class="pt-otro" cx="159.6" cy="288.9" r="6"><title>2024-15326 (bosque): nuestro 1&#160;459,1 ha, MCD64A1 1&#160;082,8 ha</title></circle>
-<circle class="pt-otro" cx="258.0" cy="264.4" r="6"><title>2024-23796 (bosque): nuestro 1&#160;900,8 ha, MCD64A1 2&#160;198,0 ha</title></circle>
-<circle class="pt-otro" cx="209.0" cy="289.1" r="6"><title>2024-28027 (bosque): nuestro 1&#160;455,5 ha, MCD64A1 1&#160;643,4 ha</title></circle>
-<circle class="pt-pasto" cx="492.4" cy="46.9" r="6"><title>2024-23394 (bosque): nuestro 5&#160;816,2 ha, MCD64A1 4&#160;854,5 ha</title></circle>
-<circle class="pt-pasto" cx="246.3" cy="249.7" r="6"><title>2024-21811 (bosque): nuestro 2&#160;165,2 ha, MCD64A1 2&#160;066,0 ha</title></circle>
-<circle class="pt-pasto" cx="557.3" cy="54.5" r="6"><title>2024-27844 (bosque): nuestro 5&#160;679,1 ha, MCD64A1 5&#160;590,0 ha</title></circle>
+<circle class="pt-otro" cx="159.6" cy="288.9" r="6"><title>2024-15326 (bosque): nuestro 1 459,1 ha, MCD64A1 1 082,8 ha</title></circle>
+<circle class="pt-otro" cx="258.0" cy="264.4" r="6"><title>2024-23796 (bosque): nuestro 1 900,8 ha, MCD64A1 2 198,0 ha</title></circle>
+<circle class="pt-otro" cx="209.0" cy="289.1" r="6"><title>2024-28027 (bosque): nuestro 1 455,5 ha, MCD64A1 1 643,4 ha</title></circle>
+<circle class="pt-pasto" cx="492.4" cy="46.9" r="6"><title>2024-23394 (bosque): nuestro 5 816,2 ha, MCD64A1 4 854,5 ha</title></circle>
+<circle class="pt-pasto" cx="246.3" cy="249.7" r="6"><title>2024-21811 (bosque): nuestro 2 165,2 ha, MCD64A1 2 066,0 ha</title></circle>
+<circle class="pt-pasto" cx="557.3" cy="54.5" r="6"><title>2024-27844 (bosque): nuestro 5 679,1 ha, MCD64A1 5 590,0 ha</title></circle>
 <circle class="pt-pasto" cx="78" cy="32" r="6"/><text class="tick" x="89" y="36">Los 3 de la regla</text>
 <circle class="pt-bosque" cx="224.4" cy="32" r="6"/><text class="tick" x="235.4" y="36">Pastizal dominante</text>
 <circle class="pt-otro" cx="378.0" cy="32" r="6"/><text class="tick" x="389.0" y="36">Otros (bosque)</text>
 </svg>
 </div>
-      <figcaption>Hectáreas de nuestro método frente a MCD64A1 en los 21 candidatos medibles de 2024. Sobre la diagonal, nuestro método da más.</figcaption>
+      <figcaption>Hectáreas de nuestro método frente a MCD64A1 en los 21 candidatos medibles. Sobre la diagonal, nuestro método da más.</figcaption>
     </figure>
     <div class="table-scroll">
       <table>
-        <thead>
-          <tr><th>Muestra</th><th class="n">n</th><th class="n">Razón mediana (nuestro / MCD64A1)</th><th class="n">Rango</th><th class="n">Chichas corregida (ha)</th></tr>
-        </thead>
+        <thead><tr><th>Muestra</th><th class="n">n</th><th class="n">Razón mediana (nuestro / MCD64A1)</th><th class="n">Rango</th><th class="n">Chichas corregida (ha)</th></tr></thead>
         <tbody>
           <tr><td>3 casos (regla fijada)</td><td class="n">3</td><td class="n">1,048</td><td class="n">1,016 – 1,198</td><td class="n">1&nbsp;612</td></tr>
           <tr><td>21 candidatos medibles</td><td class="n">21</td><td class="n">1,171</td><td class="n">0,678 – 2,018</td><td class="n">1&nbsp;443</td></tr>
@@ -628,106 +459,111 @@
         </tbody>
       </table>
     </div>
-    <p>Los 3 casos de la regla son incendios de bosque amazónico de septiembre de 2024. Con ellos, nuestro método da entre 1,6&nbsp;% y 19,8&nbsp;% más que MCD64A1 (mediana +4,8&nbsp;%). Pero tres casos subestiman la dispersión: en los 21 candidatos medibles, obtenidos con la misma regla y sin elegir, la razón va de 0,678 a 2,018, con mediana 1,171 (+17,1&nbsp;%). <strong>Nuestro método tiende a dar más que MCD64A1.</strong></p>
-    <div class="callout alt">
-      <p><strong>Factor de corrección declarado.</strong> Aplicando el sesgo mediano de los 21 casos, Chichas pasaría de 1&nbsp;690 a <strong>1&nbsp;443&nbsp;ha</strong> (1&nbsp;612&nbsp;ha con los 3 casos de la regla). Se reporta como cifra alternativa y no reemplaza a la principal, por tres razones: casi toda la validación es en bosque amazónico, con un solo pastizal (razón 1,171); MCD64A1 tiene píxeles de 500&nbsp;m y no es verdad de campo, porque se le escapan quemas pequeñas o fragmentadas; y varios de los 21 candidatos se solapan en el espacio, así que no son independientes.</p>
-    </div>
-    <p class="note">En septiembre de 2024, 21 de 24 candidatos fueron medibles, frente a 4 de 20 en octubre de 2026. La diferencia refuerza el sesgo de calendario de la sección 8, aunque los de 2024 tenían 20 días para conseguir imagen posterior y los de 2026, como mucho 7.</p>
+    <div class="callout"><p><strong>La cifra principal sigue siendo 1&nbsp;690&nbsp;ha;</strong> las corregidas son alternativas, por tres razones: la validación es casi toda bosque amazónico y el caso es pastizal andino; MCD64A1 usa píxeles de 500&nbsp;m y es otra estimación satelital, no un dato de campo; y varios de los 21 candidatos se solapan en el espacio, así que no son independientes.</p></div>
   </section>
 
-  <section id="literatura">
-    <h2><span class="num">11</span>Qué dice la literatura</h2>
-    <ul class="clean">
-      <li>Key y Benson (2006), <a href="https://research.fs.usda.gov/treesearch/24066">FIREMON Landscape Assessment</a>: origen del dNBR y de su calibración con parcelas de campo CBI, con estratos que van de las hierbas a los árboles grandes.</li>
-      <li>Miller y Thode (2007), <a href="https://doi.org/10.1016/j.rse.2006.12.006"><em>Remote Sensing of Environment</em></a>: el dNBR mide cambio absoluto; donde hay poca vegetación previa, los umbrales fijos clasifican mal. Proponen el RdNBR.</li>
-      <li>Roy, Boschetti y Trigg (2006), <a href="https://doi.org/10.1109/LGRS.2005.858485"><em>IEEE GRSL</em></a>: evalúan si el NBR es un índice óptimo de severidad, con datos de sabana, bosque boreal y bosque tropical.</li>
-      <li>Picotte y Robertson (2011), <a href="https://doi.org/10.1071/WF10013"><em>Int. J. Wildland Fire</em></a>: con 731 parcelas, la concordancia entre dNBR y severidad de campo varió según el tipo de vegetación.</li>
-      <li>Cansler y McKenzie (2012), <a href="https://doi.org/10.3390/rs4020456"><em>Remote Sensing</em></a>: qué tan bien se trasladan los índices y umbrales a una región nueva.</li>
-      <li>Lu, He y Tong (2016), <a href="https://doi.org/10.1071/WF15098"><em>Int. J. Wildland Fire</em></a>: en un pastizal semiárido, con severidad medida en campo, el mejor índice fue el MIRBI, no el NBR.</li>
-    </ul>
-    <p>No se encontró ningún estudio de dNBR con validación de campo en puna o páramo.</p>
-  </section>
-
-  <section id="no-se-pudo">
-    <h2><span class="num">12</span>Qué no se pudo hacer</h2>
-    <ul class="clean">
-      <li><strong>Medir 16 de los 20 incendios más grandes</strong>: 12 por nubes, 3 porque ningún Sentinel-2 pasó antes del corte de datos y 1 por el prefiltro de nubes de escena del propio pipeline.</li>
-      <li><strong>Contrastar bosque contra pastizal</strong>: solo un bosque fue medible (Iparía), así que la hipótesis de severidad por cobertura quedó sin una prueba real.</li>
-      <li><strong>Validar en pastizal andino</strong>: 20 de los 21 casos de validación son de bosque amazónico, y MCD64A1 de octubre de 2026 aún no existe.</li>
-      <li><strong>Probar mala calibración de Key y Benson</strong>: para eso hace falta severidad medida en campo (CBI), que no existe para estos incendios.</li>
-      <li><strong>Reproducir el Gini de 0,733</strong>: con estos datos sale 0,735.</li>
-      <li><strong>Recurrencia completa de 2026</strong>: el archivo anual aún no existe, y sin MAP_KEY de FIRMS la barra de 2026 cubre solo 8 días.</li>
-      <li><strong>Encontrar literatura andina</strong>: no se halló ningún estudio de dNBR con validación de campo en puna o páramo.</li>
-    </ul>
-  </section>
-
-  <section id="eleccion">
-    <h2><span class="num">13</span>Cómo se eligió el caso</h2>
-    <p>Los 8&nbsp;637 focos VIIRS de confianza nominal o alta registrados en el Perú entre el 14 y el 21 de octubre de 2026 se agruparon en 2&nbsp;602 incendios. Estos son los cinco con más focos:</p>
+  <section id="maup">
+    <h2><span class="num">8</span>Concentración y MAUP</h2>
+    <figure>
+<div class="chart-scroll">
+<svg class="chart" viewBox="0 0 640 440" role="img" aria-label="Curvas de Lorenz de los focos con cuatro particiones espaciales">
+<line class="grid" x1="56" x2="620" y1="390.0" y2="390.0"/><text class="tick" x="48" y="394.0" text-anchor="end">0&#160;%</text><text class="tick" x="56.0" y="408" text-anchor="middle">0&#160;%</text>
+<line class="grid" x1="56" x2="620" y1="297.5" y2="297.5"/><text class="tick" x="48" y="301.5" text-anchor="end">25&#160;%</text><text class="tick" x="197.0" y="408" text-anchor="middle">25&#160;%</text>
+<line class="grid" x1="56" x2="620" y1="205.0" y2="205.0"/><text class="tick" x="48" y="209.0" text-anchor="end">50&#160;%</text><text class="tick" x="338.0" y="408" text-anchor="middle">50&#160;%</text>
+<line class="grid" x1="56" x2="620" y1="112.5" y2="112.5"/><text class="tick" x="48" y="116.5" text-anchor="end">75&#160;%</text><text class="tick" x="479.0" y="408" text-anchor="middle">75&#160;%</text>
+<line class="grid" x1="56" x2="620" y1="20.0" y2="20.0"/><text class="tick" x="48" y="24.0" text-anchor="end">100&#160;%</text><text class="tick" x="620.0" y="408" text-anchor="middle">100&#160;%</text>
+<line class="ref" x1="56.0" y1="390.0" x2="620.0" y2="20.0"/><text class="tick" x="366.2" y="168.0" transform="rotate(-36 366.2 168.0)">igualdad perfecta</text><text class="axis" x="338.0" y="432" text-anchor="middle">% de unidades, de menos a más focos</text><text class="axis" x="14" y="205.0" text-anchor="middle" transform="rotate(-90 14 205.0)">% acumulado de focos</text>
+<polyline class="line lz-a" points="56.0,390.0 61.6,390.0 67.3,390.0 72.9,390.0 78.6,390.0 84.2,390.0 89.8,390.0 95.5,390.0 101.1,390.0 106.8,390.0 112.4,390.0 118.0,390.0 123.7,390.0 129.3,390.0 135.0,390.0 140.6,390.0 146.2,390.0 151.9,390.0 157.5,390.0 163.2,390.0 168.8,390.0 174.4,390.0 180.1,390.0 185.7,390.0 191.4,390.0 197.0,390.0 202.6,390.0 208.3,390.0 213.9,390.0 219.6,390.0 225.2,390.0 230.8,390.0 236.5,390.0 242.1,390.0 247.8,390.0 253.4,390.0 259.0,390.0 264.7,390.0 270.3,390.0 276.0,390.0 281.6,390.0 287.2,390.0 292.9,390.0 298.5,390.0 304.2,390.0 309.8,390.0 315.4,390.0 321.1,390.0 326.7,390.0 332.4,390.0 338.0,390.0 343.6,390.0 349.3,390.0 354.9,390.0 360.6,390.0 366.2,390.0 371.8,390.0 377.5,390.0 383.1,390.0 388.8,390.0 394.4,390.0 400.0,390.0 405.7,390.0 411.3,390.0 417.0,390.0 422.6,389.6 428.2,388.9 433.9,388.1 439.5,387.3 445.2,386.5 450.8,385.7 456.4,385.0 462.1,384.2 467.7,383.3 473.4,381.7 479.0,380.2 484.6,378.6 490.3,377.1 495.9,375.5 501.6,373.8 507.2,371.4 512.8,369.1 518.5,366.7 524.1,363.9 529.8,360.8 535.4,357.1 541.0,353.2 546.7,348.6 552.3,343.5 558.0,338.0 563.6,331.7 569.2,324.4 574.9,316.0 580.5,306.4 586.2,295.1 591.8,281.5 597.4,264.3 603.1,242.6 608.7,214.4 614.4,171.3 620.0,20.0"><title>distrito: Gini 0,906</title></polyline>
+<line class="line lz-a" x1="70" x2="96" y1="32" y2="32"/><text class="tick" x="102" y="36">distrito · Gini 0,906</text>
+<polyline class="line lz-b" points="56.0,390.0 61.6,390.0 67.3,390.0 72.9,390.0 78.6,390.0 84.2,390.0 89.8,390.0 95.5,390.0 101.1,390.0 106.8,389.9 112.4,389.8 118.0,389.7 123.7,389.6 129.3,389.6 135.0,389.5 140.6,389.4 146.2,389.3 151.9,389.1 157.5,389.0 163.2,388.8 168.8,388.6 174.4,388.4 180.1,388.2 185.7,387.9 191.4,387.7 197.0,387.4 202.6,387.2 208.3,386.9 213.9,386.6 219.6,386.3 225.2,385.9 230.8,385.4 236.5,385.0 242.1,384.6 247.8,384.1 253.4,383.6 259.0,383.1 264.7,382.5 270.3,381.9 276.0,381.3 281.6,380.6 287.2,379.9 292.9,379.3 298.5,378.6 304.2,377.8 309.8,377.1 315.4,376.3 321.1,375.5 326.7,374.6 332.4,373.7 338.0,372.7 343.6,371.7 349.3,370.7 354.9,369.7 360.6,368.6 366.2,367.4 371.8,366.3 377.5,365.1 383.1,363.8 388.8,362.4 394.4,361.0 400.0,359.4 405.7,357.8 411.3,356.2 417.0,354.5 422.6,352.9 428.2,351.1 433.9,349.1 439.5,347.1 445.2,345.0 450.8,342.8 456.4,340.4 462.1,337.9 467.7,335.3 473.4,332.4 479.0,329.4 484.6,326.2 490.3,322.7 495.9,319.1 501.6,315.2 507.2,311.1 512.8,306.7 518.5,302.1 524.1,297.3 529.8,292.2 535.4,287.1 541.0,281.4 546.7,275.4 552.3,269.0 558.0,261.6 563.6,253.5 569.2,245.3 574.9,236.7 580.5,227.6 586.2,216.7 591.8,203.9 597.4,189.5 603.1,174.1 608.7,151.8 614.4,113.7 620.0,20.0"><title>provincia: Gini 0,758</title></polyline>
+<line class="line lz-b" x1="70" x2="96" y1="52" y2="52"/><text class="tick" x="102" y="56">provincia · Gini 0,758</text>
+<polyline class="line lz-c" points="56.0,390.0 61.6,390.0 67.3,390.0 72.9,390.0 78.6,390.0 84.2,390.0 89.8,390.0 95.5,390.0 101.1,390.0 106.8,390.0 112.4,390.0 118.0,390.0 123.7,390.0 129.3,390.0 135.0,390.0 140.6,390.0 146.2,390.0 151.9,390.0 157.5,390.0 163.2,390.0 168.8,390.0 174.4,390.0 180.1,390.0 185.7,390.0 191.4,390.0 197.0,390.0 202.6,390.0 208.3,390.0 213.9,390.0 219.6,390.0 225.2,390.0 230.8,390.0 236.5,390.0 242.1,390.0 247.8,390.0 253.4,390.0 259.0,390.0 264.7,390.0 270.3,390.0 276.0,390.0 281.6,390.0 287.2,390.0 292.9,390.0 298.5,390.0 304.2,390.0 309.8,390.0 315.4,390.0 321.1,390.0 326.7,390.0 332.4,390.0 338.0,390.0 343.6,390.0 349.3,390.0 354.9,390.0 360.6,390.0 366.2,390.0 371.8,390.0 377.5,390.0 383.1,390.0 388.8,390.0 394.4,390.0 400.0,390.0 405.7,390.0 411.3,390.0 417.0,390.0 422.6,390.0 428.2,390.0 433.9,390.0 439.5,390.0 445.2,390.0 450.8,390.0 456.4,390.0 462.1,390.0 467.7,390.0 473.4,390.0 479.0,390.0 484.6,390.0 490.3,390.0 495.9,390.0 501.6,390.0 507.2,390.0 512.8,390.0 518.5,390.0 524.1,390.0 529.8,390.0 535.4,390.0 541.0,390.0 546.7,390.0 552.3,390.0 558.0,385.4 563.6,379.6 569.2,373.9 574.9,368.1 580.5,358.3 586.2,346.7 591.8,330.9 597.4,311.0 603.1,284.5 608.7,248.7 614.4,194.2 620.0,20.0"><title>grilla 10 x 10 km: Gini 0,954</title></polyline>
+<line class="line lz-c" x1="70" x2="96" y1="72" y2="72"/><text class="tick" x="102" y="76">grilla 10×10 km · Gini 0,954</text>
+<polyline class="line lz-d" points="56.0,390.0 61.6,390.0 67.3,390.0 72.9,390.0 78.6,390.0 84.2,390.0 89.8,390.0 95.5,390.0 101.1,390.0 106.8,390.0 112.4,390.0 118.0,390.0 123.7,390.0 129.3,390.0 135.0,390.0 140.6,390.0 146.2,390.0 151.9,390.0 157.5,390.0 163.2,390.0 168.8,390.0 174.4,390.0 180.1,390.0 185.7,390.0 191.4,390.0 197.0,390.0 202.6,390.0 208.3,390.0 213.9,390.0 219.6,390.0 225.2,390.0 230.8,390.0 236.5,390.0 242.1,390.0 247.8,390.0 253.4,390.0 259.0,390.0 264.7,390.0 270.3,390.0 276.0,390.0 281.6,390.0 287.2,390.0 292.9,390.0 298.5,390.0 304.2,390.0 309.8,390.0 315.4,390.0 321.1,390.0 326.7,390.0 332.4,390.0 338.0,390.0 343.6,390.0 349.3,390.0 354.9,390.0 360.6,390.0 366.2,390.0 371.8,390.0 377.5,390.0 383.1,390.0 388.8,390.0 394.4,390.0 400.0,390.0 405.7,390.0 411.3,390.0 417.0,390.0 422.6,390.0 428.2,390.0 433.9,390.0 439.5,390.0 445.2,390.0 450.8,390.0 456.4,390.0 462.1,390.0 467.7,390.0 473.4,390.0 479.0,390.0 484.6,390.0 490.3,390.0 495.9,390.0 501.6,390.0 507.2,390.0 512.8,390.0 518.5,390.0 524.1,390.0 529.8,390.0 535.4,390.0 541.0,390.0 546.7,390.0 552.3,390.0 558.0,385.1 563.6,379.3 569.2,373.5 574.9,367.8 580.5,357.0 586.2,345.5 591.8,329.1 597.4,309.7 603.1,283.5 608.7,248.0 614.4,194.4 620.0,20.0"><title>grilla 10 x 10 km desplazada 5 km: Gini 0,953</title></polyline>
+<line class="line lz-d" x1="70" x2="96" y1="92" y2="92"/><text class="tick" x="102" y="96">grilla 10×10 km desplazada 5 km · Gini 0,953</text>
+</svg>
+</div>
+      <figcaption>Curvas de Lorenz de los 8&nbsp;637 focos con cuatro particiones, contando también las unidades sin focos.</figcaption>
+    </figure>
     <div class="table-scroll">
       <table>
-        <thead>
-          <tr><th>Distrito</th><th class="n">Focos</th><th>Fechas (UTC)</th><th class="n">Envolvente (ha)</th><th>Cobertura dominante</th></tr>
-        </thead>
+        <thead><tr><th>Partición</th><th class="n">Unidades con focos</th><th class="n">Gini (solo con focos)</th><th class="n">Gini (todas)</th></tr></thead>
         <tbody>
-          <tr><td>Río Tambo, Satipo (Junín)<span class="tag gris">nublado</span></td><td class="n">279</td><td>14–17 oct</td><td class="n">3&nbsp;051</td><td>Bosque (99,6&nbsp;%)</td></tr>
-          <tr><td>Curahuasi, Abancay (Apurímac)</td><td class="n">201</td><td>14–20 oct</td><td class="n">3&nbsp;227</td><td>Pastizal (55,2&nbsp;%)</td></tr>
-          <tr class="medido"><td>Chichas, Condesuyos (Arequipa)<span class="tag">medido</span></td><td class="n">178</td><td>16–18 oct</td><td class="n">2&nbsp;957</td><td>Pastizal (57,3&nbsp;%)</td></tr>
-          <tr><td>Callería, Coronel Portillo (Ucayali)<span class="tag gris">sin imagen</span></td><td class="n">116</td><td>14–16 oct</td><td class="n">1&nbsp;530</td><td>Bosque (65,5&nbsp;%)</td></tr>
-          <tr><td>Iparía, Coronel Portillo (Ucayali)</td><td class="n">108</td><td>15–16 oct</td><td class="n">724</td><td>Bosque (98,1&nbsp;%)</td></tr>
+          <tr><td>distrito</td><td class="n">644 de 1&nbsp;815</td><td class="n">0,735</td><td class="n">0,906</td></tr>
+          <tr><td>provincia</td><td class="n">180 de 195</td><td class="n">0,737</td><td class="n">0,758</td></tr>
+          <tr><td>grilla 10 × 10 km</td><td class="n">1&nbsp;588 de 13&nbsp;464</td><td class="n">0,609</td><td class="n">0,954</td></tr>
+          <tr><td>grilla 10 × 10 km desplazada 5 km</td><td class="n">1&nbsp;595 de 13&nbsp;453</td><td class="n">0,607</td><td class="n">0,953</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note">La cobertura dominante es el porcentaje de los focos de cada grupo que caen sobre esa clase de WorldCover.</p>
-    <p>El candidato preferido era Callería, en la frontera agrícola de Pucallpa, con el 65,5&nbsp;% de sus focos sobre bosque y asentamientos alrededor. Pero no existe ninguna imagen Sentinel-2 posterior al fuego entre el 17 y el 21 de octubre, y sin imagen “después” no hay dNBR. La regla estaba fijada de antemano, así que se pasó a Chichas.</p>
+    <p>El Gini va de 0,607 a 0,954 según la unidad y según si se cuentan las unidades sin fuego. Cualquier índice de concentración que no declare su unidad no significa nada. Lo robusto es otra cosa: la distribución es muy desigual en las cuatro particiones.</p>
   </section>
 
-  <section id="decisiones">
-    <h2><span class="num">14</span>Las decisiones declaradas</h2>
-    <p>Este es el par de imágenes elegido. Se evaluaron 12 candidatas: 10 anteriores y 2 posteriores al fuego. Las del tile 18LYJ se descartaron porque el 97,1&nbsp;% de la zona queda fuera de su cobertura válida.</p>
-    <div class="table-scroll">
-      <table>
-        <thead>
-          <tr><th>Imagen</th><th>Fecha</th><th>Tile</th><th class="n">Nubes en la zona</th><th class="n">Nubes en la escena</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Antes</td><td>15 oct 2026</td><td>18LYH</td><td class="n">0,0&nbsp;%</td><td class="n">0,3&nbsp;%</td></tr>
-          <tr><td>Después</td><td>20 oct 2026</td><td>18LYH</td><td class="n">0,2&nbsp;%</td><td class="n">11,4&nbsp;%</td></tr>
-        </tbody>
-      </table>
-    </div>
+  <section id="implicaciones">
+    <h2><span class="num">9</span>Implicaciones</h2>
     <ul class="clean">
-      <li><strong>Umbral:</strong> dNBR&nbsp;≥&nbsp;0,10 cuenta como quemado; las clases de severidad siguen la escala de Key y Benson.</li>
-      <li><strong>Nubes:</strong> se enmascaran con la capa SCL de Sentinel-2 (sombra, nube media, nube alta y cirros), además del agua y los píxeles sin dato.</li>
-      <li><strong>Zona:</strong> la envolvente de los focos más 1&nbsp;km, igual a 5&nbsp;399&nbsp;ha, en una rejilla de 20&nbsp;m.</li>
+      <li>No se puede construir un indicador nacional de área quemada en tiempo casi real para el Perú en octubre: con 4 de 20, lo que se reporta es una muestra sesgada.</li>
+      <li>Las hectáreas no son comparables entre estudios si no declaran el umbral: en Chichas, solo el umbral las mueve 1&nbsp;973,6&nbsp;ha.</li>
+      <li>Endurecer la máscara puede empeorar la medición.</li>
+      <li>Contar focos no mide daño: la desviación frente al área medida va de −64,7&nbsp;% a +3,9&nbsp;%.</li>
+      <li>El gasto parece rendir más en prevención que en combate: solo 11 de 2&nbsp;602 incendios superaron los 3 días.</li>
+      <li>Un índice de concentración exige declarar su unidad espacial.</li>
     </ul>
   </section>
+
+  <section id="precio">
+    <h2><span class="num">10</span>Qué haría falta para ponerle precio</h2>
+    <ul class="clean">
+      <li><strong>Capacidad de carga</strong> del pastizal quemado: cuántos animales sostenía.</li>
+      <li><strong>Tiempo de recuperación del forraje</strong>: cuántas temporadas tarda en volver.</li>
+      <li><strong>Hogares y cabezas de ganado dependientes</strong> de esas hectáreas.</li>
+      <li><strong>Intencionalidad</strong>: si fue una quema deliberada que se escapó o un accidente. Esta sí se pudo acotar en parte: con recurrencia cero queda descartada la quema rutinaria.</li>
+    </ul>
+    <p>La teledetección acota qué y cuánto se quemó, pero no determina si fue una pérdida.</p>
+  </section>
+
+  
 
   <section id="metodo">
-    <h2><span class="num">15</span>Método</h2>
-    <div class="cards">
-      <div class="card method"><h3>Focos VIIRS</h3><p>CSV “South America 7d” de NASA FIRMS, de los satélites Suomi-NPP, NOAA-20 y NOAA-21. Se filtraron a Perú con los límites distritales de GADM y se descartaron los de confianza baja.</p></div>
-      <div class="card method"><h3>Agrupamiento</h3><p>Dos focos pertenecen al mismo incendio si están a ≤&nbsp;1&nbsp;km y a ≤&nbsp;48&nbsp;h entre sí. Las cadenas se unen en un solo grupo.</p></div>
-      <div class="card method"><h3>Sentinel-2 L2A</h3><p>Imágenes de reflectancia de superficie de Microsoft Planetary Computer, bandas B8A y B12 a 20&nbsp;m. Se elige la imagen con menos nubes sobre la zona, antes y después del fuego.</p></div>
-      <div class="card method"><h3>dNBR</h3><p><code>NBR = (NIR − SWIR2) / (NIR + SWIR2)</code>. El dNBR es el NBR de antes menos el de después: cuanto más alto, más vegetación se perdió.</p></div>
-      <div class="card method"><h3>Máscara SCL</h3><p>La capa de clasificación de escena excluye nubes, sombras, cirros, agua y píxeles sin dato en cualquiera de las dos fechas.</p></div>
-      <div class="card method"><h3>Recurrencia</h3><p>Archivo anual de NASA FIRMS para Perú, solo Suomi-NPP, 2012–2025. Se cuentan los focos de cada año dentro del polígono quemado en 2026 y a 1&nbsp;km de él.</p></div>
-      <div class="card method"><h3>WorldCover 2021</h3><p>Mapa global de cobertura del suelo de la ESA, a 10&nbsp;m, remuestreado a la rejilla de 20&nbsp;m y cruzado con los píxeles quemados.</p></div>
+    <h2><span class="num">11</span>Método</h2>
+    <ol class="clean">
+      <li><strong>Focos</strong>: VIIRS de NASA FIRMS (Suomi-NPP, NOAA-20 y NOAA-21, CSV de 7 días descargado el 21 de octubre de 2026), confianza nominal o alta, filtrados a Perú con GADM 4.1.</li>
+      <li><strong>Incendios</strong>: dos focos pertenecen al mismo incendio si están a ≤&nbsp;1&nbsp;km y ≤&nbsp;48&nbsp;h entre sí.</li>
+      <li><strong>Par de imágenes</strong>: Sentinel-2 L2A de Microsoft Planetary Computer; se elige la imagen con menos zona inválida, antes y después del fuego.</li>
+      <li><strong>dNBR y severidad</strong>: NBR&nbsp;=&nbsp;(B8A&nbsp;−&nbsp;B12)/(B8A&nbsp;+&nbsp;B12); dNBR&nbsp;=&nbsp;NBR antes − NBR después; clases de Key y Benson.</li>
+      <li><strong>Cobertura</strong>: ESA WorldCover 2021 cruzado con los píxeles quemados.</li>
+      <li><strong>Contraste</strong>: recurrencia con el archivo anual S-NPP 2012-2025, sensibilidad a cada decisión y validación contra MCD64A1.</li>
+    </ol>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Imagen</th><th>Fecha</th><th>Tile</th><th class="n">Nubes en la zona</th><th class="n">Nubes en la escena</th></tr></thead>
+        <tbody>
+          <tr><td>Antes</td><td>2026-10-15</td><td>18LYH</td><td class="n">0,0&nbsp;%</td><td class="n">0,3&nbsp;%</td></tr>
+          <tr><td>Después</td><td>2026-10-20</td><td>18LYH</td><td class="n">0,2&nbsp;%</td><td class="n">11,4&nbsp;%</td></tr>
+        </tbody>
+      </table>
     </div>
+    <ul class="clean">
+      <li><strong>Umbral</strong>: dNBR&nbsp;≥&nbsp;0,10.</li>
+      <li><strong>Máscara SCL</strong>: sombra, nube media, nube alta, cirros, agua y sin dato, en cualquiera de las dos fechas.</li>
+      <li><strong>Zona</strong>: envolvente de los focos + 1&nbsp;km&nbsp;=&nbsp;5&nbsp;399&nbsp;ha en Chichas, rejilla de 20&nbsp;m.</li>
+      <li><strong>Recurrencia solo con S-NPP</strong>, el único con registro continuo desde 2012: sumar NOAA-20 (desde 2018) y NOAA-21 (desde 2023) inflaría los años recientes.</li>
+    </ul>
+    <p>Código, tablas y cómo reproducir: <code>src/</code>, <code>outputs/</code> y el README del repositorio.</p>
   </section>
 
   <section id="limitaciones">
-    <h2><span class="num">16</span>Limitaciones</h2>
+    <h2><span class="num">12</span>Limitaciones y qué no se pudo hacer</h2>
     <ul class="clean">
-      <li><strong>Un foco no es un incendio ni una hectárea.</strong> Es un píxel de 375&nbsp;m donde un satélite detectó calor, incluidas las quemas agrícolas.</li>
-      <li><strong>La cifra depende de cuatro decisiones:</strong> fechas, nubes, umbral y zona. Si cambia cualquiera, cambian las hectáreas; solo el umbral la mueve entre 34 y 2&nbsp;008&nbsp;ha (sección 6).</li>
-      <li><strong>La severidad puede estar subestimada</strong>, porque en pastizal el dNBR sale bajo y la imagen posterior es muy cercana al fuego.</li>
-      <li><strong>El encadenamiento puede fusionar incendios distintos</strong> que estén cerca en el espacio y en el tiempo.</li>
-      <li><strong>VIIRS no detecta bien</strong> los incendios pequeños, bajo dosel cerrado o cubiertos por nubes, así que la cifra es un piso.</li>
-      <li><strong>Cuatro casos medidos de veinte.</strong> Las nubes de octubre dejaron fuera a la mayoría, incluido Río Tambo (55,4&nbsp;% de la zona tapada en la mejor imagen posterior); solo un bosque fue medible.</li>
-      <li><strong>La validación es casi toda en bosque</strong> y contra un producto de 500&nbsp;m, no contra datos de campo.</li>
-      <li><strong>WorldCover es de 2021:</strong> la cobertura pudo cambiar antes del incendio.</li>
-      <li><strong>Las cifras oficiales no se suman a estas.</strong> Usan otros métodos y otras definiciones de incendio.</li>
+      <li><strong>n&nbsp;=&nbsp;4.</strong> Ninguna comparación entre incendios medidos tiene potencia estadística.</li>
+      <li><strong>Un foco no es un incendio ni una hectárea</strong>: es un píxel de 375&nbsp;m donde un satélite detectó calor.</li>
+      <li><strong>La validación no cubre el bioma del caso</strong>: casi toda es bosque amazónico, contra un producto de 500&nbsp;m.</li>
+      <li><strong>La firma diurna no prueba intencionalidad.</strong></li>
+      <li><strong>El prefiltro descartó al menos un caso medible</strong> (Nueva Requena).</li>
+      <li><strong>Paracas se excluyó</strong> como fuente estática con el criterio escrito de la sección 1; con otro criterio el top 20 cambiaría.</li>
+      <li><strong>Una semana no es una temporada.</strong></li>
+      <li><strong>WorldCover es de 2021</strong>: la cobertura pudo cambiar antes del incendio.</li>
+      <li><strong>Las cifras oficiales no se suman a estas</strong>: usan otros métodos y otras definiciones.</li>
     </ul>
   </section>
 
@@ -735,9 +571,8 @@
 
 <footer>
   <div class="wrap">
-    <p>Herramienta independiente con datos públicos; no reemplaza los reportes del COEN, INDECI, SERFOR ni SERNANP.</p>
-    <p>Fuentes: NASA FIRMS (focos NRT y archivo anual S-NPP 2012–2025), Copernicus Sentinel-2 y ESA WorldCover vía Microsoft Planetary Computer. Corte: 21 de octubre de 2026.</p>
-    <p>Código y tablas: <code>src/</code> y <code>outputs/</code> en este repositorio; el README explica cómo reproducir todo.</p>
+    <p>Herramienta independiente con datos públicos; no reemplaza al COEN, INDECI, SERFOR ni SERNANP.</p>
+    <p>Fuentes: NASA FIRMS (VIIRS NRT y archivo anual S-NPP 2012-2025), Copernicus Sentinel-2, ESA WorldCover 2021, Copernicus DEM y MODIS MCD64A1 vía Microsoft Planetary Computer, y GADM 4.1. Ventana analizada: 14-21 de octubre de 2026.</p>
   </div>
 </footer>
 
