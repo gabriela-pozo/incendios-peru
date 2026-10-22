@@ -181,6 +181,47 @@ hipótesis.
 
 Tabla: `outputs/imagenes_riotambo.csv`.
 
+## Literatura
+
+Referencias verificadas (DOI comprobado en Crossref o URL oficial). De cada una se
+dice solo lo que se pudo confirmar en su resumen o ficha.
+
+1. Key, C. H. y Benson, N. C. (2006). *Landscape Assessment (LA): Sampling and
+   analysis methods*. En FIREMON, USDA Forest Service, Gen. Tech. Rep. RMRS-GTR-164-CD.
+   <https://research.fs.usda.gov/treesearch/24066>. Origen del dNBR y de su
+   calibración con parcelas de campo CBI, cuyos estratos van del sustrato y las
+   hierbas a los árboles grandes.
+2. Miller, J. D. y Thode, A. E. (2007). Quantifying burn severity in a heterogeneous
+   landscape with a relative version of the delta Normalized Burn Ratio (dNBR).
+   *Remote Sensing of Environment*, 109(1), 66-80.
+   <https://doi.org/10.1016/j.rse.2006.12.006>. Muestra que el dNBR mide cambio
+   absoluto: donde hay poca vegetación previa, un fuego severo produce poco cambio y
+   los umbrales fijos lo clasifican mal; proponen el RdNBR.
+3. Roy, D. P., Boschetti, L. y Trigg, S. N. (2006). Remote sensing of fire severity:
+   assessing the performance of the normalized burn ratio. *IEEE Geoscience and
+   Remote Sensing Letters*, 3(1), 112-116. <https://doi.org/10.1109/LGRS.2005.858485>.
+   Evalúan si el NBR cumple las condiciones de un índice óptimo de severidad con
+   datos de sabanas de Sudáfrica y Australia, bosque boreal y bosque tropical.
+4. Picotte, J. J. y Robertson, K. M. (2011). Validation of remote sensing of burn
+   severity in south-eastern US ecosystems. *International Journal of Wildland Fire*,
+   20(3), 453-464. <https://doi.org/10.1071/WF10013>. Con 731 parcelas CBI, la
+   concordancia entre dNBR y severidad de campo varió según el tipo de vegetación.
+5. Cansler, C. A. y McKenzie, D. (2012). How robust are burn severity indices when
+   applied in a new region? *Remote Sensing*, 4(2), 456-483.
+   <https://doi.org/10.3390/rs4020456>. Evalúa cómo se trasladan los índices y
+   umbrales calibrados en una región a otra.
+6. Lu, B., He, Y. y Tong, A. (2016). Evaluation of spectral indices for estimating
+   burn severity in semiarid grasslands. *International Journal of Wildland Fire*,
+   25(2), 147-157. <https://doi.org/10.1071/WF15098>. En un pastizal semiárido de
+   Canadá, con severidad medida en campo, el índice que mejor funcionó fue el MIRBI,
+   no el NBR.
+
+Qué se sigue para Chichas: la escala de Key y Benson se calibró con parcelas
+dominadas por estratos leñosos, y la literatura muestra que en pastizal y en
+vegetación rala los umbrales fijos del dNBR no se trasladan sin recalibrar. Ninguna
+de estas referencias es de pastizal andino: no se encontró un estudio de dNBR con
+validación de campo en puna o páramo.
+
 ## Limitaciones
 
 - Un foco de calor es un píxel de 375 m donde un satélite detectó fuego, incluidas
