@@ -1,36 +1,74 @@
 # Incendios Perú
 
+¿Qué se quemó? De 8 637 focos de calor en el Perú a 1 690 hectáreas medidas en
+Chichas, Arequipa. La historia completa está en [index.html](index.html)
+(publicada en https://gabriela-pozo.github.io/incendios-peru/ cuando se active GitHub Pages).
+
 ## Pregunta
 
-¿Cuántas hectáreas se quemaron en el incendio de Chichas (Condesuyos, Arequipa), 16-18 de octubre de 2026 y qué tipo de suelo era?
+¿Cuántas hectáreas se quemaron en el incendio de Chichas (Condesuyos, Arequipa),
+del 16 al 18 de octubre de 2026, y qué tipo de suelo era? Y, como complemento,
+¿esa zona arde cada año o 2026 fue excepcional?
 
 ## Datos y fechas
 
-- Focos VIIRS (Suomi-NPP, NOAA-20, NOAA-21), CSV "South America 7d" de NASA FIRMS,
-  descargado el 21-oct-2026 (focos del 14 al 21-oct). Solo confianza nominal/alta.
-- Límites distritales: GADM 4.1, nivel 3.
-- Sentinel-2 L2A, tile 18LYH: ANTES 15-oct-2026 (0.0 % nube en la zona),
-  DESPUÉS 20-oct-2026 (0.2 % nube en la zona).
-- ESA WorldCover 2021 (v2.0.0), vía Microsoft Planetary Computer.
-- Se eligió primero Callería (Ucayali), pero no había imagen Sentinel-2 posterior
-  al fuego (17-21 oct); por regla fija se pasó a Chichas.
-- Zona analizada: envolvente de los 178 focos + 1 km (5 399 ha), rejilla de 20 m.
+- **Focos VIIRS** (Suomi-NPP, NOAA-20, NOAA-21): CSV "South America 7d" de NASA FIRMS,
+  descargado el 21-oct-2026 (focos del 14 al 21-oct). Solo confianza nominal/alta:
+  8 637 focos en el Perú, agrupados en 2 602 incendios.
+- **Archivo anual de focos**, solo Suomi-NPP, Perú, 2012-2025 (NASA FIRMS,
+  `viirs-snpp_{año}_Peru.csv`), descargado el 21-oct-2026. El archivo de 2026 aún no existe.
+- **Límites distritales**: GADM 4.1, nivel 3.
+- **Sentinel-2 L2A** (Microsoft Planetary Computer):
+
+  | Caso | Imagen | Fecha | Tile | Nubes en la zona | Nubes en la escena | Zona inválida |
+  |---|---|---|---|---:|---:|---:|
+  | Chichas | Antes | 15-oct-2026 | 18LYH | 0,0 % | 0,3 % | 0,0 % |
+  | Chichas | Después | 20-oct-2026 | 18LYH | 0,2 % | 11,4 % | 0,2 % |
+  | Río Tambo | Antes (la mejor) | 8-oct-2026 | 18LXM | 0,0 % | 38,3 % | 0,0 % |
+  | Río Tambo | Después (la mejor) | 20-oct-2026 | 18LXM | 55,4 % | 62,7 % | 55,4 % |
+
+  "Zona inválida" suma nubes, sombras, cirros y píxeles sin dato; el máximo admitido es 30 %.
+- **ESA WorldCover 2021** (v2.0.0), vía Microsoft Planetary Computer.
+- **Elección del caso**: se eligió primero Callería (Ucayali), pero no había imagen
+  Sentinel-2 posterior al fuego (17-21 oct); por regla fija se pasó a Chichas.
 
 ## Método
 
-- Focos de calor VIIRS de NASA FIRMS.
-- Imágenes Sentinel-2 L2A.
-- dNBR (diferencia del índice NBR antes/después) con máscara de nubes SCL.
-- Cruce con ESA WorldCover para identificar la cobertura del suelo.
+- **Focos**: filtrados a Perú con GADM; dos focos son del mismo incendio si están a
+  ≤ 1 km y ≤ 48 h entre sí (las cadenas se unen).
+- **Zona analizada**: envolvente de los focos + 1 km (Chichas: 178 focos, 5 399 ha),
+  en una rejilla de 20 m (UTM 18S).
+- **dNBR**: `NBR = (B8A − B12) / (B8A + B12)`; dNBR = NBR antes − NBR después.
+  Píxel quemado si dNBR ≥ 0,10; severidad según Key y Benson (0,10 / 0,27 / 0,44 / 0,66).
+- **Máscara SCL**: se excluyen sombra, nube media, nube alta, cirros, agua y sin dato
+  en cualquiera de las dos fechas.
+- **Cobertura**: ESA WorldCover remuestreado a la rejilla y cruzado con los píxeles quemados.
+- **Sensibilidad**: hectáreas quemadas con umbrales de 0,05 a 0,35, mismo par de imágenes.
+- **Recurrencia**: focos S-NPP por año dentro del polígono quemado (dNBR ≥ 0,10) y a 1 km de él.
 
 ## Tres hallazgos
 
-1. Se quemaron 1 690 ha (dNBR ≥ 0,10), el 31 % de las 5 399 ha analizadas.
+1. Se quemaron 1 690 ha (dNBR ≥ 0,10), el 31 % de las 5 399 ha analizadas; el 85,7 %
+   de lo quemado es de severidad baja.
 2. El 72,4 % de lo quemado era pastizal; bosque, 0,1 ha; cultivo, cero.
 3. La medición da 43 % menos que lo que sugerían los focos, cuya envolvente apuntaba a 2 957 ha.
 
-La historia completa está en la página [index.html](index.html)
-(publicada en https://gabriela-pozo.github.io/incendios-peru/ cuando se active GitHub Pages).
+| Severidad | Rango dNBR | Hectáreas |
+|---|---|---:|
+| Baja | 0,10-0,27 | 1 447,6 |
+| Moderada-baja | 0,27-0,44 | 240,8 |
+| Moderada-alta | 0,44-0,66 | 1,1 |
+| Alta | ≥ 0,66 | 0,0 |
+| **Total quemado** | ≥ 0,10 | **1 689,5** |
+
+| Cobertura (WorldCover) | Hectáreas | % de lo quemado |
+|---|---:|---:|
+| Pastizal | 1 223,0 | 72,4 |
+| Matorral | 455,6 | 27,0 |
+| Suelo desnudo | 10,3 | 0,6 |
+| Agua | 0,4 | 0,0 |
+| Bosque | 0,1 | 0,0 |
+| Cultivo | 0,0 | 0,0 |
 
 Tablas: `outputs/severidad_chichas.csv`, `outputs/cobertura_quemada_chichas.csv`
 (y `_detalle.csv`), `outputs/imagenes_chichas.csv`, `outputs/top5_incendios.csv`.
@@ -149,10 +187,41 @@ Tabla: `outputs/imagenes_riotambo.csv`.
   quemas agrícolas. No es un incendio y no es una hectárea.
 - La cifra de hectáreas depende de cuatro decisiones: fechas, nubes, umbral y zona.
   Solo el umbral la mueve entre 34 y 2 008 ha (ver "Sensibilidad al umbral").
+- La severidad puede estar subestimada: en pastizal el dNBR sale bajo y la imagen
+  posterior es de solo dos días después del último foco.
+- El encadenamiento de focos puede fusionar incendios distintos cercanos en espacio y tiempo.
 - VIIRS no detecta de forma confiable incendios pequeños, bajo dosel cerrado o
-  cubiertos por nubes.
+  cubiertos por nubes. En la recurrencia, eso limita la conclusión a incendios del
+  tamaño del de 2026; la barra de 2026 cubre solo 8 días.
 - Un solo caso medido: los dos candidatos amazónicos (Callería y Río Tambo) no
   tenían imagen posterior sin nubes, así que no hay contraste entre bosque y pastizal.
 - WorldCover es de 2021, así que la cobertura pudo cambiar antes del incendio.
+- Las cifras oficiales no se suman a estas: usan otros métodos y otras definiciones.
 - Herramienta independiente con datos públicos; no reemplaza los reportes del
   COEN, INDECI, SERFOR ni SERNANP.
+
+## Cómo reproducir
+
+Requiere Python 3.14 (probado con 3.14.6) y conexión a internet (NASA FIRMS y
+Microsoft Planetary Computer, sin clave). Desde la raíz del repositorio:
+
+```bash
+python -m venv .venv
+.venv/Scripts/activate          # en Linux/macOS: source .venv/bin/activate
+pip install -r requirements.txt
+
+python src/paso1_focos.py        # focos VIIRS → incendios → top 5
+python src/paso2_4_medir.py      # par Sentinel-2, dNBR, severidad, WorldCover y mapa
+python src/paso5_sensibilidad.py # hectáreas con 7 umbrales de dNBR + gráfico
+python src/paso6_recurrencia.py  # archivo S-NPP 2012-2025 + polígono quemado + gráfico
+python src/paso7_riotambo.py     # verifica si Río Tambo es medible (no lo es)
+```
+
+Los pasos 2 a 7 dependen de `outputs/focos_peru.csv`, que genera el paso 1. Las
+descargas se guardan en `data/raw/` (no versionado) y no se repiten si ya existen.
+
+**Ojo:** el CSV de 7 días de FIRMS cambia cada día. Si el paso 1 descarga los archivos
+de nuevo, los focos e identificadores de incendio (Chichas = 1052, Río Tambo = 30) ya
+no serán los mismos. Para reproducir estas cifras hacen falta los tres
+`data/raw/firms_*_SA_7d.csv` descargados el 21-oct-2026; con el `outputs/focos_peru.csv`
+versionado se pueden correr los pasos 2 a 7 sin el paso 1.
