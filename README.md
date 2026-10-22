@@ -64,6 +64,55 @@ Tablas: `outputs/severidad_chichas.csv`, `outputs/cobertura_quemada_chichas.csv`
 
 Tabla: `outputs/sensibilidad_umbral_chichas.csv`.
 
+## Recurrencia interanual
+
+¿El área que ardió en 2026 arde cada año o fue excepcional? Se contaron los focos
+de Suomi-NPP (confianza nominal/alta) de cada año 2012-2025, del archivo anual de
+NASA FIRMS para Perú, dentro del polígono quemado en 2026 (1 689,5 ha, dNBR ≥ 0,10)
+y dentro del polígono + 1 km (5 855,2 ha). Solo S-NPP: sumar NOAA-20 (desde 2018)
+y NOAA-21 (desde 2023) inflaría los años recientes.
+
+| Año | Focos en el polígono | Focos en polígono + 1 km | Días con datos (Perú) |
+|---|---:|---:|---:|
+| 2012 | 0 | 0 | 346 |
+| 2013 | 0 | 1 | 365 |
+| 2014 | 0 | 0 | 363 |
+| 2015 | 0 | 0 | 365 |
+| 2016 | 0 | 0 | 365 |
+| 2017 | 0 | 0 | 364 |
+| 2018 | 0 | 4 | 365 |
+| 2019 | 0 | 0 | 364 |
+| 2020 | 0 | 0 | 366 |
+| 2021 | 0 | 0 | 365 |
+| 2022 | 0 | 0 | 350 |
+| 2023 | 0 | 0 | 363 |
+| 2024 | 0 | 0 | 346 |
+| 2025 | 0 | 0 | 362 |
+| 2026* | 44 | 61 | 8 |
+
+\* 2026: solo 14-21 de octubre (CSV de 7 días); el archivo anual 2026 aún no existe.
+
+![Focos S-NPP por año en el área quemada de Chichas](outputs/recurrencia_chichas.png)
+
+- **Los datos apuntan a un evento excepcional.** En 14 años completos, cero focos
+  dentro del polígono. En el anillo de 1 km, focos en solo 2 años: 1 en marzo de 2013
+  y 4 en diciembre de 2018. En 2026, en dos días (17 y 18 oct), 44 dentro y 61 con el anillo.
+- **Confianza.** Los 14 años tienen datos utilizables (detecciones en el Perú en 346
+  a 366 días de cada año). Confianza alta en que entre 2012 y 2025 no hubo ahí un
+  incendio del tamaño del de 2026 (que dio 61 focos en dos días). Confianza baja en
+  que la zona nunca se queme: S-NPP pasa unas dos veces al día y una quema de pastos
+  pequeña y rápida puede ocurrir entre dos pasadas. Incluir los focos de confianza
+  baja no cambia el resultado: siguen siendo cero dentro del polígono.
+- **Lectura económica.** Una recurrencia alta habría sugerido quema de manejo de
+  pastos (práctica productiva con externalidades: humo, emisiones, riesgo de escape).
+  La recurrencia nula es más compatible con un evento excepcional, es decir, con un
+  daño: forraje perdido sin haberlo planeado. Es evidencia compatible, no prueba:
+  las quemas pequeñas pueden escapar al satélite, y un evento excepcional también
+  puede ser una quema de manejo que se salió de control.
+
+Tablas: `outputs/recurrencia_chichas.csv`, `outputs/focos_historicos_chichas.csv`;
+polígono: `outputs/poligono_quemado_chichas.geojson`.
+
 ## Limitaciones
 
 - Un foco de calor es un píxel de 375 m donde un satélite detectó fuego, incluidas

@@ -71,6 +71,11 @@
   svg.chart text { fill: var(--muted); font-size: 12px; font-family: inherit; }
   svg.chart text.lbl { fill: var(--text); font-size: 13px; font-weight: 600; }
   svg.chart text.axis { font-size: 13px; }
+  svg.chart .bar { fill: var(--accent); }
+  svg.chart .bar.b2026 { fill: var(--blue); }
+  svg.chart .hit { fill: transparent; }
+  svg.chart text.val { font-size: 11px; }
+  svg.chart text.val.strong { fill: var(--text); font-weight: 700; font-size: 13px; }
   svg.chart .line { fill: none; stroke-width: 2; }
   svg.chart .s1 { stroke: var(--accent); }
   svg.chart .dot.s1 { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
@@ -188,7 +193,7 @@
     <p class="note">El total difiere en 0,1&nbsp;ha del de la tabla de severidad por el redondeo de cada clase.</p>
     <div class="callout">
       <p><strong>Cero hectáreas de cultivo y una décima de bosque.</strong> No hubo deforestación ni pérdida de cosecha: el daño es pérdida de forraje y el afectado es la ganadería extensiva.</p>
-      <p>El patrón es <strong>compatible</strong> con una quema de manejo, pero no lo prueba. Para verificarlo habría que mirar la recurrencia interanual en el archivo FIRMS 2012–2025: si la misma zona arde cada temporada seca, es manejo. Ese análisis no se corrió.</p>
+      <p>Que ardiera pastizal no dice por sí solo si fue una quema de manejo o un accidente. La recurrencia interanual (sección 7) sugiere lo segundo: la zona no había ardido en 14 años.</p>
     </div>
   </section>
 
@@ -256,8 +261,102 @@
     <p class="note">34–2&nbsp;008&nbsp;ha <strong>no</strong> es “el rango del incendio”. Con 0,05 se recogen ruido y cambios que no son fuego (vegetación que se seca, diferencias de iluminación entre fechas); con 0,35 solo quedan los núcleos más calientes.</p>
   </section>
 
+  <section id="recurrencia">
+    <h2><span class="num">7</span>¿Arde cada año o fue excepcional?</h2>
+    <p>Si la misma zona ardiera cada temporada seca, el incendio de 2026 sería compatible con una quema de manejo de pastos. Para verlo se contaron los focos del satélite Suomi-NPP de cada año, de 2012 a 2025, dentro del área que ardió en 2026 (1&nbsp;689,5&nbsp;ha) y dentro de esa área más 1&nbsp;km (5&nbsp;855,2&nbsp;ha).</p>
+    <figure>
+<svg class="chart" viewBox="0 0 640 300" role="img" aria-label="Focos S-NPP por año en el área quemada de Chichas (polígono más 1 km), 2012 a 2026">
+<line class="grid" x1="44" x2="628" y1="248.0" y2="248.0"/><text class="tick" x="38" y="252.0" text-anchor="end">0</text>
+<line class="grid" x1="44" x2="628" y1="216.0" y2="216.0"/><text class="tick" x="38" y="220.0" text-anchor="end">10</text>
+<line class="grid" x1="44" x2="628" y1="184.0" y2="184.0"/><text class="tick" x="38" y="188.0" text-anchor="end">20</text>
+<line class="grid" x1="44" x2="628" y1="152.0" y2="152.0"/><text class="tick" x="38" y="156.0" text-anchor="end">30</text>
+<line class="grid" x1="44" x2="628" y1="120.0" y2="120.0"/><text class="tick" x="38" y="124.0" text-anchor="end">40</text>
+<line class="grid" x1="44" x2="628" y1="88.0" y2="88.0"/><text class="tick" x="38" y="92.0" text-anchor="end">50</text>
+<line class="grid" x1="44" x2="628" y1="56.0" y2="56.0"/><text class="tick" x="38" y="60.0" text-anchor="end">60</text>
+<line class="grid" x1="44" x2="628" y1="24.0" y2="24.0"/><text class="tick" x="38" y="28.0" text-anchor="end">70</text>
+<rect class="hit" x="49.8" y="24" width="27.3" height="224.0"><title>2012: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="63.5" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="63.5" y="264" text-anchor="end" transform="rotate(-45 63.5 264)">2012</text>
+<path class="bar" d="M88.8,248.0 V247.8 q0,-3 3,-3 H113.0 q3,0 3,3 V248.0 Z"><title>2013: 1 focos a ≤1 km del área quemada, 0 dentro del polígono</title></path>
+<text class="val" x="102.4" y="239.8" text-anchor="middle">1</text>
+<text class="tick" x="102.4" y="264" text-anchor="end" transform="rotate(-45 102.4 264)">2013</text>
+<rect class="hit" x="127.7" y="24" width="27.3" height="224.0"><title>2014: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="141.3" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="141.3" y="264" text-anchor="end" transform="rotate(-45 141.3 264)">2014</text>
+<rect class="hit" x="166.6" y="24" width="27.3" height="224.0"><title>2015: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="180.3" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="180.3" y="264" text-anchor="end" transform="rotate(-45 180.3 264)">2015</text>
+<rect class="hit" x="205.6" y="24" width="27.3" height="224.0"><title>2016: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="219.2" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="219.2" y="264" text-anchor="end" transform="rotate(-45 219.2 264)">2016</text>
+<rect class="hit" x="244.5" y="24" width="27.3" height="224.0"><title>2017: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="258.1" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="258.1" y="264" text-anchor="end" transform="rotate(-45 258.1 264)">2017</text>
+<path class="bar" d="M283.4,248.0 V238.2 q0,-3 3,-3 H307.7 q3,0 3,3 V248.0 Z"><title>2018: 4 focos a ≤1 km del área quemada, 0 dentro del polígono</title></path>
+<text class="val" x="297.1" y="230.2" text-anchor="middle">4</text>
+<text class="tick" x="297.1" y="264" text-anchor="end" transform="rotate(-45 297.1 264)">2018</text>
+<rect class="hit" x="322.4" y="24" width="27.3" height="224.0"><title>2019: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="336.0" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="336.0" y="264" text-anchor="end" transform="rotate(-45 336.0 264)">2019</text>
+<rect class="hit" x="361.3" y="24" width="27.3" height="224.0"><title>2020: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="374.9" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="374.9" y="264" text-anchor="end" transform="rotate(-45 374.9 264)">2020</text>
+<rect class="hit" x="400.2" y="24" width="27.3" height="224.0"><title>2021: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="413.9" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="413.9" y="264" text-anchor="end" transform="rotate(-45 413.9 264)">2021</text>
+<rect class="hit" x="439.2" y="24" width="27.3" height="224.0"><title>2022: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="452.8" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="452.8" y="264" text-anchor="end" transform="rotate(-45 452.8 264)">2022</text>
+<rect class="hit" x="478.1" y="24" width="27.3" height="224.0"><title>2023: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="491.7" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="491.7" y="264" text-anchor="end" transform="rotate(-45 491.7 264)">2023</text>
+<rect class="hit" x="517.0" y="24" width="27.3" height="224.0"><title>2024: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="530.7" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="530.7" y="264" text-anchor="end" transform="rotate(-45 530.7 264)">2024</text>
+<rect class="hit" x="556.0" y="24" width="27.3" height="224.0"><title>2025: 0 focos a ≤1 km del área quemada, 0 dentro del polígono</title></rect>
+<text class="val" x="569.6" y="243.0" text-anchor="middle">0</text>
+<text class="tick" x="569.6" y="264" text-anchor="end" transform="rotate(-45 569.6 264)">2025</text>
+<path class="bar b2026" d="M594.9,248.0 V55.8 q0,-3 3,-3 H619.2 q3,0 3,3 V248.0 Z"><title>2026*: 61 focos a ≤1 km del área quemada, 44 dentro del polígono</title></path>
+<text class="val strong" x="608.5" y="47.8" text-anchor="middle">61</text>
+<text class="tick" x="608.5" y="264" text-anchor="end" transform="rotate(-45 608.5 264)">2026*</text>
+</svg>
+
+      <figcaption>Focos S-NPP de confianza nominal o alta por año, en el área quemada en 2026 más 1&nbsp;km. *2026: solo del 14 al 21 de octubre (CSV de 7 días). 2012–2025: año completo, archivo anual de NASA FIRMS.</figcaption>
+    </figure>
+    <div class="callout">
+      <p><strong>Los datos apuntan a un evento excepcional.</strong> En 14 años completos, S-NPP no registró ni un foco dentro del área que ardió en 2026. En el anillo de 1&nbsp;km hubo focos en solo 2 años: 1 en marzo de 2013 y 4 en diciembre de 2018. En 2026, en dos días (17 y 18 de octubre), hubo 44 focos dentro del área y 61 contando el anillo.</p>
+    </div>
+    <p><strong>Cuánta confianza.</strong> Los 14 años (2012–2025) tienen datos utilizables: cada archivo anual trae detecciones en el Perú en 346 a 366 días del año. Con eso se puede afirmar con <strong>confianza alta</strong> que entre 2012 y 2025 no hubo ahí un incendio del tamaño del de 2026: ese generó 61 focos S-NPP en dos días y uno parecido difícilmente pasaría inadvertido. La confianza es <strong>baja</strong> para afirmar que la zona nunca se quema: S-NPP pasa sobre el Perú unas dos veces al día, y una quema de pastos pequeña y rápida puede empezar y apagarse entre dos pasadas. El resultado no cambia al incluir los focos de confianza baja: siguen siendo cero dentro del área.</p>
+    <p><strong>Lectura económica.</strong> Una recurrencia alta habría sugerido quema de manejo de pastos: una práctica productiva que renueva el forraje pero genera externalidades (humo, emisiones, riesgo de que el fuego escape). Una recurrencia nula, como la de Chichas, es más compatible con un evento excepcional, es decir, con un daño: forraje que los ganaderos pierden sin haberlo planeado. Es evidencia compatible, no prueba: las quemas pequeñas pueden escapar al satélite, y un evento excepcional también puede ser una quema de manejo que se salió de control.</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Año</th><th class="n">Focos en el área</th><th class="n">Focos en área + 1&nbsp;km</th><th class="n">Días con datos (Perú)</th></tr>
+        </thead>
+        <tbody>
+          <tr class="dim"><td>2012</td><td class="n">0</td><td class="n">0</td><td class="n">346</td></tr>
+          <tr><td>2013</td><td class="n">0</td><td class="n">1</td><td class="n">365</td></tr>
+          <tr class="dim"><td>2014</td><td class="n">0</td><td class="n">0</td><td class="n">363</td></tr>
+          <tr class="dim"><td>2015</td><td class="n">0</td><td class="n">0</td><td class="n">365</td></tr>
+          <tr class="dim"><td>2016</td><td class="n">0</td><td class="n">0</td><td class="n">365</td></tr>
+          <tr class="dim"><td>2017</td><td class="n">0</td><td class="n">0</td><td class="n">364</td></tr>
+          <tr><td>2018</td><td class="n">0</td><td class="n">4</td><td class="n">365</td></tr>
+          <tr class="dim"><td>2019</td><td class="n">0</td><td class="n">0</td><td class="n">364</td></tr>
+          <tr class="dim"><td>2020</td><td class="n">0</td><td class="n">0</td><td class="n">366</td></tr>
+          <tr class="dim"><td>2021</td><td class="n">0</td><td class="n">0</td><td class="n">365</td></tr>
+          <tr class="dim"><td>2022</td><td class="n">0</td><td class="n">0</td><td class="n">350</td></tr>
+          <tr class="dim"><td>2023</td><td class="n">0</td><td class="n">0</td><td class="n">363</td></tr>
+          <tr class="dim"><td>2024</td><td class="n">0</td><td class="n">0</td><td class="n">346</td></tr>
+          <tr class="dim"><td>2025</td><td class="n">0</td><td class="n">0</td><td class="n">362</td></tr>
+          <tr class="medido"><td>2026*</td><td class="n">44</td><td class="n">61</td><td class="n">8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Solo se usó Suomi-NPP, que tiene la serie completa desde 2012. Sumar NOAA-20 (desde 2018) y NOAA-21 (desde 2023) inflaría los años recientes solo porque hay más satélites mirando.</p>
+  </section>
+
   <section id="eleccion">
-    <h2><span class="num">7</span>Cómo se eligió el caso</h2>
+    <h2><span class="num">8</span>Cómo se eligió el caso</h2>
     <p>Los 8&nbsp;637 focos VIIRS de confianza nominal o alta registrados en el Perú entre el 14 y el 21 de octubre de 2026 se agruparon en 2&nbsp;602 incendios. Estos son los cinco con más focos:</p>
     <div class="table-scroll">
       <table>
@@ -278,7 +377,7 @@
   </section>
 
   <section id="decisiones">
-    <h2><span class="num">8</span>Las decisiones declaradas</h2>
+    <h2><span class="num">9</span>Las decisiones declaradas</h2>
     <p>Este es el par de imágenes elegido. Se evaluaron 12 candidatas: 10 anteriores y 2 posteriores al fuego. Las del tile 18LYJ se descartaron porque el 97,1&nbsp;% de la zona queda fuera de su cobertura válida.</p>
     <div class="table-scroll">
       <table>
@@ -299,7 +398,7 @@
   </section>
 
   <section id="metodo">
-    <h2><span class="num">9</span>Método</h2>
+    <h2><span class="num">10</span>Método</h2>
     <div class="cards">
       <div class="card method"><h3>Focos VIIRS</h3><p>CSV “South America 7d” de NASA FIRMS, de los satélites Suomi-NPP, NOAA-20 y NOAA-21. Se filtraron a Perú con los límites distritales de GADM y se descartaron los de confianza baja.</p></div>
       <div class="card method"><h3>Agrupamiento</h3><p>Dos focos pertenecen al mismo incendio si están a ≤&nbsp;1&nbsp;km y a ≤&nbsp;48&nbsp;h entre sí. Las cadenas se unen en un solo grupo.</p></div>
@@ -311,7 +410,7 @@
   </section>
 
   <section id="limitaciones">
-    <h2><span class="num">10</span>Limitaciones</h2>
+    <h2><span class="num">11</span>Limitaciones</h2>
     <ul class="clean">
       <li><strong>Un foco no es un incendio ni una hectárea.</strong> Es un píxel de 375&nbsp;m donde un satélite detectó calor, incluidas las quemas agrícolas.</li>
       <li><strong>La cifra depende de cuatro decisiones:</strong> fechas, nubes, umbral y zona. Si cambia cualquiera, cambian las hectáreas; solo el umbral la mueve entre 34 y 2&nbsp;008&nbsp;ha (sección 6).</li>
