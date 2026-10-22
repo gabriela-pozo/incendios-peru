@@ -65,6 +65,15 @@
   .card.method h3 { color: var(--blue); }
   figure { margin: 18px 0 0; }
   figure img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+  svg.chart { width: 100%; height: auto; display: block; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+  svg.chart .grid { stroke: var(--line); stroke-width: 1; }
+  svg.chart .ref { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 4 4; }
+  svg.chart text { fill: var(--muted); font-size: 12px; font-family: inherit; }
+  svg.chart text.lbl { fill: var(--text); font-size: 13px; font-weight: 600; }
+  svg.chart text.axis { font-size: 13px; }
+  svg.chart .line { fill: none; stroke-width: 2; }
+  svg.chart .s1 { stroke: var(--accent); }
+  svg.chart .dot.s1 { fill: var(--accent); stroke: var(--card); stroke-width: 2; }
   figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
   .table-scroll { overflow-x: auto; margin: 14px 0 10px; }
   table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
@@ -189,8 +198,66 @@
     <p>Un foco VIIRS marca un píxel de 375&nbsp;m (unas 14&nbsp;ha) donde el satélite detectó calor, pero dentro de ese píxel puede arder solo una fracción. Por eso, estimar el daño contando focos o dibujando el área que los rodea infla el resultado. Para saber cuánto se quemó hay que medir la cicatriz con una imagen de mayor resolución.</p>
   </section>
 
+  <section id="sensibilidad">
+    <h2><span class="num">6</span>Cuánto depende del umbral</h2>
+    <p>Con el corte estándar de 0,10 el área quemada es de 1&nbsp;690&nbsp;ha. Pero la cifra es muy elástica: entre 0,05 y 0,35 va de 2&nbsp;008&nbsp;ha a 34&nbsp;ha, un factor de 59.</p>
+    <figure>
+<svg class="chart" viewBox="0 0 640 330" role="img" aria-label="Hectáreas quemadas según el umbral de dNBR">
+<line class="grid" x1="62" x2="620" y1="280.0" y2="280.0"/><text class="tick" x="54" y="284.0" text-anchor="end">0</text>
+<line class="grid" x1="62" x2="620" y1="251.6" y2="251.6"/><text class="tick" x="54" y="255.6" text-anchor="end">250</text>
+<line class="grid" x1="62" x2="620" y1="223.1" y2="223.1"/><text class="tick" x="54" y="227.1" text-anchor="end">500</text>
+<line class="grid" x1="62" x2="620" y1="194.7" y2="194.7"/><text class="tick" x="54" y="198.7" text-anchor="end">750</text>
+<line class="grid" x1="62" x2="620" y1="166.2" y2="166.2"/><text class="tick" x="54" y="170.2" text-anchor="end">1&#8239;000</text>
+<line class="grid" x1="62" x2="620" y1="137.8" y2="137.8"/><text class="tick" x="54" y="141.8" text-anchor="end">1&#8239;250</text>
+<line class="grid" x1="62" x2="620" y1="109.3" y2="109.3"/><text class="tick" x="54" y="113.3" text-anchor="end">1&#8239;500</text>
+<line class="grid" x1="62" x2="620" y1="80.9" y2="80.9"/><text class="tick" x="54" y="84.9" text-anchor="end">1&#8239;750</text>
+<line class="grid" x1="62" x2="620" y1="52.4" y2="52.4"/><text class="tick" x="54" y="56.4" text-anchor="end">2&#8239;000</text>
+<line class="grid" x1="62" x2="620" y1="24.0" y2="24.0"/><text class="tick" x="54" y="28.0" text-anchor="end">2&#8239;250</text>
+<text class="tick" x="62.0" y="298" text-anchor="middle">0,05</text>
+<text class="tick" x="117.8" y="298" text-anchor="middle">0,08</text>
+<text class="tick" x="155.0" y="298" text-anchor="middle">0,10</text>
+<text class="tick" x="248.0" y="298" text-anchor="middle">0,15</text>
+<text class="tick" x="341.0" y="298" text-anchor="middle">0,20</text>
+<text class="tick" x="471.2" y="298" text-anchor="middle">0,27</text>
+<text class="tick" x="620.0" y="298" text-anchor="middle">0,35</text>
+<line class="ref" x1="155.0" x2="155.0" y1="24" y2="280"/>
+<text class="axis" x="341.0" y="322" text-anchor="middle">Umbral de dNBR</text>
+<polyline class="line s1" points="62.0,51.6 117.8,70.3 155.0,87.8 248.0,147.0 341.0,201.9 471.2,252.5 620.0,276.1"/>
+<circle class="dot s1" cx="62.0" cy="51.6" r="4.5"><title>Chichas · umbral 0,05: 2&#8239;007,5 ha</title></circle>
+<circle class="dot s1" cx="117.8" cy="70.3" r="4.5"><title>Chichas · umbral 0,08: 1&#8239;842,9 ha</title></circle>
+<circle class="dot s1" cx="155.0" cy="87.8" r="6"><title>Chichas · umbral 0,10: 1&#8239;689,5 ha</title></circle>
+<circle class="dot s1" cx="248.0" cy="147.0" r="4.5"><title>Chichas · umbral 0,15: 1&#8239;168,9 ha</title></circle>
+<circle class="dot s1" cx="341.0" cy="201.9" r="4.5"><title>Chichas · umbral 0,20: 686,6 ha</title></circle>
+<circle class="dot s1" cx="471.2" cy="252.5" r="4.5"><title>Chichas · umbral 0,27: 241,9 ha</title></circle>
+<circle class="dot s1" cx="620.0" cy="276.1" r="4.5"><title>Chichas · umbral 0,35: 33,9 ha</title></circle>
+<text class="lbl" x="167.0" y="77.8">Umbral usado (0,10): 1&#8239;690 ha</text>
+</svg>
+
+      <figcaption>Hectáreas quemadas en Chichas según el umbral de dNBR, en la misma zona de 5&nbsp;399&nbsp;ha y con el mismo par de imágenes. La línea discontinua marca el umbral usado (0,10).</figcaption>
+    </figure>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Umbral dNBR</th><th class="n">Hectáreas quemadas</th><th class="n">% de la zona</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>0,05</td><td class="n">2&nbsp;007,5</td><td class="n">37,2&nbsp;%</td></tr>
+          <tr><td>0,08</td><td class="n">1&nbsp;842,9</td><td class="n">34,1&nbsp;%</td></tr>
+          <tr class="medido"><td>0,10<span class="tag">usado</span></td><td class="n">1&nbsp;689,5</td><td class="n">31,3&nbsp;%</td></tr>
+          <tr><td>0,15</td><td class="n">1&nbsp;168,9</td><td class="n">21,6&nbsp;%</td></tr>
+          <tr><td>0,20</td><td class="n">686,6</td><td class="n">12,7&nbsp;%</td></tr>
+          <tr><td>0,27</td><td class="n">241,9</td><td class="n">4,5&nbsp;%</td></tr>
+          <tr><td>0,35</td><td class="n">33,9</td><td class="n">0,6&nbsp;%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>La razón es que el incendio fue de baja severidad y sus píxeles se concentran cerca del umbral: moverlo un poco cambia mucho cuántos quedan de cada lado. Si hubiera sido un incendio forestal intenso, con píxeles muy por encima de 0,27, la curva sería plana.</p>
+    <p>La escala de Key y Benson se calibró sobre incendios forestales. En pastizal casi todo cae en la banda baja, así que la elección del umbral pesa más que el propio fuego.</p>
+    <p class="note">34–2&nbsp;008&nbsp;ha <strong>no</strong> es “el rango del incendio”. Con 0,05 se recogen ruido y cambios que no son fuego (vegetación que se seca, diferencias de iluminación entre fechas); con 0,35 solo quedan los núcleos más calientes.</p>
+  </section>
+
   <section id="eleccion">
-    <h2><span class="num">6</span>Cómo se eligió el caso</h2>
+    <h2><span class="num">7</span>Cómo se eligió el caso</h2>
     <p>Los 8&nbsp;637 focos VIIRS de confianza nominal o alta registrados en el Perú entre el 14 y el 21 de octubre de 2026 se agruparon en 2&nbsp;602 incendios. Estos son los cinco con más focos:</p>
     <div class="table-scroll">
       <table>
@@ -211,7 +278,7 @@
   </section>
 
   <section id="decisiones">
-    <h2><span class="num">7</span>Las decisiones declaradas</h2>
+    <h2><span class="num">8</span>Las decisiones declaradas</h2>
     <p>Este es el par de imágenes elegido. Se evaluaron 12 candidatas: 10 anteriores y 2 posteriores al fuego. Las del tile 18LYJ se descartaron porque el 97,1&nbsp;% de la zona queda fuera de su cobertura válida.</p>
     <div class="table-scroll">
       <table>
@@ -232,7 +299,7 @@
   </section>
 
   <section id="metodo">
-    <h2><span class="num">8</span>Método</h2>
+    <h2><span class="num">9</span>Método</h2>
     <div class="cards">
       <div class="card method"><h3>Focos VIIRS</h3><p>CSV “South America 7d” de NASA FIRMS, de los satélites Suomi-NPP, NOAA-20 y NOAA-21. Se filtraron a Perú con los límites distritales de GADM y se descartaron los de confianza baja.</p></div>
       <div class="card method"><h3>Agrupamiento</h3><p>Dos focos pertenecen al mismo incendio si están a ≤&nbsp;1&nbsp;km y a ≤&nbsp;48&nbsp;h entre sí. Las cadenas se unen en un solo grupo.</p></div>
@@ -244,10 +311,10 @@
   </section>
 
   <section id="limitaciones">
-    <h2><span class="num">9</span>Limitaciones</h2>
+    <h2><span class="num">10</span>Limitaciones</h2>
     <ul class="clean">
       <li><strong>Un foco no es un incendio ni una hectárea.</strong> Es un píxel de 375&nbsp;m donde un satélite detectó calor, incluidas las quemas agrícolas.</li>
-      <li><strong>La cifra depende de cuatro decisiones:</strong> fechas, nubes, umbral y zona. Si cambia cualquiera, cambian las hectáreas.</li>
+      <li><strong>La cifra depende de cuatro decisiones:</strong> fechas, nubes, umbral y zona. Si cambia cualquiera, cambian las hectáreas; solo el umbral la mueve entre 34 y 2&nbsp;008&nbsp;ha (sección 6).</li>
       <li><strong>La severidad puede estar subestimada</strong>, porque en pastizal el dNBR sale bajo y la imagen posterior es muy cercana al fuego.</li>
       <li><strong>El encadenamiento puede fusionar incendios distintos</strong> que estén cerca en el espacio y en el tiempo.</li>
       <li><strong>VIIRS no detecta bien</strong> los incendios pequeños, bajo dosel cerrado o cubiertos por nubes, así que la cifra es un piso.</li>
