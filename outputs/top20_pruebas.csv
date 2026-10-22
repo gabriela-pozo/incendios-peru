@@ -1,0 +1,11 @@
+prueba,estadistico,valor,n
+"Fisher: medidos, Amazonía vs Andes",p,0.603,19
+"Fisher: fallo por nubes, Amazonía vs Andes",p,1.0,19
+Spearman: % nocturnos vs area_quemada_ha,rho,0.6,4
+Spearman: % nocturnos vs area_quemada_ha,p,0.4,4
+Spearman: % nocturnos vs pct_moderada_o_mas,rho,0.4,4
+Spearman: % nocturnos vs pct_moderada_o_mas,p,0.6,4
+Spearman: % nocturnos vs dnbr_mediana_quemado,rho,0.0,4
+Spearman: % nocturnos vs dnbr_mediana_quemado,p,1.0,4
+Spearman: % nocturnos vs envolvente_ha,rho,-0.112,20
+Spearman: % nocturnos vs envolvente_ha,p,0.639,20

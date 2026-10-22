@@ -29,6 +29,9 @@ del 16 al 18 de octubre de 2026, y qué tipo de suelo era? Y, como complemento,
 
   "Zona inválida" suma nubes, sombras, cirros y píxeles sin dato; el máximo admitido es 30 %.
 - **ESA WorldCover 2021** (v2.0.0), vía Microsoft Planetary Computer.
+- **Copernicus DEM GLO-30** (Planetary Computer), para la altitud y la región de cada incendio.
+- **MCD64A1 v6.1** (MODIS, área quemada mensual, 500 m; colección `modis-64A1-061` en
+  Planetary Computer), para validar el método en incendios de 2024.
 - **Elección del caso**: se eligió primero Callería (Ucayali), pero no había imagen
   Sentinel-2 posterior al fuego (17-21 oct); por regla fija se pasó a Chichas.
 
@@ -45,6 +48,10 @@ del 16 al 18 de octubre de 2026, y qué tipo de suelo era? Y, como complemento,
 - **Cobertura**: ESA WorldCover remuestreado a la rejilla y cruzado con los píxeles quemados.
 - **Sensibilidad**: hectáreas quemadas con umbrales de 0,05 a 0,35, mismo par de imágenes.
 - **Recurrencia**: focos S-NPP por año dentro del polígono quemado (dNBR ≥ 0,10) y a 1 km de él.
+- **Veinte casos**: el mismo pipeline (`src/medicion.py`) sobre los 20 incendios con más focos.
+- **Robustez**: una decisión por vez (umbral, par de imágenes, máscara SCL, zona) y Gini con
+  tres unidades espaciales.
+- **Validación**: nuestro método frente a MCD64A1 en la misma zona y los mismos píxeles válidos.
 
 ## Tres hallazgos
 
@@ -147,39 +154,177 @@ y NOAA-21 (desde 2023) inflaría los años recientes.
   daño: forraje perdido sin haberlo planeado. Es evidencia compatible, no prueba:
   las quemas pequeñas pueden escapar al satélite, y un evento excepcional también
   puede ser una quema de manejo que se salió de control.
+- **Cruce con la firma nocturna.** Chichas fue muy nocturno: el 56,7 % de sus focos fueron
+  de noche (70,5 % solo con S-NPP), frente al 20,1 % del Perú en la misma semana y una
+  mediana de 34,3 % en los otros 19 del top 20; es el tercero más nocturno de los 20. La
+  lectura "zona de quema habitual donde esta vez el fuego se escapó" exigiría recurrencia
+  alta **y** firma nocturna; aquí solo se cumple la segunda. Lo más simple es que un
+  incendio grande siga ardiendo de noche.
 
-Tablas: `outputs/recurrencia_chichas.csv`, `outputs/focos_historicos_chichas.csv`;
+Tablas: `outputs/recurrencia_chichas.csv`, `outputs/recurrencia_noche_chichas.csv`, `outputs/focos_historicos_chichas.csv`;
 polígono: `outputs/poligono_quemado_chichas.geojson`.
 
-## Segundo caso, amazónico: Río Tambo (no medible)
+## De uno a veinte incendios
 
-Se intentó medir Río Tambo (Satipo, Junín), el incendio con más focos de la semana
-(279 focos del 14 al 17 de octubre, el 99,6 % sobre bosque), con exactamente el mismo
-método: zona de focos + 1 km (5 530 ha), umbral 0,10, máscara SCL, WorldCover y curva
-de sensibilidad. Hay buena imagen anterior (8-oct-2026, tile 18LXM, 0,0 % de la zona
-inválida), pero **ninguna posterior utilizable**; la regla exige como máximo el 30 %
-de la zona inválida:
+El mismo pipeline (búsqueda del par Sentinel-2, máscara SCL, dNBR, severidad y
+WorldCover) sobre los 20 incendios con más focos de la semana. **Solo 4 de 20 se
+pudieron medir.**
 
-| Imagen posterior | Tile | Nubes en la zona | Zona inválida |
+| # | Distrito | Región | Focos | Nocturnos | Envolvente (ha) | Quemado (ha) | Cobertura o motivo |
+|---:|---|---|---:|---:|---:|---:|---|
+| 1 | Río Tambo | Amazonía | 279 | 56 % | 3 051 | — | nubes (55,4 %) |
+| 2 | Curahuasi | Andes | 201 | 34 % | 3 227 | — | sin pasada |
+| 3 | Chichas | Andes | 178 | 57 % | 2 957 | **1 689,5** | pastizal |
+| 4 | Callería | Amazonía | 116 | 2 % | 1 530 | — | nubes (47,2 %) |
+| 5 | Iparía | Amazonía | 108 | 44 % | 724 | **255,4** | bosque |
+| 6 | Huanoquite | Andes | 80 | 51 % | 1 220 | — | nubes (100,0 %) |
+| 7 | Nueva Requena | Amazonía | 65 | 32 % | 416 | — | nubes (77,7 %) |
+| 8 | Cayna | Andes | 63 | 33 % | 724 | — | nubes (100,0 %) |
+| 9 | Mazamari | Amazonía | 62 | 32 % | 793 | — | sin pasada |
+| 10 | Palca | Andes | 61 | 16 % | 853 | — | nubes (100,0 %) |
+| 11 | San Cristóbal | Andes | 59 | 68 % | 587 | **609,9** | pastizal |
+| 12 | Santa Cruz | Amazonía | 50 | 22 % | 560 | — | nubes (100,0 %) |
+| 13 | Nueva Requena | Amazonía | 49 | 33 % | 315 | — | prefiltro (18,2 %) |
+| 14 | Nueva Requena | Amazonía | 48 | 33 % | 308 | — | nubes (100,0 %) |
+| 15 | Curahuasi | Andes | 45 | 38 % | 475 | **306,0** | pastizal |
+| 16 | Paracas | Costa | 42 | 52 % | 49 | — | sin pasada |
+| 17 | San Juan de Jarpa | Andes | 42 | 0 % | 497 | — | nubes (89,4 %) |
+| 18 | Caja | Andes | 39 | 56 % | 181 | — | nubes (47,5 %) |
+| 19 | Ayahuanco | Andes | 39 | 67 % | 400 | — | nubes (55,1 %) |
+| 20 | Ancahuasi | Andes | 36 | 47 % | 259 | — | nubes (65,7 %) |
+
+Región: Andes si el centro del incendio está a 1 500 m o más; por debajo, Amazonía (o
+Costa en departamentos sin selva). Entre paréntesis, el % de la zona inválida en la mejor
+imagen posterior. "Sin pasada": ningún Sentinel-2 pasó entre el fin del fuego y el
+21-oct. "Prefiltro": la imagen tenía más del 80 % de nubes en la escena completa y el
+pipeline la descarta, aunque la zona estaba limpia en un 81,8 %; es un defecto del
+pipeline. Río Tambo (el n.º 1) es el caso amazónico que antes se intentó medir aparte:
+su mejor imagen posterior (20-oct, tile 18LXM) tiene el 55,4 % de la zona tapada.
+Paracas probablemente es una fuente de calor industrial, no un incendio.
+
+![Severidad de los cuatro incendios medibles](outputs/top20_severidad.png)
+
+| Incendio medido | Cobertura dominante | Quemado (ha) | Severidad baja | Moderada o más | dNBR mediano | Medida vs envolvente |
+|---|---|---:|---:|---:|---:|---:|
+| Chichas | pastizal | 1 689,5 | 85,7 % | 14,4 % | 0,182 | -42,9 % |
+| Iparía | bosque | 255,4 | 42,2 % | 57,7 % | 0,304 | -64,7 % |
+| San Cristóbal | pastizal | 609,9 | 41,1 % | 58,9 % | 0,293 | 3,9 % |
+| Curahuasi | pastizal | 306,0 | 56,0 % | 44,0 % | 0,254 | -35,6 % |
+
+**a) ¿Se mide peor en la Amazonía?**
+
+| Región | Incendios | Medidos | % medidos | Fallo: nubes | Fallo: sin pasada | Fallo: prefiltro |
+|---|---:|---:|---:|---:|---:|---:|
+| Amazonía | 8 | 1 | 12,5 % | 5 | 1 | 1 |
+| Andes | 11 | 3 | 27,3 % | 7 | 1 | 0 |
+| Costa | 1 | 0 | 0,0 % | 0 | 1 | 0 |
+
+En la Amazonía se midió 1 de 8 (12,5 %) y en los Andes 3 de 11 (27,3 %), pero la
+diferencia no es significativa (Fisher, p = 0,60), y las nubes tumbaron casi la misma
+proporción en ambas regiones (62,5 % y 63,6 %). **La hipótesis no se confirma como sesgo
+regional.** Lo que sí aparece es un sesgo de calendario: a mediados de octubre empiezan
+las lluvias en la selva y en la sierra, y 16 de los 20 incendios más grandes no se pueden
+medir. El corte de datos del 21-oct también dejó a varios con muy pocos días para tener
+una imagen posterior.
+
+**b) ¿La severidad depende de la cobertura?** La hipótesis (bosque alta, pastizal baja)
+**no se respalda**: el único bosque medible, Iparía, tiene 57,7 % de severidad moderada o
+más, y San Cristóbal, un pastizal, 58,9 %. Chichas es el caso atípico (14,4 %). Con un
+bosque y tres pastizales no se pueden comparar distribuciones. Y aunque la hipótesis se
+cumpliera, no probaría que Key y Benson esté mal calibrada para el pastizal andino: para
+eso hace falta severidad medida en campo (CBI).
+
+**c) ¿Los focos sobrestiman siempre?**
+
+![Envolvente de focos frente a área medida](outputs/top20_envolvente_vs_medida.png)
+
+En tres de cuatro casos la envolvente sobrestima (Iparía −64,7 %, Chichas −42,9 %,
+Curahuasi −35,6 %); en San Cristóbal la medida la supera (+3,9 %). La dirección se repite,
+pero el tamaño varía de casi cero a casi dos tercios: no hay un factor sistemático.
+
+**d) ¿Los incendios nocturnos son más grandes o más severos?** No hay evidencia. Con los
+cuatro medidos, Spearman entre el % de focos nocturnos y el área quemada da 0,60
+(p = 0,40) y con el % de severidad moderada o más, 0,40 (p = 0,60). Con los 20 casos y
+la envolvente como tamaño, −0,11 (p = 0,64).
+
+Tablas: `outputs/medicion_top20.csv`, `outputs/top20_exito_region.csv`,
+`outputs/top20_medidos_resumen.csv`, `outputs/top20_pruebas.csv`, `outputs/imagenes_riotambo.csv`.
+
+## Robustez
+
+**Cuánto mueve cada decisión las hectáreas de Chichas** (una por vez, las demás en su
+valor base):
+
+![Tornado de decisiones](outputs/tornado_chichas.png)
+
+| Decisión | Opción | Hectáreas | Cambio |
 |---|---|---:|---:|
-| 18-oct-2026 | 18LXM | 85,6 % | 85,6 % |
-| 18-oct-2026 | 18LXN | 59,1 % | 96,0 % |
-| 20-oct-2026 (la mejor) | 18LXM | 55,4 % | 55,4 % |
-| 20-oct-2026 | 18LXN | 44,8 % | 81,7 % |
+| Base | 0,10 · mejor par · SCL usada · 1 km | 1 689,5 | — |
+| Par de imágenes | 2.ª mejor posterior: 2026-10-20 (17,4 % inválido) | 1 276,7 | -24,4 % |
+| Par de imágenes | 2.ª mejor previa: 2026-10-13 (0,0 % inválido) | 1 497,6 | -11,4 % |
+| Máscara SCL | SCL permisiva | 1 689,5 | 0,0 % |
+| Máscara SCL | SCL estricta | 1 473,4 | -12,8 % |
+| Zona | focos + 500 m | 1 688,9 | -0,0 % |
+| Zona | focos + 2 km | 1 693,1 | 0,2 % |
 
-No se forzó la medición con la mitad sin nubes, porque la cifra no sería comparable
-con la de Chichas. Es el mismo problema que dejó fuera a Callería. En la Amazonía,
-octubre todavía es temporada de quemas y ya empiezan las lluvias: la
-nubosidad impide medir justo cuando más arde, y eso sesga el análisis óptico hacia
-los incendios andinos.
+- **El umbral domina**: de 34 a 2 008 ha.
+- **Par de imágenes**: la segunda mejor posterior (Sentinel-2B, otra órbita, el mismo
+  20-oct) da 1 276,7 ha, pero tiene el 17,4 % de la zona tapada. En el área válida en
+  ambas (4 449,8 ha) la diferencia es de 1 353,9 a 1 276,5 ha, un 5,7 % menos.
+- **Máscara**: la permisiva no cambia nada. La estricta quita 216 ha porque Sentinel-2
+  marca 178,7 ha de la cicatriz como "zona oscura" (SCL 2) y 37,4 ha como "sin clasificar"
+  (SCL 7): borra parte del propio incendio. Es un artefacto, no incertidumbre real.
+- **Zona**: casi irrelevante (1 688,9 a 1 693,1 ha); la cicatriz cabe entera en los tres buffers.
 
-**La hipótesis queda sin contrastar.** Se esperaba que en bosque la severidad saliera
-alta y la curva plana, y que en pastizal saliera baja y la curva empinada. Chichas es
-compatible con la mitad de pastizal (85,7 % de lo quemado en severidad baja, factor de
-59 entre umbrales), pero sin un caso de bosque un solo caso no respalda ni refuta la
-hipótesis.
+**MAUP: la concentración de focos depende de la unidad.**
 
-Tabla: `outputs/imagenes_riotambo.csv`.
+| Unidad | Con focos | Gini (solo con focos) | Gini (todas) |
+|---|---:|---:|---:|
+| distrito | 644 de 1 815 | 0,735 | 0,906 |
+| provincia | 180 de 195 | 0,737 | 0,758 |
+| grilla 10 × 10 km | 1 588 de 13 464 | 0,609 | 0,954 |
+| grilla 10 × 10 km desplazada 5 km | 1 595 de 13 453 | 0,607 | 0,953 |
+
+El mismo conjunto de focos da un Gini entre 0,607 y 0,954 según la unidad y el
+denominador. **La concentración depende de la unidad elegida**, así que cualquier frase
+del tipo "los focos están muy concentrados" debe decir con qué unidad se midió. Desplazar
+la grilla 5 km casi no cambia el resultado (0,609 frente a 0,607). Una versión anterior
+reportaba 0,733 por distrito; con estos datos y la fórmula estándar sale 0,735 (644
+distritos con focos), y no se pudo reproducir el 0,733.
+
+Tablas: `outputs/robustez_chichas.csv`, `outputs/robustez_diagnostico.csv`,
+`outputs/tornado_chichas.csv`, `outputs/gini_maup.csv`.
+
+## Validación contra MCD64A1
+
+MCD64A1 de octubre de 2026 aún no existe, así que se validó el **método** en incendios de
+2024-2025. Regla fijada antes de ver resultados: grupos de focos S-NPP (confianza
+nominal/alta, tipo vegetación) de junio a noviembre, ordenados por número de focos; los
+3 primeros medibles. Comparación en la misma zona y los mismos píxeles válidos.
+
+![Validación contra MCD64A1](outputs/validacion_mcd64a1.png)
+
+| Muestra | n | Razón mediana (nuestro / MCD64A1) | Rango | Chichas corregida (ha) |
+|---|---:|---:|---:|---:|
+| 3 casos (regla fijada) | 3 | 1,048 | 1,016-1,198 | 1 612 |
+| 21 candidatos medibles | 21 | 1,171 | 0,678-2,018 | 1 443 |
+| solo pastizal dominante | 1 | 1,171 | 1,171-1,171 | 1 443 |
+
+Los 3 casos de la regla son bosque amazónico de septiembre de 2024: nuestro método da
+entre +1,6 % y +19,8 % (mediana +4,8 %). Tres casos subestiman la dispersión: en los 21
+candidatos medibles (misma regla, sin elegir) la razón va de 0,678 a 2,018, con mediana
+1,171 (+17,1 %). **Nuestro método tiende a dar más que MCD64A1.**
+
+**Factor de corrección declarado:** con el sesgo mediano de los 21 casos, Chichas pasaría
+de 1 690 a **1 443 ha** (1 612 ha con los 3 de la regla). Se reporta como cifra alternativa,
+no reemplaza a la principal: casi toda la validación es en bosque amazónico (un solo
+pastizal, razón 1,171); MCD64A1 tiene píxeles de 500 m y no es verdad de campo; y varios de
+los 21 candidatos se solapan en el espacio, así que no son independientes. En septiembre de
+2024 fueron medibles 21 de 24 candidatos, frente a 4 de 20 en octubre de 2026, aunque los de
+2024 tenían 20 días para conseguir imagen posterior y los de 2026, como mucho 7.
+
+Tablas: `outputs/validacion_mcd64a1.csv`, `outputs/validacion_candidatos.csv`,
+`outputs/validacion_resumen.csv`.
 
 ## Literatura
 
@@ -222,6 +367,21 @@ vegetación rala los umbrales fijos del dNBR no se trasladan sin recalibrar. Nin
 de estas referencias es de pastizal andino: no se encontró un estudio de dNBR con
 validación de campo en puna o páramo.
 
+## Qué no se pudo hacer
+
+- **Medir 16 de los 20 incendios más grandes**: 12 por nubes, 3 porque ningún Sentinel-2
+  pasó antes del corte de datos y 1 por el prefiltro de nubes de escena del pipeline.
+- **Contrastar bosque contra pastizal**: solo un bosque fue medible (Iparía).
+- **Validar en pastizal andino**: 20 de los 21 casos de validación son de bosque
+  amazónico, y MCD64A1 de octubre de 2026 aún no existe.
+- **Probar mala calibración de Key y Benson**: requiere severidad medida en campo (CBI).
+- **Reproducir el Gini de 0,733**: con estos datos sale 0,735.
+- **Recurrencia completa de 2026**: el archivo anual no existe y, sin MAP_KEY de FIRMS,
+  la barra de 2026 cubre solo 8 días.
+- **Literatura andina**: no se halló ningún estudio de dNBR con validación de campo en
+  puna o páramo. Tampoco se pudo confirmar la conclusión de Roy et al. (2006), solo qué
+  evaluaron.
+
 ## Limitaciones
 
 - Un foco de calor es un píxel de 375 m donde un satélite detectó fuego, incluidas
@@ -234,8 +394,9 @@ validación de campo en puna o páramo.
 - VIIRS no detecta de forma confiable incendios pequeños, bajo dosel cerrado o
   cubiertos por nubes. En la recurrencia, eso limita la conclusión a incendios del
   tamaño del de 2026; la barra de 2026 cubre solo 8 días.
-- Un solo caso medido: los dos candidatos amazónicos (Callería y Río Tambo) no
-  tenían imagen posterior sin nubes, así que no hay contraste entre bosque y pastizal.
+- Cuatro casos medidos de veinte: las nubes de octubre dejaron fuera a la mayoría y solo
+  un bosque fue medible.
+- La validación es casi toda en bosque y contra un producto de 500 m, no contra datos de campo.
 - WorldCover es de 2021, así que la cobertura pudo cambiar antes del incendio.
 - Las cifras oficiales no se suman a estas: usan otros métodos y otras definiciones.
 - Herramienta independiente con datos públicos; no reemplaza los reportes del
@@ -256,13 +417,20 @@ python src/paso2_4_medir.py      # par Sentinel-2, dNBR, severidad, WorldCover y
 python src/paso5_sensibilidad.py # hectáreas con 7 umbrales de dNBR + gráfico
 python src/paso6_recurrencia.py  # archivo S-NPP 2012-2025 + polígono quemado + gráfico
 python src/paso7_riotambo.py     # verifica si Río Tambo es medible (no lo es)
+python src/paso8_top20.py        # mismo pipeline sobre los 20 incendios con más focos
+python src/paso9_analisis_top20.py  # éxito por región, severidad, envolvente, noche
+python src/paso10_robustez.py    # Gini con tres unidades + tornado de Chichas
+python src/paso11_recurrencia_noche.py  # cruce recurrencia × firma nocturna (tras pasos 6 y 8)
+python src/paso12_validacion.py  # validación contra MCD64A1 (usa el archivo del paso 6)
 ```
 
-Los pasos 2 a 7 dependen de `outputs/focos_peru.csv`, que genera el paso 1. Las
-descargas se guardan en `data/raw/` (no versionado) y no se repiten si ya existen.
+Los pasos 2 a 12 dependen de `outputs/focos_peru.csv`, que genera el paso 1. Las
+descargas se guardan en `data/raw/` y los resultados por incendio de los pasos 8 y 12 en
+`data/cache/` (ninguno versionado); no se repiten si ya existen. Los pasos 8 y 12 corren
+en paralelo (6 hilos) y tardan unos 2 y 5 minutos.
 
 **Ojo:** el CSV de 7 días de FIRMS cambia cada día. Si el paso 1 descarga los archivos
 de nuevo, los focos e identificadores de incendio (Chichas = 1052, Río Tambo = 30) ya
 no serán los mismos. Para reproducir estas cifras hacen falta los tres
 `data/raw/firms_*_SA_7d.csv` descargados el 21-oct-2026; con el `outputs/focos_peru.csv`
-versionado se pueden correr los pasos 2 a 7 sin el paso 1.
+versionado se pueden correr los pasos 2 a 12 sin el paso 1.

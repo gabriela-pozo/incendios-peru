@@ -37,6 +37,8 @@ def main():
     _, p_nub = fisher_exact([[am.fallo_nubes, am.incendios - am.fallo_nubes],
                              [an.fallo_nubes, an.incendios - an.fallo_nubes]])
     print(f"Fisher (medidos, Amazonía vs Andes): p = {p_med:.2f}  |  Fisher (fallo por nubes): p = {p_nub:.2f}")
+    pruebas = [("Fisher: medidos, Amazonía vs Andes", "p", p_med, 19),
+               ("Fisher: fallo por nubes, Amazonía vs Andes", "p", p_nub, 19)]
 
     # b) severidad por cobertura dominante del área quemada
     m["pct_moderada_o_mas"] = (m.pct_sev_moderada_baja + m.pct_sev_moderada_alta + m.pct_sev_alta).round(1)
@@ -53,8 +55,12 @@ def main():
     for y in ["area_quemada_ha", "pct_moderada_o_mas", "dnbr_mediana_quemado"]:
         r, p = spearmanr(m.pct_focos_noche, m[y])
         print(f"Spearman % focos nocturnos vs {y}: rho = {r:.2f}, p = {p:.2f} (n = {len(m)})")
+        pruebas += [(f"Spearman: % nocturnos vs {y}", "rho", r, len(m)), (f"Spearman: % nocturnos vs {y}", "p", p, len(m))]
     r20, p20 = spearmanr(d.pct_focos_noche, d.envolvente_ha)
     print(f"Spearman % nocturnos vs envolvente, 20 casos: rho = {r20:.2f}, p = {p20:.2f}")
+    pruebas += [("Spearman: % nocturnos vs envolvente_ha", "rho", r20, len(d)),
+                ("Spearman: % nocturnos vs envolvente_ha", "p", p20, len(d))]
+    pd.DataFrame(pruebas, columns=["prueba", "estadistico", "valor", "n"]).round(3)         .to_csv(OUT / "top20_pruebas.csv", index=False)
     resumen = m[["incendio", "distrito", "region", "cobertura_dominante", "pct_focos_noche", "envolvente_ha",
                  "area_quemada_ha", "diferencia_pct", "pct_sev_baja", "pct_moderada_o_mas",
                  "dnbr_mediana_quemado", "ratio_035_010"]]
