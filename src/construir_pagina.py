@@ -719,6 +719,15 @@ def md_tabla(cab, filas):
         .replace("---:", "---:") + "|\n" + "\n".join(filas)
 
 
+def antes_despues_md():
+    if not (OUT / "chichas_rgb_antes.jpg").exists():
+        return ""
+    return (f"\nSentinel-2 en color real, mismo recorte y ajuste de color: {antes.fecha} (izquierda) y {despues.fecha} "
+            f"(derecha). Las manchas blancas y oscuras abajo a la derecha del {despues.fecha} son nubes y sus sombras.\n\n"
+            f'<img src="outputs/chichas_rgb_antes.jpg" width="49%" alt="Chichas antes del fuego"> '
+            f'<img src="outputs/chichas_rgb_despues.jpg" width="49%" alt="Chichas después del fuego">\n')
+
+
 def rejilla_md():
     mapas = [OUT / f"mapa_caso_{d.lower()}.png" for d in med.distrito]
     if not all(m.exists() for m in mapas):
@@ -788,7 +797,7 @@ Tabla: `outputs/comportamiento_nacional.csv`.
 ## 3. El caso medido: Chichas, {num(ch_ha, 0, False)} ha donde nunca había ardido
 
 ![Área quemada en Chichas](outputs/mapa_chichas.png)
-
+{antes_despues_md()}
 - **{num(ch_ha, 0, False)} ha** quemadas (dNBR ≥ 0,10), el {num(pct_zona_ch, 0, False)} % de las {num(zona_ch, 0, False)} ha analizadas.
 - **{num(pct_dist, 1, False)} %** del distrito de Chichas ({num(dist_ha, 0, False)} ha según los límites GADM 4.1).
 - **0** focos dentro del área quemada entre 2012 y 2025.

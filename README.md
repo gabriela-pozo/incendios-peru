@@ -74,6 +74,10 @@ Tabla: `outputs/comportamiento_nacional.csv`.
 
 ![Área quemada en Chichas](outputs/mapa_chichas.png)
 
+Sentinel-2 en color real, mismo recorte y ajuste de color: 2026-10-15 (izquierda) y 2026-10-20 (derecha). Las manchas blancas y oscuras abajo a la derecha del 2026-10-20 son nubes y sus sombras.
+
+<img src="outputs/chichas_rgb_antes.jpg" width="49%" alt="Chichas antes del fuego"> <img src="outputs/chichas_rgb_despues.jpg" width="49%" alt="Chichas después del fuego">
+
 - **1 690 ha** quemadas (dNBR ≥ 0,10), el 31 % de las 5 399 ha analizadas.
 - **4,3 %** del distrito de Chichas (38 976 ha según los límites GADM 4.1).
 - **0** focos dentro del área quemada entre 2012 y 2025.
