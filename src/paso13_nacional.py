@@ -101,6 +101,35 @@ def mapa(f, dist):
     fig.tight_layout(); fig.savefig(OUT / "mapa_nacional.png"); plt.close(fig)
 
 
+def datos_mapa(f, dist):
+    """Datos del mapa interactivo de la página, como JS para que funcione también sin servidor."""
+    import json
+    t20 = pd.read_csv(OUT / "medicion_top20.csv")
+    nombres = {"RioTambo": "Río Tambo", "Callaria": "Callería", "Iparia": "Iparía", "NuevaRequena": "Nueva Requena",
+               "SanCristobal": "San Cristóbal", "SantaCruz": "Santa Cruz", "SanJuandeJarpa": "San Juan de Jarpa",
+               "SanMiguel": "San Miguel"}
+    motivo = {"nubes": "nubes sobre la zona", "sin imagen posterior": "sin pasada de Sentinel-2",
+              "prefiltro de escena": "descartada por el prefiltro"}
+    incendios = []
+    for r in t20.itertuples():
+        incendios.append({"n": nombres.get(r.distrito, r.distrito), "d": r.departamento, "lat": r.lat, "lon": r.lon,
+                          "focos": int(r.focos), "reg": r.region, "med": bool(r.medible),
+                          "ha": None if not r.medible else r.area_quemada_ha,
+                          "mot": "" if r.medible else motivo[r.categoria_motivo]})
+    dep = dist.to_crs(32718).assign(geometry=lambda x: x.buffer(150)).dissolve("departamento")
+    dep = dep.assign(geometry=dep.buffer(-150).simplify(600)).to_crs(4326).reset_index()
+    geo = json.loads(dep[["departamento", "geometry"]].to_json(drop_id=True))
+
+    def redondear(c):
+        return [redondear(x) for x in c] if isinstance(c[0], list) else [round(c[0], 3), round(c[1], 3)]
+    for ft in geo["features"]:
+        ft["geometry"]["coordinates"] = redondear(ft["geometry"]["coordinates"])
+    datos = {"focos": [[round(a, 4), round(b, 4), round(c, 1)] for a, b, c in zip(f.latitude, f.longitude, f.frp)],
+             "incendios": incendios, "departamentos": geo}
+    (OUT / "mapa_nacional_datos.js").write_text(
+        "window.DATOS_MAPA = " + json.dumps(datos, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
+
+
 def main():
     f = pd.read_csv(OUT / "focos_peru.csv")
     inc = pd.read_csv(OUT / "incendios_peru.csv")
@@ -108,6 +137,7 @@ def main():
     comportamiento(f, inc, dist)
     lorenz(f, dist)
     mapa(f, dist)
+    datos_mapa(f, dist)
 
 
 if __name__ == "__main__":
