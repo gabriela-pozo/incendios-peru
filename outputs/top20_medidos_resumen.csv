@@ -1,0 +1,5 @@
+incendio,distrito,region,cobertura_dominante,pct_focos_noche,envolvente_ha,area_quemada_ha,diferencia_pct,pct_sev_baja,pct_moderada_o_mas,dnbr_mediana_quemado,ratio_035_010
+1052,Chichas,Andes,pastizal,56.7,2957.0,1689.5,-42.9,85.7,14.4,0.182,0.02
+178,Iparia,Amazonía,bosque,43.5,724.0,255.4,-64.7,42.2,57.7,0.304,0.393
+47,SanCristobal,Andes,pastizal,67.8,587.0,609.9,3.9,41.1,58.9,0.293,0.227
+41,Curahuasi,Andes,pastizal,37.8,475.0,306.0,-35.6,56.0,44.0,0.254,0.182

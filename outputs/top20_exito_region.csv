@@ -1,0 +1,4 @@
+region,incendios,medidos,fallo_nubes,fallo_sin_imagen_posterior,fallo_prefiltro_de_escena,fallo_tile_inválido,pct_medidos,pct_fallo_nubes
+Amazonía,8,1,5,1,1,0,12.5,62.5
+Andes,11,3,7,1,0,0,27.3,63.6
+Costa,1,0,0,1,0,0,0.0,0.0
